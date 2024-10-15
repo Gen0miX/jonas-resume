@@ -14,7 +14,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-darker-grotesque)"],
-        heading: ["var(--font-syne)"],
+        heading: ["var(--font-bodoni-moda)"],
       },
     },
   },

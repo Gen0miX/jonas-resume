@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque, Syne } from "next/font/google";
+import { Darker_Grotesque, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 
 const darkerGrotesque = Darker_Grotesque({
@@ -8,10 +8,10 @@ const darkerGrotesque = Darker_Grotesque({
   variable: "--font-darker-grotesque",
 });
 
-const syne = Syne({
+const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-syne",
+  variable: "--font-bodoni-moda",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${darkerGrotesque.variable} ${syne.variable}`}>
+    <html
+      lang="en"
+      className={`${darkerGrotesque.variable} ${bodoniModa.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
