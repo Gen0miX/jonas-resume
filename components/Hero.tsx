@@ -1,7 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 
-function NavItem({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+function NavItem({ children, ...props }: Props) {
   return (
     <li className="antialiased font-normal font-heading text-9xl">
       <Link href="#">{children}</Link>
