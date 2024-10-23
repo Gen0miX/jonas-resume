@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import Hero from "../components/Hero";
 import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
+import Career from "../components/Career";
+import Skills from "../components/Skills";
 
 export default function App() {
   const [showHeader, setShowHeader] = useState(false);
@@ -28,7 +30,7 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <div
         className={`fixed top-0 w-full transition-all duration-500 ease-in-out ${
           showHeader
@@ -42,6 +44,8 @@ export default function App() {
         <Hero />
       </div>
       <AboutMe />
+      <Career />
+      <Skills />
       <div className="h-lvh"></div>
       <div className="h-lvh"></div>
     </div>

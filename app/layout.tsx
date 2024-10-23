@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${darkerGrotesque.variable} ${bodoniModa.variable}`}
     >
-      <body>{children}</body>
+      <body className="scroll-smooth">{children}</body>
     </html>
   );
 }

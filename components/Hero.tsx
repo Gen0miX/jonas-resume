@@ -3,12 +3,13 @@ import Link from "next/link";
 
 interface Props {
   children?: ReactNode;
+  href: string;
 }
 
-function NavItem({ children, ...props }: Props) {
+function NavItem({ children, href, ...props }: Props) {
   return (
     <li className="antialiased font-normal font-heading text-9xl">
-      <Link href="#">{children}</Link>
+      <Link href={href}>{children}</Link>
     </li>
   );
 }
@@ -16,7 +17,7 @@ function NavItem({ children, ...props }: Props) {
 export default function Hero() {
   return (
     <section className="flex flex-row justify-center h-screen">
-      <div className="flex flex-col justify-end max-w-md mb-60 ml-60">
+      <div className="flex flex-col justify-end max-w-md mb-60 ml-40 mr-20">
         <h1 className="font-sans text-3xl">
           Hi, I'm <span className="font-bold">Jonas Pilloud</span>
         </h1>
@@ -28,10 +29,10 @@ export default function Hero() {
       </div>
       <div className="flex justify-center m-10">
         <ul className="flex flex-col h-full justify-evenly">
-          <NavItem>ABOUT ME</NavItem>
-          <NavItem>CAREER</NavItem>
-          <NavItem>SKILLS</NavItem>
-          <NavItem>PROJECTS</NavItem>
+          <NavItem href="#about-me">ABOUT ME</NavItem>
+          <NavItem href="#career">CAREER</NavItem>
+          <NavItem href="#skills">SKILLS</NavItem>
+          <NavItem href="#">PROJECTS</NavItem>
         </ul>
       </div>
     </section>
