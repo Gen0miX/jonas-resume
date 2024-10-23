@@ -58,6 +58,7 @@ export default function Header() {
       </div>
       <div className="navbar-end">
         <label className="mr-3 swap swap-rotate">
+          <span className="hidden">Switch theme</span>
           <input
             type="checkbox"
             onClick={toggleTheme}
