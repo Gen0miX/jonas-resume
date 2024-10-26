@@ -10,7 +10,7 @@ function Skill({ children, value }: Props) {
     <div className="flex items-center">
       <p className="font-sans text-xl font-medium mr-10">{children}</p>
       <progress
-        className="progress  w-56 mt-1"
+        className="progress static w-56 mt-1"
         value={value}
         max="100"
       ></progress>
@@ -24,7 +24,7 @@ function CTitle({ children }: Props) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="m-60">
+    <section id="skills" className="m-60 scroll-mt-32">
       <h1 className="font-heading text-center text-6xl mb-10">SKILLS</h1>
       <CTitle>CODING</CTitle>
       <Skill value={60}>HTML</Skill>

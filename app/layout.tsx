@@ -10,10 +10,21 @@ const darkerGrotesque = Darker_Grotesque({
 });
 
 const bodoniModa = localFont({
-  src: "./fonts/BodoniModa.woff2",
+  src: "./fonts/Merchant-VF.woff2",
   display: "swap",
   variable: "--font-bodoni-moda",
 });
+
+function setInitialTheme() {
+  return `
+  (function() {
+    const storedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = storedTheme || (systemPrefersDark ? "dark" : "nord");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+`;
+}
 
 export const metadata: Metadata = {
   title: "Jonas Pilloud",
@@ -30,6 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${darkerGrotesque.variable} ${bodoniModa.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: setInitialTheme() }} />
+      </head>
       <body className="scroll-smooth">{children}</body>
     </html>
   );

@@ -28,7 +28,7 @@ function Timeline({ children, year, title, className }: Props) {
 
 export default function Career() {
   return (
-    <section id="career" className="m-60">
+    <section id="career" className="m-60 scroll-mt-32">
       <h1 className="font-heading text-center text-6xl mb-10">CAREER</h1>
       <ul className="static timeline timeline-snap-icon max-md:timeline-compact timeline-vertical z-0">
         <Timeline
