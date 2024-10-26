@@ -8,7 +8,7 @@ interface Props {
 
 function NavItem({ children, href, ...props }: Props) {
   return (
-    <li className="antialiased font-heading font-normal text-[12vw] md:text-[7.5vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in">
+    <li className="antialiased font-heading font-normal text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in md:text-[10.5vw] lg:text-[8vw]">
       <Link href={href}>{children}</Link>
     </li>
   );
@@ -29,8 +29,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="flex flex-col h-dvh mt-5 mx-5">
-      <div className="flex flex-col items-baseline">
+    <section className="flex flex-col h-dvh pt-5 px-5">
+      <div className="flex flex-col lg:ml-5">
         {currentDate && (
           <>
             <h1 className="font-heading text-3xl font-bold translate-y-2">
@@ -46,19 +46,19 @@ export default function Hero() {
           </>
         )}
       </div>
-      <div className="flex flex-col mx-10 grow justify-end">
-        <div className="flex flex-col mt-10">
-          <h1 className="font-sans text-2xl md:text-3xl">
+      <div className="flex flex-col mx-5 grow max-h-full justify-end lg:max-w-full lg:flex-row lg:mx-0 lg:justify-evenly">
+        <div className="flex flex-col mt-10 max-w-sm lg:mt-0 lg:mx-5 lg:justify-end lg:flex-1 lg:mb-56 lg:max-w-md">
+          <h1 className="font-sans text-2xl lg:text-3xl">
             Hi, I'm <span className="font-bold">Jonas Pilloud</span>
           </h1>
-          <p className="text-justify font-sans text-base">
+          <p className="text-justify font-sans">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
             corrupti vitae quasi debitis voluptate blanditiis earum
             reprehenderit nemo nam. Eum?
           </p>
         </div>
-        <div className="flex mt-5 mb-10 md:mt-0">
-          <ul className="flex flex-col items-start justify-end md:gap-10">
+        <div className="flex mt-5 mb-10 lg:my-0 lg:mx-2">
+          <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
             <NavItem href="#about-me">ABOUT ME</NavItem>
             <NavItem href="#career">CAREER</NavItem>
             <NavItem href="#skills">SKILLS</NavItem>
