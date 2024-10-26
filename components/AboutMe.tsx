@@ -20,7 +20,7 @@ export default function AboutMe() {
           className="mb-5 h-[60vh] lg:ml-10"
         />
         <div className="flex flex-col mx-10 justify-center">
-          <h1 className="font-heading text-6xl my-5 text-left lg:hidden">
+          <h1 className="font-heading text-5xl my-5 text-left sm:text-6xl lg:hidden">
             ABOUT ME
           </h1>
           <p className="font-sans font-medium text-justify text-xl">
