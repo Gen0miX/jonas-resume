@@ -29,7 +29,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="flex flex-col h-screen mt-5 mx-5">
+    <section className="flex flex-col h-dvh mt-5 mx-5">
       <div className="flex flex-col items-baseline">
         {currentDate && (
           <>
