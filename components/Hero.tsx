@@ -8,7 +8,7 @@ interface Props {
 
 function NavItem({ children, href, ...props }: Props) {
   return (
-    <li className="antialiased font-heading font-normal text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in md:text-[10.5vw] lg:text-[8vw]">
+    <li className="antialiased font-heading font-bold text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in xl:font-normal md:text-[10.5vw] lg:text-[8vw]">
       <Link href={href}>{children}</Link>
     </li>
   );
@@ -29,7 +29,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="flex flex-col h-dvh pt-5 px-5">
+    <section className="flex flex-col h-svh pt-5 px-5">
       <div className="flex flex-col lg:ml-5">
         {currentDate && (
           <>
