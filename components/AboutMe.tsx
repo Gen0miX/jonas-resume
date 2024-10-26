@@ -4,7 +4,7 @@ import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 
 export default function AboutMe() {
   return (
-    <section id="about-me" className="flex m-60">
+    <section id="about-me" className="flex m-60 scroll-mt-32">
       <Image
         src={profilePic}
         alt={"Profile picture"}

@@ -23,8 +23,9 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        nordd: {
-          ...require("daisyui/src/theming/themes")["nord"],
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          "base-content": "#EBF6F7",
         },
       },
       "dark",

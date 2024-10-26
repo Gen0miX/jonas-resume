@@ -19,6 +19,7 @@ function NavItemHeader({ children, href, ...props }: Props) {
 
 export default function Header() {
   const [theme, setTheme] = useState("nord");
+  const [themeLoaded, setThemeLoaded] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -26,14 +27,10 @@ export default function Header() {
       "(prefers-color-scheme: dark)"
     ).matches;
 
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else if (systemPrefersDark) {
-      setTheme("dark");
-    }
-    if (theme) {
-      document.querySelector("html")?.setAttribute("data-theme", theme);
-    }
+    const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "nord");
+    setTheme(initialTheme);
+    document.querySelector("html")?.setAttribute("data-theme", initialTheme);
+    setThemeLoaded(true);
   }, [theme]);
 
   const toggleTheme = () => {
