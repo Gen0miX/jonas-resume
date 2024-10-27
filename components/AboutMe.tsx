@@ -19,11 +19,11 @@ export default function AboutMe() {
           height={600}
           className="mb-5 h-[60vh] lg:ml-10"
         />
-        <div className="flex flex-col mx-10 justify-center">
+        <div className="flex flex-col ml-10 justify-center">
           <h1 className="font-heading text-5xl my-5 text-left sm:text-6xl lg:hidden">
             ABOUT ME
           </h1>
-          <p className="font-sans font-medium text-justify text-xl">
+          <p className="font-sans font-medium text-justify text-xl mr-5">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
             suscipit odit recusandae facilis consequuntur asperiores minus,
             earum repudiandae est iste officiis. Tenetur rerum maiores nisi

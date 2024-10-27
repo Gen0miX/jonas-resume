@@ -41,12 +41,30 @@ export default function Header() {
   };
 
   return (
-    <div className="z-50 sticky navbar bg-base-200">
+    <div className="sticky navbar bg-base-200">
       <div className="ml-3 navbar-start">
         <a className="font-sans text-xl font-medium">Jonas Pilloud</a>
       </div>
       <div className="navbar-center">
-        <ul className="px-1 menu menu-xl menu-horizontal">
+        <div className="dropdown dropdown-bottom md:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 text-xl antialiased font-normal font-heading"
+          >
+            // MENU
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+          >
+            <NavItemHeader href="#about-me">ABOUT ME</NavItemHeader>
+            <NavItemHeader href="#career">CAREER</NavItemHeader>
+            <NavItemHeader href="#skills">SKILLS</NavItemHeader>
+            <NavItemHeader href="#projects">PROJECTS</NavItemHeader>
+          </ul>
+        </div>
+        <ul className="px-1 menu menu-xl menu-horizontal hidden md:flex">
           <NavItemHeader href="#about-me">ABOUT ME</NavItemHeader>
           <NavItemHeader href="#career">CAREER</NavItemHeader>
           <NavItemHeader href="#skills">SKILLS</NavItemHeader>
