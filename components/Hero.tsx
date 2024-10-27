@@ -8,7 +8,7 @@ interface Props {
 
 function NavItem({ children, href, ...props }: Props) {
   return (
-    <li className="antialiased font-heading font-bold text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in xl:font-normal md:text-[9vw] lg:text-[8vw]">
+    <li className="antialiased font-heading font-bold lg:leading-none text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
       <Link href={href}>{children}</Link>
     </li>
   );
@@ -57,7 +57,7 @@ export default function Hero() {
             reprehenderit nemo nam. Eum?
           </p>
         </div>
-        <div className="flex mt-5 mb-0 lg:my-0 lg:mx-2">
+        <div className="flex mt-5 mb-0 lg:my-0 lg:mx-2 md:mb-5">
           <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
             <NavItem href="#about-me">ABOUT ME</NavItem>
             <NavItem href="#career">CAREER</NavItem>
