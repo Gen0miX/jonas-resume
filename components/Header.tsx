@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
+import ThemeToggleButton from "./ThemeToggleButton";
 import { IoSunny, IoMoon } from "react-icons/io5";
 
 interface Props {
@@ -18,28 +19,6 @@ function NavItemHeader({ children, href, ...props }: Props) {
 }
 
 export default function Header() {
-  const [theme, setTheme] = useState("nord");
-  const [themeLoaded, setThemeLoaded] = useState(false);
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "nord");
-    setTheme(initialTheme);
-    document.querySelector("html")?.setAttribute("data-theme", initialTheme);
-    setThemeLoaded(true);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "nord" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.querySelector("html")?.setAttribute("data-theme", newTheme);
-  };
-
   return (
     <div className="sticky navbar bg-base-200">
       <div className="ml-3 navbar-start">
@@ -77,18 +56,8 @@ export default function Header() {
           <NavItemHeader href="#projects">PROJECTS</NavItemHeader>
         </ul>
       </div>
-      <div className="navbar-end">
-        <label className="mr-3 swap swap-rotate">
-          <span className="hidden">Switch theme</span>
-          <input
-            type="checkbox"
-            onClick={toggleTheme}
-            checked={theme === "nord"}
-            readOnly
-          />
-          <IoSunny className="text-xl swap-off" />
-          <IoMoon className="text-xl swap-on" />
-        </label>
+      <div className="navbar-end mr-3">
+        <ThemeToggleButton iconSize={24} />
       </div>
     </div>
   );

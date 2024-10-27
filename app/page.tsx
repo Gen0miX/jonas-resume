@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
 import Career from "../components/Career";
 import Skills from "../components/Skills";
+import { ThemeProvider } from "../components/ThemeContext";
 
 export default function App() {
   const [showHeader, setShowHeader] = useState(false);
@@ -30,24 +31,26 @@ export default function App() {
   }, []);
 
   return (
-    <div className="">
-      <div
-        className={`fixed top-0 w-full transition-all duration-500 ease-in-out ${
-          showHeader
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-full"
-        }`}
-      >
-        <Header />
+    <ThemeProvider>
+      <div className="">
+        <div
+          className={`fixed top-0 w-full transition-all duration-500 ease-in-out ${
+            showHeader
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-full"
+          }`}
+        >
+          <Header />
+        </div>
+        <div ref={heroRef}>
+          <Hero />
+        </div>
+        <AboutMe />
+        <Career />
+        <Skills />
+        <div className="h-lvh"></div>
+        <div className="h-lvh"></div>
       </div>
-      <div ref={heroRef}>
-        <Hero />
-      </div>
-      <AboutMe />
-      <Career />
-      <Skills />
-      <div className="h-lvh"></div>
-      <div className="h-lvh"></div>
-    </div>
+    </ThemeProvider>
   );
 }
