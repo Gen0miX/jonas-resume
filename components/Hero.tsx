@@ -38,7 +38,11 @@ export default function Hero() {
               <h1 className="font-heading text-3xl font-bold translate-y-2">
                 {currentDate.day}
               </h1>
-              <ThemeToggleButton iconSize={24} className="ml-auto lg:mr-10" />
+              <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box ml-auto">
+                <li>
+                  <ThemeToggleButton iconSize={20} />
+                </li>
+              </ul>
             </div>
 
             <div className="flex flex-row items-center">
