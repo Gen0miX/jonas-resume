@@ -44,7 +44,7 @@ export default function AboutMe() {
             quae adipisci suscipit nesciunt accusamus unde facere ullam. Eos
             corrupti, velit voluptas repudiandae accusantium libero dolores.
           </p>
-          <div className="flex justify-end mt-10">
+          <div className="flex justify-end mt-10 mr-5">
             <a className="text-3xl mx-1" href="">
               <AiFillLinkedin></AiFillLinkedin>
             </a>

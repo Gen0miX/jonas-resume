@@ -43,7 +43,13 @@ export default function Header() {
   return (
     <div className="sticky navbar bg-base-200">
       <div className="ml-3 navbar-start">
-        <a className="font-sans text-xl font-medium">Jonas Pilloud</a>
+        <Link
+          href="#"
+          className="flex flex-col justify-end font-heading text-xl m-0 p-0 leading-none hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-200 ease-in"
+        >
+          <span className="font-bold">Jonas</span>{" "}
+          <span className="ml-2 font-extralight">Pilloud</span>
+        </Link>
       </div>
       <div className="navbar-center">
         <div className="dropdown dropdown-bottom md:hidden">
