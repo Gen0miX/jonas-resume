@@ -19,11 +19,11 @@ export default function AboutMe() {
           height={600}
           className="mb-5 h-[60vh] lg:ml-10"
         />
-        <div className="flex flex-col ml-10 justify-center">
+        <div className="flex flex-col ml-5 md:ml-10 justify-center">
           <h1 className="font-heading text-5xl my-5 text-left sm:text-6xl lg:hidden">
             À PROPOS
           </h1>
-          <p className="font-sans font-medium text-justify text-2xl mr-5">
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
             Bonjour ! Je suis Jonas, un développeur junior diplômé en
             informatique de gestion. J'aime me décrire comme une personne qui
             s'adapte facilement aux situations, toujours prête à aider les
@@ -32,14 +32,14 @@ export default function AboutMe() {
             grande satisfaction. Mon engagement envers l'apprentissage quotidien
             m'incite à toujours chercher à améliorer mes compétences.
           </p>
-          <p className="font-sans font-medium text-justify text-2xl mt-3 mr-5">
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
             Actuellement, je suis en quête d'un emploi qui me permettra de
             mettre en pratique mes connaissances tout en développant de
             nouvelles aptitudes. Je rêve de rejoindre une équipe qui valorise la
             collaboration et la créativité, où chacun peut apporter sa touche
             personnelle.
           </p>
-          <p className="font-sans font-medium text-justify text-2xl mt-3 mr-5">
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
             En dehors du développement, je suis passionné par le snowboard en
             hiver et le skateboard en été. J'adore aussi plonger dans l'eau
             froide tout au long de l'année — c'est une excellente façon de
