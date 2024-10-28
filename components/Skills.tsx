@@ -14,7 +14,7 @@ function Skill({ children, value }: Props) {
       <span className="font-sans ml-auto mr-1 flex items-center justify-center text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-in-out">
         {value}%
       </span>
-      <div className="static w-56 mt-1">
+      <div className="static w-52 sm:w-56 mt-1">
         <progress
           className="static progress w-full h-2 rounded group-hover:progress-primary transition-colors ease-in-out"
           value={value}
