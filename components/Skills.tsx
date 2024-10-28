@@ -25,7 +25,7 @@ function CTitle({ children }: Props) {
 export default function Skills() {
   return (
     <section id="skills" className="mt-40 mb-10 xl:mx-32 2xl:m-60 scroll-mt-32">
-      <h1 className="font-heading text-6xl mb-5 ml-10">SKILLS</h1>
+      <h1 className="font-heading text-6xl lg:text-8xl  mb-5 ml-10">SKILLS</h1>
       <CTitle>CODING</CTitle>
       <Skill value={60}>HTML</Skill>
     </section>

@@ -24,7 +24,7 @@ export default function Hero() {
   useEffect(() => {
     const date = new Date();
     const options = { month: "long" as const };
-    const month = new Intl.DateTimeFormat("en-EN", options).format(date);
+    const month = new Intl.DateTimeFormat("fr-FR", options).format(date);
     const day = date.getDate();
     setCurrentDate({ day, month });
   }, []);
@@ -50,7 +50,7 @@ export default function Hero() {
                 {currentDate.month}
               </p>
               <div className="divider divider-vertical my-0 w-[15vw] mx-1 self-center"></div>
-              <p className="font-sans mb-1">Available for work</p>
+              <p className="font-sans mb-1">Disponible pour un emploi</p>
             </div>
           </>
         )}
@@ -58,24 +58,24 @@ export default function Hero() {
       <div className="flex flex-col mx-5 grow max-h-full justify-end lg:max-w-full lg:flex-row lg:mx-0 lg:justify-evenly">
         <div className="flex flex-col mt-10 md:mt-5 max-w-sm lg:mt-0 lg:mx-5 lg:justify-end lg:flex-1 lg:mb-56 lg:max-w-md">
           <h1 className="font-sans font-medium text-2xl lg:text-3xl">
-            Hi, I'm <span className="font-bold">Jonas Pilloud</span>
+            Salut, je suis <span className="font-bold">Jonas Pilloud</span>
           </h1>
           <p className="text-justify font-sans text-lg font-medium">
-            A passionate junior developer who loves creating and continuously
-            learning.
+            Un développeur junior passionné qui aime créer et apprendre en
+            continu.
           </p>
           <p className="text-justify font-sans mt-2 text-lg font-medium">
-            When I'm not at my desk, you’ll find me carving down snowy slopes in
-            winter or skateboarding in summer, always driven by a curiosity to
-            learn something new.
+            Quand je ne suis pas à mon bureau, vous me trouverez à dévaler les
+            pentes enneigées en hiver ou à faire du skateboard en été, toujours
+            animé par la curiosité d'apprendre quelque chose de nouveau.
           </p>
         </div>
         <div className="flex mt-5 mb-0 lg:my-0 lg:mx-2 md:mb-5">
           <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
-            <NavItem href="#about-me">ABOUT ME</NavItem>
-            <NavItem href="#career">CAREER</NavItem>
-            <NavItem href="#skills">SKILLS</NavItem>
-            <NavItem href="#">PROJECTS</NavItem>
+            <NavItem href="#about-me">À PROPOS</NavItem>
+            <NavItem href="#career">CARRIÈRE</NavItem>
+            <NavItem href="#skills">CAPACITÉS</NavItem>
+            <NavItem href="#">PROJETS</NavItem>
           </ul>
         </div>
       </div>

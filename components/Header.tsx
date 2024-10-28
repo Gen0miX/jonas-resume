@@ -10,9 +10,10 @@ interface Props {
 
 function NavItemHeader({ children, href, ...props }: Props) {
   return (
-    <li className="text-xl antialiased font-normal font-heading">
+    <li className="antialiased text-lg font-medium font-heading lg:text-xl">
       <Link href={href}>
-        <span className="">//</span> {children}
+        <span className="">//</span>
+        {children}
       </Link>
     </li>
   );
@@ -43,21 +44,25 @@ export default function Header() {
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
           >
-            <NavItemHeader href="#about-me">ABOUT ME</NavItemHeader>
-            <NavItemHeader href="#career">CAREER</NavItemHeader>
-            <NavItemHeader href="#skills">SKILLS</NavItemHeader>
-            <NavItemHeader href="#projects">PROJECTS</NavItemHeader>
+            <NavItemHeader href="#about-me">À PROPOS</NavItemHeader>
+            <NavItemHeader href="#career">CARRIÈRE</NavItemHeader>
+            <NavItemHeader href="#skills">CAPACITÉS</NavItemHeader>
+            <NavItemHeader href="#projects">PROJETS</NavItemHeader>
           </ul>
         </div>
         <ul className="px-1 menu menu-xl menu-horizontal hidden md:flex">
-          <NavItemHeader href="#about-me">ABOUT ME</NavItemHeader>
-          <NavItemHeader href="#career">CAREER</NavItemHeader>
-          <NavItemHeader href="#skills">SKILLS</NavItemHeader>
-          <NavItemHeader href="#projects">PROJECTS</NavItemHeader>
+          <NavItemHeader href="#about-me">À PROPOS</NavItemHeader>
+          <NavItemHeader href="#career">CARRIÈRE</NavItemHeader>
+          <NavItemHeader href="#skills">CAPACITÉS</NavItemHeader>
+          <NavItemHeader href="#projects">PROJETS</NavItemHeader>
         </ul>
       </div>
       <div className="navbar-end mr-3">
-        <ThemeToggleButton iconSize={24} />
+        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded-box ml-auto">
+          <li>
+            <ThemeToggleButton iconSize={20} />
+          </li>
+        </ul>
       </div>
     </div>
   );
