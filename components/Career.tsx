@@ -17,9 +17,9 @@ function Timeline({ children, year, title, className }: Props) {
       <div className="timeline-middle">
         <FaCheckCircle />
       </div>
-      <div className={clsx("mb-10", className)}>
+      <div className={clsx("mb-10 lg:text-lg", className)}>
         <time className="font-sans">{year}</time>
-        <div className="text-lg font-bold lg:text-2xl">{title}</div>
+        <div className="text-lg font-bold lg:text-xl">{title}</div>
         {children}
       </div>
       <hr />
@@ -36,9 +36,9 @@ export default function Career() {
           <div className="timeline-middle">
             <FaMagnifyingGlass />
           </div>
-          <div className="mb-10 timeline-end lg:text-xl">
+          <div className="mb-10 timeline-end lg:text-lg">
             <time className="font-sans">2024 - Présent</time>
-            <div className="text-lg font-bold lg:text-2xl">
+            <div className="text-lg font-bold lg:text-xl">
               À la recherche de nouvelles opportunités
             </div>
             Je recherche activement un poste où je peux mettre mes compétences
