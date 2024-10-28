@@ -33,7 +33,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="mt-40 mb-10 ml-5 xl:mx-32 2xl:m-60 scroll-mt-32 w-96"
+      className="mt-40 mb-10 ml-5 xl:mx-32 2xl:m-60 scroll-mt-32 sm:w-96"
     >
       <h1 className="font-heading text-5xl mb-5 lg:text-8xl">CAPACITÉS</h1>
       <div className="mr-5">
