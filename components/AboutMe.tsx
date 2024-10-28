@@ -41,9 +41,9 @@ export default function AboutMe() {
           </p>
           <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
             En dehors du développement, je suis passionné par le snowboard en
-            hiver et le skateboard en été. J'adore aussi plonger dans l'eau
-            froide tout au long de l'année — c'est une excellente façon de
-            rester en forme et d'éclaircir mon esprit ! Les jeux vidéo et les
+            hiver et le skateboard en été. J'apprécie aussi me baigner en eau
+            froide tout au long de l'année. C'est une expérience qui me permet
+            de me ressourcer et de clarifier mes pensées. Les jeux vidéo et les
             jeux de société sont également des activités que j'affectionne, car
             ils me permettent de tisser des liens tout en gardant mon esprit
             stratégique aiguisé.

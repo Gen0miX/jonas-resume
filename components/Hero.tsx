@@ -70,7 +70,7 @@ export default function Hero() {
             par la curiosité d'apprendre quelque chose de nouveau.
           </p>
         </div>
-        <div className="flex mt-5 mb-0 lg:my-0 lg:mx-2 md:mb-5">
+        <div className="flex mt-5 mb-5 lg:my-0 lg:mx-2 md:mb-5">
           <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
             <NavItem href="#about-me">À PROPOS</NavItem>
             <NavItem href="#career">CARRIÈRE</NavItem>

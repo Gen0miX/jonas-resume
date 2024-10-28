@@ -21,7 +21,7 @@ function NavItemHeader({ children, href, ...props }: Props) {
 
 export default function Header() {
   return (
-    <div className="sticky navbar bg-base-200">
+    <div className="sticky top-0 navbar bg-base-200 z-[999]">
       <div className="ml-3 navbar-start">
         <Link
           href="#"
@@ -36,13 +36,13 @@ export default function Header() {
           <div
             tabIndex={0}
             role="button"
-            className="btn m-1 text-xl antialiased font-normal font-heading"
+            className="btn m-1 text-xl antialiased font-normal rounded-box font-heading bg-base-300 border-none"
           >
             // MENU
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+            className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow"
           >
             <NavItemHeader href="#about-me">À PROPOS</NavItemHeader>
             <NavItemHeader href="#career">CARRIÈRE</NavItemHeader>
