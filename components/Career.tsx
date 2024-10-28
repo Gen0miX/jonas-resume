@@ -51,7 +51,7 @@ export default function Career() {
         <Timeline
           className="timeline-start md:text-end"
           year="2023 - 2024"
-          title="Master en Technologie de l'Information"
+          title="Master en informatique de gestion"
         >
           Une année d'études de Master en informatique de gestion à l'Université
           de Fribourg

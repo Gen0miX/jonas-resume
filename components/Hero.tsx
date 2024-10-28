@@ -65,9 +65,9 @@ export default function Hero() {
             continu.
           </p>
           <p className="text-justify font-sans mt-2 text-lg font-medium">
-            Quand je ne suis pas à mon bureau, vous me trouverez à dévaler les
-            pentes enneigées en hiver ou à faire du skateboard en été, toujours
-            animé par la curiosité d'apprendre quelque chose de nouveau.
+            Quand je ne suis pas devant mon écran, vous me trouverez sur mon
+            snowboard en hiver ou à faire du skateboard en été, toujours animé
+            par la curiosité d'apprendre quelque chose de nouveau.
           </p>
         </div>
         <div className="flex mt-5 mb-0 lg:my-0 lg:mx-2 md:mb-5">
