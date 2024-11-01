@@ -1,6 +1,7 @@
 import Image from "next/image";
 import profilePic from "../public/images/pp.svg";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
+import SectionTitle from "./SectionTitle";
 
 export default function AboutMe() {
   return (
@@ -8,9 +9,9 @@ export default function AboutMe() {
       id="about-me"
       className="flex flex-col mt-40 scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
     >
-      <h1 className="font-heading text-6xl mb-5 ml-10 hidden lg:text-8xl  lg:block">
+      <SectionTitle className="hidden lg:text-8xl  lg:block">
         À PROPOS
-      </h1>
+      </SectionTitle>
       <div className="flex flex-col items-center lg:flex-row">
         <Image
           src={profilePic}
@@ -20,9 +21,9 @@ export default function AboutMe() {
           className="mb-5 h-[60vh] lg:ml-10"
         />
         <div className="flex flex-col ml-5 md:ml-10 justify-center">
-          <h1 className="font-heading text-5xl my-5 text-left sm:text-6xl lg:hidden">
+          <SectionTitle className="my-5 ml-0 text-left sm:text-6xl lg:hidden">
             À PROPOS
-          </h1>
+          </SectionTitle>
           <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
             Bonjour ! Je suis Jonas, un développeur junior diplômé en
             informatique de gestion. J'aime me décrire comme une personne qui

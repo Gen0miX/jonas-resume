@@ -66,8 +66,9 @@ export default function Hero() {
           </p>
           <p className="text-justify font-sans mt-2 text-lg font-medium">
             Quand je ne suis pas devant mon écran, vous me trouverez sur mon
-            snowboard en hiver ou à faire du skateboard en été, toujours animé
-            par la curiosité d'apprendre quelque chose de nouveau.
+            snowboard en hiver ou sur mon skateboard en été. "DEUXIEME PHRASE"
+            Toujours animé par la curiosité d'apprendre quelque chose de
+            nouveau.
           </p>
         </div>
         <div className="flex mt-5 mb-5 lg:my-0 lg:mx-2 md:mb-5">
