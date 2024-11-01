@@ -10,7 +10,7 @@ export default function SectionTitle({ children, className }: Props) {
   return (
     <h1
       className={clsx(
-        "font-heading text-5xl mb-5 ml-10 lg:text-8xl ",
+        "font-heading text-right text-5xl mb-5 ml-10 sm:text-6xl sm:text-left lg:text-8xl ",
         className
       )}
     >

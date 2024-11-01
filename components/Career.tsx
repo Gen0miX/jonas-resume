@@ -30,9 +30,12 @@ function Timeline({ children, year, title, className }: Props) {
 
 export default function Career() {
   return (
-    <section id="career" className="mt-40 mb-10 xl:mx-32 2xl:m-60 scroll-mt-32">
+    <section
+      id="career"
+      className="mt-40 mb-10 mr-5 xl:mx-32 2xl:m-60 scroll-mt-32"
+    >
       <SectionTitle>CARRIÈRE</SectionTitle>
-      <ul className="static timeline timeline-snap-icon ml-10 mr-5 max-md:timeline-compact timeline-vertical z-0 lg:text-xl">
+      <ul className="static timeline timeline-snap-icon ml-10 max-md:timeline-compact timeline-vertical z-0 lg:text-xl">
         <li className="static">
           <div className="timeline-middle">
             <FaMagnifyingGlass />

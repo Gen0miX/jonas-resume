@@ -20,11 +20,9 @@ export default function AboutMe() {
           height={600}
           className="mb-5 h-[60vh] lg:ml-10"
         />
-        <div className="flex flex-col ml-5 md:ml-10 justify-center">
-          <SectionTitle className="my-5 ml-0 text-left sm:text-6xl lg:hidden">
-            À PROPOS
-          </SectionTitle>
-          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
+        <div className="flex flex-col ml-5 mr-5 md:ml-10 justify-center">
+          <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
             Bonjour ! Je suis Jonas, un développeur junior diplômé en
             informatique de gestion. J'aime me décrire comme une personne qui
             s'adapte facilement aux situations, toujours prête à aider les
@@ -33,14 +31,14 @@ export default function AboutMe() {
             grande satisfaction. Mon engagement envers l'apprentissage quotidien
             m'incite à toujours chercher à améliorer mes compétences.
           </p>
-          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
             Actuellement, je suis en quête d'un emploi qui me permettra de
             mettre en pratique mes connaissances tout en développant de
             nouvelles aptitudes. Je rêve de rejoindre une équipe qui valorise la
             collaboration et la créativité, où chacun peut apporter sa touche
             personnelle.
           </p>
-          <p className="font-sans text-xl font-medium text-justify lg:text-2xl mr-5">
+          <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
             En dehors du développement, je suis passionné par le snowboard en
             hiver et le skateboard en été. J'apprécie aussi me baigner en eau
             froide tout au long de l'année. C'est une expérience qui me permet
@@ -49,7 +47,7 @@ export default function AboutMe() {
             ils me permettent de tisser des liens tout en gardant mon esprit
             stratégique aiguisé.
           </p>
-          <div className="flex justify-end mt-10 mr-5">
+          <div className="flex justify-end mt-10">
             <a className="text-3xl mx-1" href="">
               <AiFillLinkedin></AiFillLinkedin>
             </a>
