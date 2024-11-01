@@ -60,11 +60,11 @@ export default function Hero() {
           <h1 className="font-sans font-medium text-2xl lg:text-3xl">
             Salut, je suis <span className="font-bold">Jonas Pilloud</span>
           </h1>
-          <p className="text-justify font-sans text-lg font-medium">
+          <p className="text-justify font-sans text-base sm:text-lg font-medium">
             Un développeur junior passionné qui aime créer et apprendre en
             continu.
           </p>
-          <p className="text-justify font-sans mt-2 text-lg font-medium">
+          <p className="text-justify font-sans mt-2 text-base sm:text-lg font-medium">
             Quand je ne suis pas devant mon écran, vous me trouverez sur mon
             snowboard en hiver ou sur mon skateboard en été. "DEUXIEME PHRASE"
             Toujours animé par la curiosité d'apprendre quelque chose de
