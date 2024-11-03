@@ -2,7 +2,7 @@ import clsx from "clsx";
 import React, { ReactNode } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
 interface Props {
   children?: ReactNode;

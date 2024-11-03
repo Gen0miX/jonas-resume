@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
 interface Props {
   children?: ReactNode;
@@ -10,20 +10,20 @@ interface Props {
 function Skill({ children, value }: Props) {
   return (
     <div className="flex items-center w-full hover:text-primary group transition-color ease-in-out">
-      <div className="w-32 mb-2">
+      <div className="w-32 mb-2 sm:w-40">
         <p className="font-sans text-base leading-none font-medium sm:text-lg sm:leading-none lg:text-xl lg:leading-none group-hover:font-bold transition-all ease-in-out">
           {children}
         </p>
       </div>
       <div className="flex-1 flex items-center">
+        <span className="mr-1 w-10 text-right font-sans text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-in-out">
+          {value}%
+        </span>
         <progress
           className="flex-1 progress static h-2 rounded group-hover:progress-primary transition-colors ease-in-out"
           value={value}
           max="100"
         ></progress>
-        <span className="ml-2 w-12 text-right font-sans text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-in-out">
-          {value}%
-        </span>
       </div>
     </div>
   );
@@ -31,7 +31,7 @@ function Skill({ children, value }: Props) {
 function Language({ children, info, value }: Props) {
   return (
     <div className="flex items-center w-full hover:text-primary group transition-color ease-in-out">
-      <div className="flex flex-col mb-1 w-36">
+      <div className="flex flex-col mb-1 w-36 sm:w-40">
         <p className="font-sans text-base leading-none font-medium sm:text-lg sm:leading-none lg:text-xl lg:leading-none group-hover:font-bold transition-all ease-in-out">
           {children}
         </p>
@@ -41,14 +41,14 @@ function Language({ children, info, value }: Props) {
       </div>
 
       <div className="flex-1 flex items-center">
+        <span className="mr-1 w-10 text-right font-sans text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-in-out">
+          {value}%
+        </span>
         <progress
           className="flex-1 progress static h-2 rounded group-hover:progress-primary transition-colors ease-in-out"
           value={value}
           max="100"
         ></progress>
-        <span className="ml-2 w-12 text-right font-sans text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity ease-in-out">
-          {value}%
-        </span>
       </div>
     </div>
   );

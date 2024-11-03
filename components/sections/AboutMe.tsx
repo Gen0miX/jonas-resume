@@ -1,7 +1,7 @@
 import Image from "next/image";
-import profilePic from "../public/images/pp.svg";
+import profilePic from "../../public/images/pp.svg";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 
 export default function AboutMe() {
   return (
@@ -48,13 +48,22 @@ export default function AboutMe() {
             stratégique aiguisé.
           </p>
           <div className="flex justify-end mt-10">
-            <a className="text-3xl mx-1" href="">
+            <a
+              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              href=""
+            >
               <AiFillLinkedin></AiFillLinkedin>
             </a>
-            <a className="text-3xl mx-1" href="">
+            <a
+              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              href=""
+            >
               <AiFillGithub></AiFillGithub>
             </a>
-            <a className="text-3xl mx-1" href="">
+            <a
+              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              href="mailto:jonas-pilloud@jonas-pilloud.ch"
+            >
               <AiFillMail></AiFillMail>
             </a>
           </div>

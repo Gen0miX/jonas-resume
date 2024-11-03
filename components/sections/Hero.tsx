@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
-import ThemeToggleButton from "./ThemeToggleButton";
+import ThemeToggleButton from "../ThemeToggleButton";
 
 interface Props {
   children?: ReactNode;
@@ -9,8 +9,43 @@ interface Props {
 
 function NavItem({ children, href, ...props }: Props) {
   return (
-    <li className="antialiased font-heading font-bold lg:leading-none text-[12vw] hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
-      <Link href={href}>{children}</Link>
+    <li className="relative">
+      {/* Conteneur pour garder les deux couches alignées */}
+      <div className="group">
+        {/* Couche pour le mix-blend-mode */}
+        <div className="absolute inset-0 mix-blend-difference pointer-events-none z-20 transition-transform duration-300 ease-in group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125">
+          <span className="block theme-nord:text-base-100 antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
+            {children}
+          </span>
+        </div>
+
+        {/* Couche pour les interactions */}
+        <Link
+          href={href}
+          className="
+            block
+            antialiased 
+            font-heading 
+            font-bold 
+            text-[12vw]
+            lg:leading-none
+            transition-transform
+            duration-300
+            ease-in
+            group-hover:-skew-x-6
+            group-hover:scale-105
+            group-hover:scale-y-125
+            xl:font-normal
+            md:text-[9vw]
+            lg:text-[7.5vw]
+            relative
+            z-10
+            text-transparent
+          "
+        >
+          {children}
+        </Link>
+      </div>
     </li>
   );
 }
@@ -35,7 +70,7 @@ export default function Hero() {
         {currentDate && (
           <>
             <div className="flex flex-row items-end">
-              <h1 className="font-heading text-3xl font-bold translate-y-2">
+              <h1 className="font-heading text-3xl font-bold leading-none">
                 {currentDate.day}
               </h1>
               <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box ml-auto">
@@ -46,7 +81,7 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-row items-center">
-              <p className="font-heading text-lg font-bold mb-1">
+              <p className="font-heading text-lg font-bold mb-1 leading-none">
                 {currentDate.month}
               </p>
               <div className="divider divider-vertical my-0 w-[15vw] mx-1 self-center"></div>

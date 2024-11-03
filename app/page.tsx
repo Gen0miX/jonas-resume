@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Hero from "../components/Hero";
+import Hero from "../components/sections/Hero";
 import Header from "../components/Header";
-import AboutMe from "../components/AboutMe";
-import Career from "../components/Career";
-import Skills from "../components/Skills";
+import AboutMe from "../components/sections/AboutMe";
+import Career from "../components/sections/Career";
+import Skills from "../components/sections/Skills";
 import { ThemeProvider } from "../components/ThemeContext";
+import CursorFollower from "../components/CursorFollower";
 
 export default function App() {
   const [showHeader, setShowHeader] = useState(false);
@@ -32,6 +33,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
+      <CursorFollower />
       <div className="">
         <div
           className={`fixed top-0 w-full transition-all duration-500 ease-in-out ${
