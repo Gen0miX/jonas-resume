@@ -1,5 +1,5 @@
-import { FaWineGlassEmpty } from "react-icons/fa6";
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -19,13 +19,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    function ({ addVariant }: PluginAPI) {
+      addVariant("theme-dark", '[data-theme="dark"] &');
+      addVariant("theme-nord", '[data-theme="nord"] &');
+    },
+  ],
   daisyui: {
     themes: [
       {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
           "base-content": "#EBF6F7",
+          primary: "#A2BFFE",
         },
       },
       "dark",
@@ -39,5 +46,6 @@ const config: Config = {
     logs: true,
     themeRoot: ":root",
   },
+  darkMode: "class",
 };
 export default config;
