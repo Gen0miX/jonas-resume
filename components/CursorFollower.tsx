@@ -7,7 +7,7 @@ const CursorFollower = () => {
 
   // Gestionnaire de mouvement de souris
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({
         x: event.clientX,
         y: event.clientY,
@@ -21,7 +21,7 @@ const CursorFollower = () => {
   // Animation de la balle
   useEffect(() => {
     const speed = 0.02;
-    let animationFrameId;
+    let animationFrameId: number;
 
     const animate = () => {
       setBallPosition((prev) => {
