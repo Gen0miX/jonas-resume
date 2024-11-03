@@ -42,7 +42,7 @@ const CursorFollower = () => {
   return (
     <div
       ref={ballRef}
-      className="pointer-events-none fixed h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 rotate-0 rounded-full theme-nord:bg-base-100 bg-base-content mix-blend-difference dark:mix-blend-difference z-0"
+      className="pointer-events-none fixed h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 rotate-0 rounded-full theme-nord:bg-[#bebbb4] bg-base-content mix-blend-difference dark:mix-blend-difference z-0"
       style={{
         left: `${ballPosition.x}px`,
         top: `${ballPosition.y}px`,

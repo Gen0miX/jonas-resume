@@ -14,7 +14,7 @@ function NavItem({ children, href, ...props }: Props) {
       <div className="group">
         {/* Couche pour le mix-blend-mode */}
         <div className="absolute inset-0 mix-blend-difference pointer-events-none z-20 transition-transform duration-300 ease-in group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125">
-          <span className="block theme-nord:text-base-100 antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
+          <span className="block theme-nord:text-[#bebbb4] antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
             {children}
           </span>
         </div>
