@@ -5,7 +5,6 @@ const CursorFollower = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [ballPosition, setBallPosition] = useState({ x: 0, y: 0 });
 
-  // Gestionnaire de mouvement de souris
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({
@@ -18,7 +17,6 @@ const CursorFollower = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Animation de la balle
   useEffect(() => {
     const speed = 0.02;
     let animationFrameId: number;
