@@ -9,10 +9,10 @@ const darkerGrotesque = Darker_Grotesque({
   variable: "--font-darker-grotesque",
 });
 
-const bodoniModa = localFont({
+const merchantVF = localFont({
   src: "./fonts/Merchant-VF.woff2",
   display: "swap",
-  variable: "--font-bodoni-moda",
+  variable: "--font-merchant-vf",
 });
 
 function setInitialTheme() {
@@ -28,7 +28,8 @@ function setInitialTheme() {
 
 export const metadata: Metadata = {
   title: "Jonas Pilloud",
-  description: "Développeur Junior",
+  description:
+    "Développeur Junior diplômé en informatique de gestion et passionné qui aime créer et apprendre en continu.",
 };
 
 export default function RootLayout({
@@ -39,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${darkerGrotesque.variable} ${bodoniModa.variable}`}
+      className={`${darkerGrotesque.variable} ${merchantVF.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: setInitialTheme() }} />

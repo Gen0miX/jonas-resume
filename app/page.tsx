@@ -1,58 +1,26 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Hero from "../components/sections/Hero";
-import Header from "../components/Header";
-import AboutMe from "../components/sections/AboutMe";
-import Career from "../components/sections/Career";
-import Skills from "../components/sections/Skills";
 import { ThemeProvider } from "../components/ThemeContext";
-import CursorFollower from "../components/CursorFollower";
+import AppJP from "../components/AppJP";
+import Loading from "../components/loading";
 
 export default function App() {
-  const [showHeader, setShowHeader] = useState(false);
-  const heroRef = useRef<HTMLDivElement | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // if element Hero is visible, hide Header
-        setShowHeader(!entry.isIntersecting);
-      },
-      { root: null, threshold: 0 }
-    );
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-    return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
-      }
+    const handlePageLoad = () => {
+      setIsLoading(false);
     };
+
+    // Vérifie si le document est complètement chargé
+    if (document.readyState === "complete") {
+      handlePageLoad();
+    } else {
+      window.addEventListener("load", handlePageLoad);
+      return () => window.removeEventListener("load", handlePageLoad);
+    }
   }, []);
 
-  return (
-    <ThemeProvider>
-      <CursorFollower />
-      <div className="">
-        <div
-          className={`fixed top-0 w-full transition-all duration-500 ease-in-out ${
-            showHeader
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-full"
-          }`}
-        >
-          <Header />
-        </div>
-        <div ref={heroRef}>
-          <Hero />
-        </div>
-        <AboutMe />
-        <Career />
-        <Skills />
-        <div className="h-lvh"></div>
-        <div className="h-lvh"></div>
-      </div>
-    </ThemeProvider>
-  );
+  return <ThemeProvider>{isLoading ? <Loading /> : <AppJP />}</ThemeProvider>;
 }

@@ -9,7 +9,7 @@ interface ThemeToggleButtonProps {
 
 export default function ThemeToggleButton({
   iconSize = 24,
-  className = "",
+  className,
 }: ThemeToggleButtonProps) {
   const { theme, toggleTheme } = useTheme();
 

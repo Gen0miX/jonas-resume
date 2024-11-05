@@ -16,4 +16,26 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .animate-stroke {
+    animation: letter_draw 3s linear forwards,
+      letter_fill ease-in 0.5s forwards 1s;
+  }
+
+  @keyframes letter_draw {
+    0% {
+      stroke-dashoffset: 200;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes letter_fill {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: currentColor;
+    }
+  }
 }

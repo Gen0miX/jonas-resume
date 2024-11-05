@@ -54,8 +54,12 @@ export default function Hero() {
   const [currentDate, setCurrentDate] = useState<{
     day: number;
     month: string;
-  } | null>(null);
-
+  }>({
+    day: new Date().getDate(),
+    month: new Intl.DateTimeFormat("fr-FR", { month: "long" }).format(
+      new Date()
+    ),
+  });
   useEffect(() => {
     const date = new Date();
     const options = { month: "long" as const };
@@ -75,7 +79,10 @@ export default function Hero() {
               </h1>
               <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box ml-auto">
                 <li>
-                  <ThemeToggleButton iconSize={20} />
+                  <ThemeToggleButton
+                    iconSize={20}
+                    className="mix-blend-difference theme-nord:text-[#bebbb4]"
+                  />
                 </li>
               </ul>
             </div>
