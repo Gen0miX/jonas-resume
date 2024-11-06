@@ -9,7 +9,7 @@ export default function Loading() {
         <text
           x="38%"
           y="70%"
-          fontFamily="Merchant-VF"
+          fontFamily="Times New Roman"
           fontSize="34"
           fill="transparent"
           stroke="currentColor"
@@ -23,7 +23,7 @@ export default function Loading() {
         <text
           x="50%"
           y="83%"
-          fontFamily="Merchant-VF"
+          fontFamily="Times New Roman"
           fontSize="34"
           fill="transparent"
           stroke="currentColor"
