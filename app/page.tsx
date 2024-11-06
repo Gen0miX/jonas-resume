@@ -2,15 +2,18 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ThemeProvider } from "../components/ThemeContext";
-import AppJP from "../components/AppJP";
-import Loading from "../components/loading";
+import { motion, AnimatePresence } from "framer-motion";
+import AppJP from "../components/pages/AppJP";
+import Loading from "../components/pages/Loading";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handlePageLoad = () => {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2500);
     };
 
     // Vérifie si le document est complètement chargé
@@ -22,5 +25,30 @@ export default function App() {
     }
   }, []);
 
-  return <ThemeProvider>{isLoading ? <Loading /> : <AppJP />}</ThemeProvider>;
+  return (
+    <ThemeProvider>
+      <AnimatePresence>
+        {isLoading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }} // Durée de la transition pour la sortie
+          >
+            <Loading />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="app"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }} // Durée de la transition pour l'entrée
+          >
+            <AppJP />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </ThemeProvider>
+  );
 }
