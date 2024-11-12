@@ -35,7 +35,7 @@ export default function Career() {
       className="mt-40 mb-10 mr-5 xl:mx-32 2xl:m-60 scroll-mt-32"
     >
       <SectionTitle>CARRIÈRE</SectionTitle>
-      <ul className="static timeline timeline-snap-icon ml-10 max-md:timeline-compact timeline-vertical z-0 lg:text-xl">
+      <ul className="static z-0 ml-10 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl">
         <li className="static">
           <div className="timeline-middle">
             <FaMagnifyingGlass />

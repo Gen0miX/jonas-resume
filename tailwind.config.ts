@@ -16,6 +16,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-darker-grotesque)"],
         heading: ["var(--font-merchant-vf)"],
+        serif: ["Times New Roman", "Times", "serif"],
       },
     },
   },

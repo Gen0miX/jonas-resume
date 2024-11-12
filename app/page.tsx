@@ -10,18 +10,24 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const handlePageLoad = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2500);
-    };
+    const hasLoadedThisSession = sessionStorage.getItem("hasLoadedThisSession");
 
-    // Vérifie si le document est complètement chargé
-    if (document.readyState === "complete") {
-      handlePageLoad();
+    if (hasLoadedThisSession) {
+      setIsLoading(false);
     } else {
-      window.addEventListener("load", handlePageLoad);
-      return () => window.removeEventListener("load", handlePageLoad);
+      const handlePageLoad = () => {
+        setTimeout(() => {
+          setIsLoading(false);
+          sessionStorage.setItem("hasLoadedThisSession", "true");
+        }, 2500);
+      };
+
+      if (document.readyState === "complete") {
+        handlePageLoad();
+      } else {
+        window.addEventListener("load", handlePageLoad);
+        return () => window.removeEventListener("load", handlePageLoad);
+      }
     }
   }, []);
 
@@ -34,7 +40,7 @@ export default function App() {
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }} // Durée de la transition pour la sortie
+            transition={{ duration: 0.5 }}
           >
             <Loading />
           </motion.div>
@@ -43,7 +49,7 @@ export default function App() {
             key="app"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }} // Durée de la transition pour l'entrée
+            transition={{ duration: 0.5 }}
           >
             <AppJP />
           </motion.div>

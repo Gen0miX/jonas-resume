@@ -14,24 +14,34 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState("nord");
+  const [theme, setTheme] = useState(() => {
+    // Lecture initiale côté client uniquement
+    if (typeof window !== "undefined") {
+      return document.documentElement.getAttribute("data-theme") || "nord";
+    }
+    return "nord";
+  });
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "nord");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    setTheme(initialTheme);
-    document.querySelector("html")?.setAttribute("data-theme", initialTheme);
+    const handleChange = (e: MediaQueryListEvent) => {
+      const newTheme = e.matches ? "dark" : "nord";
+      if (!localStorage.getItem("theme")) {
+        setTheme(newTheme);
+        document.documentElement.setAttribute("data-theme", newTheme);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "nord" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.querySelector("html")?.setAttribute("data-theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   return (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Darker_Grotesque } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeScript } from "./ThemeScript";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -14,17 +15,6 @@ const merchantVF = localFont({
   display: "swap",
   variable: "--font-merchant-vf",
 });
-
-function setInitialTheme() {
-  return `
-  (function() {
-    const storedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = storedTheme || (systemPrefersDark ? "dark" : "nord");
-    document.documentElement.setAttribute("data-theme", theme);
-  })();
-`;
-}
 
 export const metadata: Metadata = {
   title: "Jonas Pilloud",
@@ -41,9 +31,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${darkerGrotesque.variable} ${merchantVF.variable}`}
+      suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: setInitialTheme() }} />
+        <ThemeScript />
       </head>
       <body className="scroll-smooth">{children}</body>
     </html>

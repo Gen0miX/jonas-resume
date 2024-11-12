@@ -9,7 +9,7 @@ export default function AboutMe() {
       id="about-me"
       className="flex flex-col mt-40 scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
     >
-      <SectionTitle className="hidden lg:text-8xl  lg:block">
+      <SectionTitle className="hidden lg:text-8xl lg:block">
         À PROPOS
       </SectionTitle>
       <div className="flex flex-col items-center lg:flex-row">
@@ -20,7 +20,7 @@ export default function AboutMe() {
           height={600}
           className="mb-5 h-[60vh] lg:ml-10"
         />
-        <div className="flex flex-col ml-5 mr-5 md:ml-10 justify-center">
+        <div className="flex flex-col justify-center ml-5 mr-5 md:ml-10">
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
           <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
             Bonjour ! Je suis Jonas, un développeur junior diplômé en
@@ -49,19 +49,19 @@ export default function AboutMe() {
           </p>
           <div className="flex justify-end mt-10">
             <a
-              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href=""
             >
               <AiFillLinkedin></AiFillLinkedin>
             </a>
             <a
-              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href=""
             >
               <AiFillGithub></AiFillGithub>
             </a>
             <a
-              className="text-3xl mx-1 hover:text-primary hover:-skew-x-6 hover:scale-105 hover:scale-y-125 transition-transform duration-300 ease-in"
+              className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href="mailto:jonas-pilloud@jonas-pilloud.ch"
             >
               <AiFillMail></AiFillMail>
