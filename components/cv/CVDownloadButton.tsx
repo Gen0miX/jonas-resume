@@ -1,6 +1,5 @@
 import React from "react";
 import { IoDocumentText } from "react-icons/io5";
-import { pdf } from "@react-pdf/renderer";
 
 interface CVDownloadButtonProps {
   iconSize?: number;

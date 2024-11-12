@@ -3,6 +3,7 @@ import { Darker_Grotesque } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeScript } from "./ThemeScript";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -36,7 +37,10 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className="scroll-smooth">{children}</body>
+      <body className="scroll-smooth">
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
