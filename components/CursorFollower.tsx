@@ -78,11 +78,11 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
       ref={ballRef}
       className={`
         pointer-events-none fixed h-[25px] w-[25px] -translate-x-1/2 -translate-y-1/2
-        z-[999] transition-transform duration-500 ease-in-out mix-blend-difference
+        z-[999] transition-transform duration-500 ease-out mix-blend-difference
         ${
           hovering
             ? "bg-base-content theme-nord:bg-[#bebbb4] scale-[5]  "
-            : "bg-transparent border-2 border-base-content theme-nord:border-[#bebbb4] h-[50px] w-[50px]"
+            : "bg-transparent border-2 border-base-content theme-nord:border-[#bebbb4] h-[25px] w-[25px]"
         }
         rounded-full ${className}
       `}
