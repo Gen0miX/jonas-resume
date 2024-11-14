@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   className?: string;
@@ -9,6 +10,7 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [ballPosition, setBallPosition] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // Ajouter un état pour la visibilité
   const hoverTimeout = useRef<number | null>(null);
 
   // Mettre à jour la position de la souris
@@ -18,10 +20,15 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
         x: event.clientX,
         y: event.clientY,
       });
+
+      // Lors du premier mouvement de la souris, rendre le curseur visible avec une transition
+      if (!isVisible) {
+        setIsVisible(true);
+      }
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isVisible]);
 
   useEffect(() => {
     const speed = 0.02;
@@ -74,7 +81,7 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
   }, []);
 
   return (
-    <div
+    <motion.div
       ref={ballRef}
       className={`
         pointer-events-none fixed h-[25px] w-[25px] -translate-x-1/2 -translate-y-1/2
@@ -90,11 +97,14 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
         left: `${ballPosition.x}px`,
         top: `${ballPosition.y}px`,
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 1.5 }}
     >
       {!hovering && (
         <div className="h-1 w-1 bg-base-content theme-nord:bg-[#bebbb4] rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
       )}
-    </div>
+    </motion.div>
   );
 };
 

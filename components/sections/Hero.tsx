@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CVDownloadButton from "../cv/CVDownloadButton";
 import ThemeToggleButton from "../ThemeToggleButton";
+import { div } from "framer-motion/client";
 
 interface Props {
   children?: ReactNode;
@@ -15,65 +16,63 @@ function NavItem({ children, href, initial, delay = 0, ...props }: Props) {
   const [isAnimating, setIsAnimating] = useState(true);
 
   const handleAnimationComplete = () => {
-    setIsAnimating(false);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 200);
   };
 
   return (
-    <li
-      className={`relative ${
-        isAnimating ? "overflow-hidden" : ""
-      } pt-[1em] pb-[1em]`}
+    <motion.div
+      initial={{ y: initial, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 80,
+        damping: 11,
+        delay: delay,
+      }}
+      onAnimationComplete={handleAnimationComplete}
     >
-      {/* Conteneur pour garder les deux couches alignées */}
-      <div className="group">
-        {/* Couche pour le mix-blend-mode */}
-        <motion.div
-          initial={{ y: initial, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeIn", delay: delay }}
-          onAnimationComplete={handleAnimationComplete}
-        >
-          <div className="absolute inset-0 z-20 transition-transform duration-300 ease-in pointer-events-none mix-blend-difference group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125">
-            <span className="block theme-nord:text-[#bebbb4] antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw]">
+      <li className="relative">
+        <div className="group">
+          {/* Couche visible pendant l'animation */}
+          {isAnimating && (
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              <span className="block antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw] theme-nord:text-base-content theme-dark:text-[#ced3cd]">
+                {children}
+              </span>
+            </div>
+          )}
+
+          {/* Couche avec mix-blend-mode qui apparaît après l'animation */}
+          <div
+            className={`
+              absolute inset-0 z-20 pointer-events-none
+              transition-transform duration-300 ease-in
+              group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125
+              ${!isAnimating ? "mix-blend-difference opacity-100" : "opacity-0"}
+            `}
+          >
+            <span className="block antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw] theme-nord:text-[#bebbb4]">
               {children}
             </span>
           </div>
-        </motion.div>
 
-        {/* Couche pour les interactions */}
-        <motion.div
-          initial={{ y: initial, opacity: 0 }}
-          animate={{ y: 0, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeIn", delay: delay }}
-        >
           <Link
             href={href}
             className="
-            block
-            antialiased 
-            font-heading 
-            font-bold 
-            text-[12vw]
-            lg:leading-none
-            transition-transform
-            duration-300
-            ease-in
-            group-hover:-skew-x-6
-            group-hover:scale-105
-            group-hover:scale-y-125
-            xl:font-normal
-            md:text-[9vw]
-            lg:text-[7.5vw]
-            relative
-            z-10
-            text-transparent
-          "
+              block antialiased font-heading font-bold text-[12vw] lg:leading-none 
+              transition-transform duration-300 ease-in 
+              group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125 
+              xl:font-normal md:text-[9vw] lg:text-[7.5vw] 
+              relative z-10 text-transparent
+            "
           >
             {children}
           </Link>
-        </motion.div>
-      </div>
-    </li>
+        </div>
+      </li>
+    </motion.div>
   );
 }
 
@@ -100,12 +99,27 @@ export default function Hero() {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeIn", delay: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 80,
+          damping: 11,
+          delay: 0.2,
+        }}
         className="flex flex-col lg:ml-5"
       >
         {currentDate && (
           <>
-            <div className="flex flex-row items-end">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 90,
+                damping: 11,
+                delay: 0.6,
+              }}
+              className="flex flex-row items-end"
+            >
               <h1 className="text-3xl font-bold leading-none font-heading">
                 {currentDate.day}
               </h1>
@@ -123,7 +137,7 @@ export default function Hero() {
                   />
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             <div className="flex flex-row items-center">
               <p className="mb-1 text-lg font-bold leading-none font-heading">
@@ -137,20 +151,47 @@ export default function Hero() {
       </motion.div>
       <div className="flex flex-col justify-end max-h-full mx-5 grow lg:max-w-full lg:flex-row lg:mx-0 lg:justify-evenly">
         <div className="flex flex-col max-w-sm mt-10 md:mt-5 lg:mt-0 lg:mx-5 lg:justify-end lg:flex-1 lg:mb-56 lg:max-w-md">
-          <motion.div>
+          <motion.div
+            initial={{ x: -100, y: -20, opacity: 0 }}
+            animate={{ x: 0, y: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 80,
+              damping: 11,
+              delay: 0.2,
+            }}
+          >
             <h1 className="font-sans text-xl sm:text-2xl font-medium lg:text-3xl">
               Salut, je suis <span className="font-bold">Jonas Pilloud</span>
             </h1>
           </motion.div>
-          <motion.div>
-            {" "}
+
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 80,
+              damping: 11,
+              delay: 0.4,
+            }}
+          >
             <p className="font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
               Un développeur junior passionné qui aime créer et apprendre en
               continu.
             </p>
           </motion.div>
 
-          <motion.div>
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 80,
+              damping: 11,
+              delay: 0.6,
+            }}
+          >
             <p className="mt-2 font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
               Quand je ne suis pas devant mon écran, vous me trouverez sur mon
               snowboard en hiver ou sur mon skateboard en été. Je suis toujours
@@ -160,16 +201,16 @@ export default function Hero() {
         </div>
         <div className="flex mt-5 mb-5 lg:my-0 lg:mx-2 md:mb-5">
           <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
-            <NavItem href="#about-me" initial={200}>
+            <NavItem href="#about-me" initial={200} delay={0.4}>
               À PROPOS
             </NavItem>
-            <NavItem href="#career" initial={180} delay={0.2}>
+            <NavItem href="#career" initial={180} delay={0.6}>
               CARRIÈRE
             </NavItem>
-            <NavItem href="#skills" initial={160} delay={0.4}>
+            <NavItem href="#skills" initial={160} delay={0.8}>
               CAPACITÉS
             </NavItem>
-            <NavItem href="#projects" initial={140} delay={0.6}>
+            <NavItem href="#projects" initial={140} delay={1}>
               PROJETS
             </NavItem>
           </ul>

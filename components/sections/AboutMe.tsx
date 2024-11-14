@@ -7,23 +7,25 @@ export default function AboutMe() {
   return (
     <section
       id="about-me"
-      className="flex flex-col mt-40 scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
+      className="flex flex-col mt-40 items-center scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
     >
       <SectionTitle className="hidden lg:text-8xl lg:block">
         À PROPOS
       </SectionTitle>
-      <div className="flex flex-col items-center lg:flex-row">
-        <div className="mb-14 overflow-hidden border-base-content border-2 rounded-badge max-w-80 lg:ml-10 lg:min-w-80">
-          <Image
-            src={profilePic}
-            alt={"Photo de profil"}
-            width={1000}
-            height={1165}
-            className=""
-          />
+      <div className="flex flex-col items-center 2xl:mx-auto lg:flex-row">
+        <div className="avatar mb-14 lg:ml-10">
+          <div className=" ring-base-content ring-offset-base-content max-w-80 rounded-full ring ring-offset-2 lg:min-w-80 2xl:min-w-96">
+            <Image
+              src={profilePic}
+              alt={"Photo de profil"}
+              width={1000}
+              height={1165}
+              className=""
+            />
+          </div>
         </div>
 
-        <div className="flex flex-col justify-center ml-5 mr-5 md:ml-10">
+        <div className="flex flex-col justify-center ml-5 mr-5 md:ml-10 2xl:max-w-[50rem]">
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
           <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
             Bonjour ! Je suis Jonas, un développeur junior diplômé en
