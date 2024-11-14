@@ -11,7 +11,7 @@ export default function CVDownloadButton({
   className,
 }: CVDownloadButtonProps) {
   const handleDownload = () => {
-    const pdfUrl = "../../public/images/CV.pdf"; // Chemin vers le fichier PDF dans le dossier public
+    const pdfUrl = "/images/CV.pdf"; // Chemin vers le fichier PDF dans le dossier public
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "CV.pdf";
