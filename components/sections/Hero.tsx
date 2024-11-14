@@ -138,20 +138,20 @@ export default function Hero() {
       <div className="flex flex-col justify-end max-h-full mx-5 grow lg:max-w-full lg:flex-row lg:mx-0 lg:justify-evenly">
         <div className="flex flex-col max-w-sm mt-10 md:mt-5 lg:mt-0 lg:mx-5 lg:justify-end lg:flex-1 lg:mb-56 lg:max-w-md">
           <motion.div>
-            <h1 className="font-sans text-2xl font-medium lg:text-3xl">
+            <h1 className="font-sans text-xl sm:text-2xl font-medium lg:text-3xl">
               Salut, je suis <span className="font-bold">Jonas Pilloud</span>
             </h1>
           </motion.div>
           <motion.div>
             {" "}
-            <p className="font-sans text-base font-medium text-justify sm:text-lg">
+            <p className="font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
               Un développeur junior passionné qui aime créer et apprendre en
               continu.
             </p>
           </motion.div>
 
           <motion.div>
-            <p className="mt-2 font-sans text-base font-medium text-justify sm:text-lg">
+            <p className="mt-2 font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
               Quand je ne suis pas devant mon écran, vous me trouverez sur mon
               snowboard en hiver ou sur mon skateboard en été. Je suis toujours
               animé par la curiosité d'apprendre quelque chose de nouveau.

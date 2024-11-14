@@ -3,8 +3,8 @@ import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 
 export default function Footer() {
   return (
-    <footer className="p-10 font-sans text-lg font-medium footer bg-base-200">
-      <div className="flex flex-col items-start w-1/2">
+    <footer className="footer footer-center md:footer p-10 font-sans font-medium  bg-base-200 text-sm w-full">
+      <div className="flex flex-col w-[13rem] sm:w-80">
         <div className="flex flex-row justify-between w-full">
           <h6 className="mb-0 footer-title">Téléphone</h6>
           <p className="">0791078414</p>
@@ -19,28 +19,28 @@ export default function Footer() {
       </div>
       <nav className="flex flex-col items-center">
         <h6 className="footer-title">Socials</h6>
-        <div className="flex">
+        <div className="grid grid-flow-col gap-4">
           <a
-            className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
             href=""
           >
             <AiFillLinkedin></AiFillLinkedin>
           </a>
           <a
-            className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
             href=""
           >
             <AiFillGithub></AiFillGithub>
           </a>
           <a
-            className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
             href="mailto:jonas-pilloud@jonas-pilloud.ch"
           >
             <AiFillMail></AiFillMail>
           </a>
         </div>
       </nav>
-      <aside>
+      <aside className="">
         <Link
           href="#"
           className="flex flex-col justify-end p-0 m-0 text-lg leading-none transition-transform duration-200 ease-in font-heading hover:-skew-x-6 hover:scale-105 hover:scale-y-125"

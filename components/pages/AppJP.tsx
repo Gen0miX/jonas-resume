@@ -54,6 +54,7 @@ export default function AppJP() {
       <AboutMe />
       <Career />
       <Skills />
+      <Projects />
       <Footer />
     </ThemeProvider>
   );
