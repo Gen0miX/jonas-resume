@@ -1,5 +1,5 @@
 import Image from "next/image";
-import profilePic from "../../public/images/pp.svg";
+import profilePic from "../../public/images/profile.png";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import SectionTitle from "../SectionTitle";
 
@@ -13,13 +13,16 @@ export default function AboutMe() {
         À PROPOS
       </SectionTitle>
       <div className="flex flex-col items-center lg:flex-row">
-        <Image
-          src={profilePic}
-          alt={"Photo de profil"}
-          width={400}
-          height={600}
-          className="mb-5 h-[60vh] lg:ml-10"
-        />
+        <div className="mb-14 overflow-hidden border-base-content border-2 rounded-badge max-w-80 lg:ml-10 lg:min-w-80">
+          <Image
+            src={profilePic}
+            alt={"Photo de profil"}
+            width={1000}
+            height={1165}
+            className=""
+          />
+        </div>
+
         <div className="flex flex-col justify-center ml-5 mr-5 md:ml-10">
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
           <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">

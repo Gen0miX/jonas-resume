@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState, useRef } from "react";
 import { ThemeProvider } from "../components/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,9 +6,13 @@ import AppJP from "../components/pages/AppJP";
 import Loading from "../components/pages/Loading";
 
 export default function App() {
+  // On commence toujours par true
   const [isLoading, setIsLoading] = useState(true);
+  // État séparé pour gérer l'hydratation
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    setIsHydrated(true);
     const hasLoadedThisSession = sessionStorage.getItem("hasLoadedThisSession");
 
     if (hasLoadedThisSession) {
@@ -30,6 +33,22 @@ export default function App() {
       }
     }
   }, []);
+
+  if (!isHydrated) {
+    return (
+      <ThemeProvider>
+        <div></div>
+      </ThemeProvider>
+    );
+  }
+
+  if (!isLoading) {
+    return (
+      <ThemeProvider>
+        <AppJP />
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider>

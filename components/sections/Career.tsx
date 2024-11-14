@@ -114,7 +114,7 @@ export default function Career() {
           year="2012 - 2015"
           title="CFC - Employé de commerce"
         >
-          Formation employé de commerce des affaires à l'ECCG Martigny.
+          Formation employé de commerce à l'ECCG Martigny.
         </Timeline>
       </ul>
     </section>
