@@ -87,7 +87,7 @@ export default function AboutMe() {
           </div>
         </motion.div>
 
-        <div className="flex flex-col justify-center ml-5 mr-5 md:ml-10 2xl:max-w-[50rem]">
+        <div className="flex flex-col justify-center pl-5 pr-5 md:ml-10 2xl:max-w-[50rem] overflow-hidden">
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
           <motion.div variants={txtRVariants}>
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
@@ -102,7 +102,6 @@ export default function AboutMe() {
             </p>
           </motion.div>
           <motion.div variants={txtLVariants}>
-            {" "}
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
               Actuellement, je suis en quête d'un emploi qui me permettra de
               mettre en pratique mes connaissances tout en développant de

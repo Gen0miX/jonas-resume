@@ -9,7 +9,7 @@ interface Props {
 
 export default function SectionTitle({ children, className }: Props) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: "all" });
+  const isInView = useInView(ref, { once: true, amount: 1 });
   const [text, setText] = useState<string[]>([]);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function SectionTitle({ children, className }: Props) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       className={clsx(
-        "font-heading text-right text-5xl mb-5 ml-10 sm:text-6xl sm:text-left lg:text-8xl",
+        "font-heading text-right text-4xl mb-5 ml-10 sm:text-6xl sm:text-left lg:text-8xl",
         className
       )}
     >

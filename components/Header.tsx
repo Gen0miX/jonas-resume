@@ -58,7 +58,7 @@ export default function Header() {
         </ul>
       </div>
       <div className="mr-0 sm:mr-3 navbar-end">
-        <ul className="ml-auto menu menu-sm menu-horizontal bg-base-300 rounded-box">
+        <ul className="ml-auto mr-0 px-0 menu menu-sm menu-horizontal bg-base-300 rounded-box">
           <li>
             <ThemeToggleButton iconSize={20} />
           </li>

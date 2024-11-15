@@ -71,7 +71,7 @@ function Timeline({ children, year, title, className, isLeft }: Props) {
       variants={isLeft ? itemVariantsL : itemVariantsR}
       initial="hidden"
       animate={hasAnimated ? "visible" : "hidden"}
-      className="static"
+      className="w-full"
     >
       <hr />
       <div className="timeline-middle">
@@ -118,13 +118,12 @@ export default function Career() {
       className="mt-40 mb-10 mr-5 xl:mx-32 2xl:m-60 scroll-mt-32"
     >
       <SectionTitle>CARRIÈRE</SectionTitle>
-      <ul className="static z-0 ml-10 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl">
+      <ul className="z-0 pl-10 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl overflow-hidden">
         <motion.li
           ref={ref}
           variants={itemVariantsR}
           initial="hidden"
           animate={hasAnimated ? "visible" : "hidden"}
-          className="static"
         >
           <div className="timeline-middle">
             <FaMagnifyingGlass />
