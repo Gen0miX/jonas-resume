@@ -16,7 +16,7 @@ export default function AboutMe() {
       y: 0,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3,
+        delayChildren: 0.6,
       },
     },
   };

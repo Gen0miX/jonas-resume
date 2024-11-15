@@ -1,19 +1,78 @@
 import clsx from "clsx";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SectionTitle from "../SectionTitle";
+import { div } from "framer-motion/m";
 
 interface Props {
   children?: ReactNode;
   year?: string;
   title?: string;
   className?: string;
+  isLeft: boolean;
 }
 
-function Timeline({ children, year, title, className }: Props) {
+const itemVariantsR = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 11,
+    },
+  },
+};
+
+const itemVariantsL = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 11,
+    },
+  },
+};
+
+function Timeline({ children, year, title, className, isLeft }: Props) {
+  const ref = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [hasAnimated]);
+
   return (
-    <li className="static">
+    <motion.li
+      ref={ref}
+      variants={isLeft ? itemVariantsL : itemVariantsR}
+      initial="hidden"
+      animate={hasAnimated ? "visible" : "hidden"}
+      className="static"
+    >
       <hr />
       <div className="timeline-middle">
         <FaCheckCircle />
@@ -24,11 +83,35 @@ function Timeline({ children, year, title, className }: Props) {
         {children}
       </div>
       <hr />
-    </li>
+    </motion.li>
   );
 }
 
 export default function Career() {
+  const ref = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [hasAnimated]);
+
   return (
     <section
       id="career"
@@ -36,7 +119,13 @@ export default function Career() {
     >
       <SectionTitle>CARRIÈRE</SectionTitle>
       <ul className="static z-0 ml-10 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl">
-        <li className="static">
+        <motion.li
+          ref={ref}
+          variants={itemVariantsR}
+          initial="hidden"
+          animate={hasAnimated ? "visible" : "hidden"}
+          className="static"
+        >
           <div className="timeline-middle">
             <FaMagnifyingGlass />
           </div>
@@ -51,11 +140,12 @@ export default function Career() {
             faire la différence !
           </div>
           <hr />
-        </li>
+        </motion.li>
         <Timeline
           className="timeline-start md:text-end"
           year="2023 - 2024"
           title="Master en informatique de gestion"
+          isLeft={true}
         >
           Une année d'études de Master en informatique de gestion à l'Université
           de Fribourg
@@ -64,6 +154,7 @@ export default function Career() {
           className="timeline-start md:timeline-end"
           year="2023"
           title="Analyste Programmeur"
+          isLeft={false}
         >
           Analyste programmeur chez Cremo pendant trois mois. Principalement
           responsable du support téléphonique et du développement de leurs
@@ -73,6 +164,7 @@ export default function Career() {
           className="timeline-start md:text-end"
           year="2021 - 2022"
           title="Service Civil / Aide voirie"
+          isLeft={true}
         >
           Aide voirie pour la municipalité de St-Maurice dans le cadre du
           service civil.
@@ -81,6 +173,7 @@ export default function Career() {
           className="timeline-start md:timeline-end"
           year="2019 - 2020"
           title="Cours CISCO"
+          isLeft={false}
         >
           Cours CISCO à la HEG de Genève pendant mes études en informatique de
           Gestion.
@@ -89,6 +182,7 @@ export default function Career() {
           className="timeline-start md:text-end"
           year="2017 - 2021"
           title="Bachelor en informatique de Gestion "
+          isLeft={true}
         >
           Programme de Bachelor en informatique de Gestion à la HES-SO Valais
           Sierre.
@@ -97,6 +191,7 @@ export default function Career() {
           className="timeline-start md:timeline-end"
           year="2016 - 2017"
           title="Service civil / Animateur Assistant"
+          isLeft={false}
         >
           Animateur assistant au Home les Tilleuls à Monthey dans le cadre du
           service civil.
@@ -105,6 +200,7 @@ export default function Career() {
           className="timeline-start md:text-end"
           year="2015 - 2016"
           title="Stage MPC"
+          isLeft={true}
         >
           Stage employé de commerce à la Médiathèque Valais Sion pour compléter
           ma formation.
@@ -113,6 +209,7 @@ export default function Career() {
           className="timeline-start md:timeline-end"
           year="2012 - 2015"
           title="CFC - Employé de commerce"
+          isLeft={false}
         >
           Formation employé de commerce à l'ECCG Martigny.
         </Timeline>
