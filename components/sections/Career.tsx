@@ -77,10 +77,19 @@ function Timeline({ children, year, title, className, isLeft }: Props) {
       <div className="timeline-middle">
         <FaCheckCircle />
       </div>
-      <div className={clsx("mb-10 lg:text-lg", className)}>
-        <time className="font-sans">{year}</time>
-        <div className="text-lg font-bold lg:text-xl">{title}</div>
-        {children}
+      <div
+        className={clsx("mb-10 lg:text-lg group w-[95%] sm:w-3/4", className)}
+      >
+        <div className="py-0 my-0 border rounded-2xl collapse border-base-300 bg-base-200">
+          <input type="checkbox" role="button" />
+          <div className="flex flex-col px-2 text-lg font-medium collapse-title lg:text-xl">
+            <time className="font-sans text-3xl font-bold group-hover:text-primary">
+              {year}
+            </time>
+            {title}
+          </div>
+          <div className="px-2 font-thin collapse-content">{children}</div>
+        </div>
       </div>
       <hr />
     </motion.li>
@@ -118,7 +127,7 @@ export default function Career() {
       className="mt-40 mb-10 mr-5 xl:mx-32 2xl:m-60 scroll-mt-32"
     >
       <SectionTitle>CARRIÈRE</SectionTitle>
-      <ul className="z-0 pl-10 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl overflow-hidden">
+      <ul className="z-0 p-10 overflow-hidden timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl">
         <motion.li
           ref={ref}
           variants={itemVariantsR}
@@ -128,15 +137,22 @@ export default function Career() {
           <div className="timeline-middle">
             <FaMagnifyingGlass />
           </div>
-          <div className="mb-10 timeline-end lg:text-lg">
-            <time className="font-sans">2024 - Présent</time>
-            <div className="text-lg font-bold lg:text-xl">
-              À la recherche de nouvelles opportunités
+          <div className="mb-10 timeline-end group lg:text-lg w-[95%] sm:w-3/4">
+            <div className="py-0 my-0 border collapse border-base-300 bg-base-200">
+              <input type="checkbox" defaultChecked role="button" />
+              <div className="flex flex-col px-2 text-lg font-medium collapse-title lg:text-xl">
+                <time className="font-sans text-3xl font-bold group-hover:text-primary">
+                  2024 - Présent
+                </time>
+                À la recherche de nouvelles opportunités
+              </div>
+              <div className="px-2 font-thin collapse-content">
+                Je recherche activement un poste où je peux mettre mes
+                compétences en pratique, contribuer à des projets passionnants
+                et continuer à grandir professionnellement. Prêt à relever de
+                nouveaux défis et à faire la différence !
+              </div>
             </div>
-            Je recherche activement un poste où je peux mettre mes compétences
-            en pratique, contribuer à des projets passionnants et continuer à
-            grandir professionnellement. Prêt à relever de nouveaux défis et à
-            faire la différence !
           </div>
           <hr />
         </motion.li>
@@ -150,7 +166,7 @@ export default function Career() {
           de Fribourg
         </Timeline>
         <Timeline
-          className="timeline-start md:timeline-end"
+          className="timeline-start md:timeline-end md:mb-5"
           year="2023"
           title="Analyste Programmeur"
           isLeft={false}
@@ -169,7 +185,7 @@ export default function Career() {
           service civil.
         </Timeline>
         <Timeline
-          className="timeline-start md:timeline-end"
+          className="timeline-start md:timeline-end md:mb-5"
           year="2019 - 2020"
           title="Cours CISCO"
           isLeft={false}
@@ -187,7 +203,7 @@ export default function Career() {
           Sierre.
         </Timeline>
         <Timeline
-          className="timeline-start md:timeline-end"
+          className="timeline-start md:timeline-end md:mb-5"
           year="2016 - 2017"
           title="Service civil / Animateur Assistant"
           isLeft={false}

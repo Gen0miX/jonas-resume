@@ -64,7 +64,7 @@ export default function AboutMe() {
     <section
       ref={ref}
       id="about-me"
-      className="flex flex-col mt-40 items-center scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
+      className="flex flex-col items-center mt-40 scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
     >
       <SectionTitle className="hidden lg:text-8xl lg:block">
         À PROPOS
@@ -76,7 +76,7 @@ export default function AboutMe() {
         className="flex flex-col items-center 2xl:mx-auto lg:flex-row"
       >
         <motion.div variants={imgVariants} className="avatar mb-14 lg:ml-10">
-          <div className=" ring-base-content ring-offset-base-content max-w-80 rounded-full ring ring-offset-2 lg:min-w-80 2xl:min-w-96">
+          <div className="border-2 border-base-content max-w-80 rounded-[2rem] lg:min-w-80 2xl:min-w-96">
             <Image
               src={profilePic}
               alt={"Photo de profil"}
