@@ -1,6 +1,11 @@
 import React, { ReactNode, useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
+import Spotlight, { SpotlightCard } from "@/components/SpotlightCard";
+import Image from "next/image";
 import SectionTitle from "../SectionTitle";
+import AdaptiveSVG from "../../public/images/skills/adaptive.svg";
+import HelpfulSVG from "../../public/images/skills/helpful.svg";
+import MethodicSVG from "../../public/images/skills/methodic.svg";
 
 interface Props {
   children?: ReactNode;
@@ -209,6 +214,44 @@ export default function Skills() {
           Voici un résumé de mes compétences et aptitudes les plus importantes :
         </p>
         <div className="self-center w-1/4 divider"></div>
+        <Spotlight className="flex flex-wrap h-full gap-4 p-4 justify-center mb-4">
+          <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
+            <div className="relative flex items-center justify-center m-10 sm:m-14">
+              <div className="absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content bg-primary"></div>
+              <AdaptiveSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
+            </div>
+            <CTitle>ADAPTABLE</CTitle>
+            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+              Je m'adapte rapidement aux nouvelles situations, technologies et
+              environnements de travail, ce qui me permet de répondre
+              efficacement aux défis et de contribuer activement aux projets.
+            </p>
+          </SpotlightCard>
+          <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
+            <div className="relative flex items-center justify-center m-10 sm:m-14">
+              <div className="absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content bg-warning"></div>
+              <HelpfulSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
+            </div>
+            <CTitle>SERVIABLE</CTitle>
+            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+              Toujours prêt à aider, je m'assure de soutenir mes collègues et de
+              faciliter la réussite collective en offrant mon aide chaque fois
+              que nécessaire.
+            </p>
+          </SpotlightCard>
+          <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content min-h-64 sm:h-auto">
+            <div className="relative flex items-center justify-center m-10 sm:m-14">
+              <div className="absolute w-32 h-32 border-2 theme-nord:border-base-content rounded-full bg-accent"></div>
+              <MethodicSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
+            </div>
+            <CTitle>MÉTHODIQUE</CTitle>
+            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+              Je travaille de manière organisée et structurée, en suivant des
+              processus clairs pour atteindre mes objectifs efficacement et
+              garantir la qualité du travail.
+            </p>
+          </SpotlightCard>
+        </Spotlight>
       </motion.div>
       <div className="flex flex-col justify-between md:flex-row">
         <div className="flex flex-col justify-evenly md:grow md:mr-5 xl:mr-10">
