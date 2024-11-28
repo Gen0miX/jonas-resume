@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeInFromTop, fadeInFromL, fadeInFromR } from "@/utils/animations";
 import profilePic from "../../public/images/profile.png";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
@@ -8,7 +8,6 @@ import SectionTitle from "../SectionTitle";
 
 export default function AboutMe() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
     <section
