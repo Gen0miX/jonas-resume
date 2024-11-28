@@ -2,6 +2,9 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import MousePosition from "../utils/mouse-position";
+import { motion } from "framer-motion";
+import { contentVariantsBot, contentVariantsTop } from "@/utils/animations";
+import CTitle from "@/components/CTitle";
 
 type SpotlightProps = {
   children: React.ReactNode;
@@ -101,5 +104,49 @@ export function SpotlightCard({
     >
       {children}
     </div>
+  );
+}
+
+type MySpotlightCardProps = {
+  title: string;
+  svg: React.FC<React.SVGProps<SVGSVGElement>>;
+  color: string;
+  info: string;
+};
+
+export function MySpotlightCard({
+  title,
+  svg: SvgIcon,
+  color,
+  info,
+}: MySpotlightCardProps) {
+  return (
+    <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={contentVariantsTop}
+        custom={0.5}
+        className="relative flex items-center justify-center m-10 sm:m-14"
+      >
+        <div
+          className={`absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content ${color}`}
+        ></div>
+        <SvgIcon className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
+      </motion.div>
+      <CTitle>{title}</CTitle>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={contentVariantsBot}
+        custom={0.8}
+      >
+        <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+          {info}
+        </p>
+      </motion.div>
+    </SpotlightCard>
   );
 }
