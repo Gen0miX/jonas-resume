@@ -195,7 +195,41 @@ function CTitle({ children }: Props) {
 
 export default function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 1 });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  const contentVariantsTop = {
+    hidden: {
+      y: -100,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 11,
+        delay: custom || 0,
+      },
+    }),
+  };
+
+  const contentVariantsBot = {
+    hidden: {
+      y: 100,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 11,
+        delay: custom || 0,
+      },
+    }),
+  };
 
   return (
     <section
@@ -216,40 +250,79 @@ export default function Skills() {
         <div className="self-center w-1/4 divider"></div>
         <Spotlight className="flex flex-wrap h-full gap-4 p-4 justify-center mb-4">
           <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
-            <div className="relative flex items-center justify-center m-10 sm:m-14">
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsTop}
+              custom={0.5}
+              className="relative flex items-center justify-center m-10 sm:m-14"
+            >
               <div className="absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content bg-primary"></div>
               <AdaptiveSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
-            </div>
+            </motion.div>
             <CTitle>ADAPTABLE</CTitle>
-            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
-              Je m'adapte rapidement aux nouvelles situations, technologies et
-              environnements de travail, ce qui me permet de répondre
-              efficacement aux défis et de contribuer activement aux projets.
-            </p>
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsBot}
+              custom={0.8}
+            >
+              <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+                Je m'adapte rapidement aux nouvelles situations, technologies et
+                environnements de travail, ce qui me permet de répondre
+                efficacement aux défis et de contribuer activement aux projets.
+              </p>
+            </motion.div>
           </SpotlightCard>
           <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
-            <div className="relative flex items-center justify-center m-10 sm:m-14">
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsTop}
+              custom={0.8}
+              className="relative flex items-center justify-center m-10 sm:m-14"
+            >
               <div className="absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content bg-warning"></div>
               <HelpfulSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
-            </div>
+            </motion.div>
             <CTitle>SERVIABLE</CTitle>
-            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
-              Toujours prêt à aider, je m'assure de soutenir mes collègues et de
-              faciliter la réussite collective en offrant mon aide chaque fois
-              que nécessaire.
-            </p>
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsBot}
+              custom={1.1}
+            >
+              <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+                Toujours prêt à aider, je m'assure de soutenir mes collègues et
+                de faciliter la réussite collective en offrant mon aide chaque
+                fois que nécessaire.
+              </p>
+            </motion.div>
           </SpotlightCard>
           <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content min-h-64 sm:h-auto">
-            <div className="relative flex items-center justify-center m-10 sm:m-14">
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsTop}
+              custom={1.1}
+              className="relative flex items-center justify-center m-10 sm:m-14"
+            >
               <div className="absolute w-32 h-32 border-2 theme-nord:border-base-content rounded-full bg-accent"></div>
               <MethodicSVG className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
-            </div>
+            </motion.div>
             <CTitle>MÉTHODIQUE</CTitle>
-            <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
-              Je travaille de manière organisée et structurée, en suivant des
-              processus clairs pour atteindre mes objectifs efficacement et
-              garantir la qualité du travail.
-            </p>
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={contentVariantsBot}
+              custom={1.4}
+            >
+              <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+                Je travaille de manière organisée et structurée, en suivant des
+                processus clairs pour atteindre mes objectifs efficacement et
+                garantir la qualité du travail.
+              </p>
+            </motion.div>
           </SpotlightCard>
         </Spotlight>
       </motion.div>
