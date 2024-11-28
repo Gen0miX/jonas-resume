@@ -26,10 +26,49 @@ export const fadeInFromLeftWDelay = {
 };
 
 export const fadeInFromBottom = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 100 },
   visible: {
     opacity: 1,
     y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 11,
+    },
+  },
+};
+
+export const fadeInFromTop = {
+  hidden: { opacity: 0, y: -100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 11,
+    },
+  },
+};
+
+export const fadeInFromR = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 11,
+    },
+  },
+};
+
+export const fadeInFromL = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
     transition: {
       type: "spring",
       stiffness: 80,

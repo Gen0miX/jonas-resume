@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { fadeInFromTop, fadeInFromL, fadeInFromR } from "@/utils/animations";
 import profilePic from "../../public/images/profile.png";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import SectionTitle from "../SectionTitle";
@@ -8,57 +9,6 @@ import SectionTitle from "../SectionTitle";
 export default function AboutMe() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.6,
-      },
-    },
-  };
-
-  const imgVariants = {
-    hidden: { opacity: 0, y: -100 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 11,
-      },
-    },
-  };
-
-  const txtRVariants = {
-    hidden: { opacity: 0, x: 100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 11,
-      },
-    },
-  };
-
-  const txtLVariants = {
-    hidden: { opacity: 0, x: -100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 11,
-      },
-    },
-  };
 
   return (
     <section
@@ -69,13 +19,14 @@ export default function AboutMe() {
       <SectionTitle className="hidden lg:text-8xl lg:block">
         À PROPOS
       </SectionTitle>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="flex flex-col items-center 2xl:mx-auto lg:flex-row"
-      >
-        <motion.div variants={imgVariants} className="avatar mb-14 lg:ml-10">
+      <div className="flex flex-col items-center 2xl:mx-auto lg:flex-row">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInFromTop}
+          className="avatar mb-14 lg:ml-10"
+        >
           <div className="border-2 border-base-content max-w-80 rounded-[2rem] lg:min-w-80 2xl:min-w-96">
             <Image
               src={profilePic}
@@ -89,7 +40,12 @@ export default function AboutMe() {
 
         <div className="flex flex-col justify-center pl-5 pr-5 md:ml-10 2xl:max-w-[50rem] overflow-hidden">
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
-          <motion.div variants={txtRVariants}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInFromR}
+          >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
               Bonjour ! Je suis Jonas, un développeur junior diplômé en
               informatique de gestion. J'aime me décrire comme une personne qui
@@ -101,7 +57,12 @@ export default function AboutMe() {
               mes compétences.
             </p>
           </motion.div>
-          <motion.div variants={txtLVariants}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInFromL}
+          >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
               Actuellement, je suis en quête d'un emploi qui me permettra de
               mettre en pratique mes connaissances tout en développant de
@@ -111,7 +72,12 @@ export default function AboutMe() {
             </p>
           </motion.div>
 
-          <motion.div variants={txtRVariants}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInFromR}
+          >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
               En dehors du développement, je suis passionné par le snowboard en
               hiver et le skateboard en été. J'apprécie aussi me baigner en eau
@@ -123,7 +89,13 @@ export default function AboutMe() {
             </p>
           </motion.div>
 
-          <motion.div variants={imgVariants} className="flex justify-end mt-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInFromTop}
+            className="flex justify-end mt-10"
+          >
             <a
               className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href=""
@@ -144,7 +116,7 @@ export default function AboutMe() {
             </a>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
