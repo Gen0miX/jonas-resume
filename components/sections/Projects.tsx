@@ -1,5 +1,7 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import SectionTitle from "../SectionTitle";
 import ProjectLink from "../ProjectLink";
 import ProjectMockupImg1 from "@/public/images/projects/mockup_project_1.png";
@@ -16,7 +18,6 @@ export default function Projects() {
     { id: 3, name: "CARTE CADEAU", image: ProjectMockupImg3 },
     { id: 4, name: "PENTOMINOS", image: ProjectMockupImg4 },
   ];
-
   return (
     <section
       id="projects"
@@ -33,7 +34,9 @@ export default function Projects() {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <ProjectLink path="#">{project.name}</ProjectLink>
+                <ProjectLink path={`/projet/${project.id}`}>
+                  {project.name}
+                </ProjectLink>
               </div>
             </div>
           ))}
