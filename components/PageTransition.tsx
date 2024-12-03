@@ -27,9 +27,8 @@ const pageVariantsMain = {
 
 const pageTransitionMain = {
   type: "tween",
-  duration: 0.8,
+  duration: 0.5,
   ease: "easeOut",
-  delay: 0.8,
 };
 
 export default function PageTransition({ children }: Props) {

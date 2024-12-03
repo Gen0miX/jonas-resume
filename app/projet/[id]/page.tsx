@@ -66,7 +66,7 @@ export default function ProjetDetail({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex ml-2 sm:mx-5 md:mx-10 h-[95svh] bg-base-300 justify-center overflow-auto">
-      <div className="flex flex-col lg:px-32 xl:max-w-screen-lg p-5 sm:p-10">
+      <div className="flex flex-col lg:px-28 xl:max-w-screen-lg p-5 sm:p-10">
         <Link
           href="/#projects"
           className="link flex items-center leading-none font-light mb-10"
@@ -102,7 +102,7 @@ export default function ProjetDetail({ params }: { params: { id: string } }) {
             alt={`${project.name} illustration`}
             width={800}
             height={400}
-            className="w-full h-64 object-cover rounded-md mb-5"
+            className="w-full h-64 object-cover rounded-md mb-3"
           />
         </div>
       </div>
