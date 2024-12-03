@@ -65,10 +65,10 @@ export default function ProjetDetail({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="flex ml-2 sm:mx-5 md:mx-10 h-[95svh] bg-base-300 justify-center">
+    <div className="flex ml-2 sm:mx-5 md:mx-10 h-[95svh] bg-base-300 justify-center overflow-auto">
       <div className="flex flex-col lg:px-32 xl:max-w-screen-lg p-5 sm:p-10">
         <Link
-          href="/"
+          href="/#projects"
           className="link flex items-center leading-none font-light mb-10"
         >
           <IoChevronBack size={18}></IoChevronBack>
