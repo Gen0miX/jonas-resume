@@ -10,6 +10,7 @@ import Projects from "../sections/Projects";
 import Footer from "../Footer";
 import { ThemeProvider } from "../ThemeContext";
 import CursorFollower from "../CursorFollower";
+import Hero2 from "../sections/Hero2";
 
 export default function AppJP() {
   const [showHeader, setShowHeader] = useState(false);
@@ -49,7 +50,7 @@ export default function AppJP() {
         <Header />
       </div>
       <div ref={heroRef}>
-        <Hero />
+        <Hero2 />
       </div>
       <AboutMe />
       <Career />

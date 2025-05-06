@@ -15,6 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-darker-grotesque)"],
+        hero: ["var(--font-eb-garamond)"],
         heading: ["var(--font-merchant-vf)"],
         serif: ["Times New Roman", "Times", "serif"],
       },

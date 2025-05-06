@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Darker_Grotesque } from "next/font/google";
+import { Darker_Grotesque, EB_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeScript } from "./ThemeScript";
@@ -10,6 +10,12 @@ const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-darker-grotesque",
+});
+
+const EBGaramond = EB_Garamond({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-eb-garamond",
 });
 
 const merchantVF = localFont({
@@ -32,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${darkerGrotesque.variable} ${merchantVF.variable}`}
+      className={`${darkerGrotesque.variable} ${merchantVF.variable} ${EBGaramond.variable}`}
       suppressHydrationWarning
     >
       <head>

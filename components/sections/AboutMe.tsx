@@ -47,14 +47,8 @@ export default function AboutMe() {
             variants={fadeInFromR}
           >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
-              Bonjour ! Je suis Jonas, un développeur junior diplômé en
-              informatique de gestion. J'aime me décrire comme une personne qui
-              s'adapte facilement aux situations, toujours prête à aider les
-              autres et à privilégier une approche de travail claire et
-              organisée. Créer des projets utiles et agréables à utiliser me
-              procure une grande satisfaction. Mon engagement envers
-              l'apprentissage quotidien m'incite à toujours chercher à améliorer
-              mes compétences.
+              Développeur Fullstack passionné par l'innovation et la création de
+              solutions techniques robustes. Voici ce que je vous propose :
             </p>
           </motion.div>
           <motion.div
@@ -64,11 +58,23 @@ export default function AboutMe() {
             variants={fadeInFromL}
           >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
-              Actuellement, je suis en quête d'un emploi qui me permettra de
-              mettre en pratique mes connaissances tout en développant de
-              nouvelles aptitudes. Je rêve de rejoindre une équipe qui valorise
-              la collaboration et la créativité, où chacun peut apporter sa
-              touche personnelle.
+              Mon approche en 3 points : <br /> 🛠️ Développement orienté
+              solution
+              <br />
+              Conception d'applications complètes, de l’architecture backend à
+              l’interface utilisateur, avec une attention particulière à la
+              maintenabilité, la clarté du code et la performance. <br />
+              ⚙️ Automatisation & fiabilité
+              <br />
+              Mise en place d’outils et de processus pour automatiser les tâches
+              récurrentes, fiabiliser les déploiements et améliorer la
+              productivité de l’équipe.
+              <br />
+              🔐 Sécurité & qualité
+              <br />
+              Sensibilité aux bonnes pratiques de sécurité, revue de code
+              rigoureuse et tests automatisés pour garantir la stabilité des
+              systèmes.
             </p>
           </motion.div>
 
@@ -79,13 +85,14 @@ export default function AboutMe() {
             variants={fadeInFromR}
           >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
-              En dehors du développement, je suis passionné par le snowboard en
-              hiver et le skateboard en été. J'apprécie aussi me baigner en eau
-              froide tout au long de l'année. C'est une expérience qui me permet
-              de me ressourcer et de clarifier mes pensées. Les jeux vidéo et
-              les jeux de société sont également des activités que
-              j'affectionne, car ils me permettent de tisser des liens tout en
-              gardant mon esprit stratégique aiguisé.
+              🚀 Ce que je peux apporter à votre équipe : <br /> Compétences
+              solides en développement Fullstack (JavaScript/TypeScript,
+              Node.js, bases de données relationnelles & NoSQL, outils DevOps)
+              <br />
+              Esprit d’analyse, méthodologie et curiosité technique
+              <br />
+              Un vrai plaisir à collaborer, apprendre et faire avancer les
+              projets ensemble
             </p>
           </motion.div>
 
@@ -98,13 +105,13 @@ export default function AboutMe() {
           >
             <a
               className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
-              href=""
+              href="https://www.linkedin.com/in/jonas-pilloud/"
             >
               <AiFillLinkedin></AiFillLinkedin>
             </a>
             <a
               className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
-              href=""
+              href="https://github.com/Gen0miX"
             >
               <AiFillGithub></AiFillGithub>
             </a>

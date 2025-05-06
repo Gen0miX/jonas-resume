@@ -7,6 +7,7 @@ import ProgressBar from "@/components/ProgressBar";
 import SectionTitle from "../SectionTitle";
 import AdaptiveSVG from "../../public/images/skills/adaptive.svg";
 import HelpfulSVG from "../../public/images/skills/helpful.svg";
+import AutonomousSVG from "../../public/images/skills/autonomous.svg";
 import MethodicSVG from "../../public/images/skills/methodic.svg";
 
 export default function Skills() {
@@ -21,8 +22,8 @@ export default function Skills() {
       info: "Je m'adapte rapidement aux nouvelles situations, technologies et environnements de travail, ce qui me permet de répondre efficacement aux défis et de contribuer activement aux projets.",
     },
     {
-      title: "SERVIABLE",
-      svg: HelpfulSVG,
+      title: "AUTONOME",
+      svg: AutonomousSVG,
       color: "bg-warning",
       info: "Toujours prêt à aider, je m'assure de soutenir mes collègues et de faciliter la réussite collective en offrant mon aide chaque fois que nécessaire.",
     },
@@ -87,6 +88,7 @@ export default function Skills() {
               svg={card.svg}
               color={card.color}
               info={card.info}
+              key={card.title}
             />
           ))}
         </Spotlight>
