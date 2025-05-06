@@ -2,13 +2,13 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { fadeInFromTop, fadeInFromL, fadeInFromR } from "@/utils/animations";
-import profilePic from "../../public/images/profile.png";
+import { images } from "@/utils/images";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import SectionTitle from "../SectionTitle";
 
 export default function AboutMe() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.9 });
 
   return (
     <section
@@ -22,14 +22,13 @@ export default function AboutMe() {
       <div className="flex flex-col items-center 2xl:mx-auto lg:flex-row">
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate={isInView ? "visible" : "hidden"}
           variants={fadeInFromTop}
           className="avatar mb-14 lg:ml-10"
         >
           <div className="border-2 border-base-content max-w-80 rounded-[2rem] lg:min-w-80 2xl:min-w-96">
             <Image
-              src={profilePic}
+              src={images.profileJonas}
               alt={"Photo de profil"}
               width={1000}
               height={1165}
@@ -42,9 +41,9 @@ export default function AboutMe() {
           <SectionTitle className="mt-5 lg:hidden">À PROPOS</SectionTitle>
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromR}
+            className="mb-5"
           >
             <p className="font-sans text-xl font-medium text-justify lg:text-2xl ">
               Développeur Fullstack passionné par l'innovation et la création de
@@ -53,28 +52,28 @@ export default function AboutMe() {
           </motion.div>
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromL}
+            className="mb-5"
           >
-            <p className="font-sans text-xl font-bold text-center my-5 lg:text-2xl">
+            <p className="font-sans text-xl font-bold text-primary text-center my-5 lg:text-2xl">
               🎯 Mon approche en 3 points :
             </p>
             <p className="font-sans text-lg font-semibold lg:text-xl">
               🛠️ Développement orienté solution
             </p>
             <p className="font-sans text-lg text-justify font-medium lg:text-xl ml-10">
-              Conception d'applications complètes, de l’architecture backend à
-              l’interface utilisateur, avec une attention particulière à la
+              Conception d'applications complètes, de l'architecture backend à
+              l'interface utilisateur, avec une attention particulière à la
               maintenabilité, la clarté du code et la performance.
             </p>
             <p className="font-sans text-lg font-semibold lg:text-xl">
               ⚙️ Automatisation & fiabilité
             </p>
             <p className="font-sans text-lg text-justify font-medium lg:text-xl ml-10">
-              Mise en place d’outils et de processus pour automatiser les tâches
+              Mise en place d'outils et de processus pour automatiser les tâches
               récurrentes, fiabiliser les déploiements et améliorer la
-              productivité de l’équipe.
+              productivité de l'équipe.
             </p>
             <p className="font-sans text-lg font-semibold lg:text-xl">
               🔐 Sécurité & qualité
@@ -88,11 +87,11 @@ export default function AboutMe() {
 
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromR}
+            className="mb-5"
           >
-            <p className="font-sans text-xl font-bold text-center my-5 lg:text-2xl">
+            <p className="font-sans text-xl font-bold text-primary text-center my-5 lg:text-2xl">
               🚀 Ce que je peux apporter à votre équipe :
             </p>
             <ul className="font-sans text-lg text-justify font-medium mb-2 lg:text-xl space-y-2">
@@ -107,7 +106,7 @@ export default function AboutMe() {
               <li className="flex items-start gap-2">
                 <span className="mt-1">⚫️</span>
                 <span>
-                  Esprit d’analyse, méthodologie et curiosité technique
+                  Esprit d'analyse, méthodologie et curiosité technique
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -122,20 +121,21 @@ export default function AboutMe() {
 
           <motion.div
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromTop}
-            className="flex justify-end mt-10"
+            className="flex justify-end mt-10 text-primary"
           >
             <a
               className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href="https://www.linkedin.com/in/jonas-pilloud/"
+              target="_blank"
             >
               <AiFillLinkedin></AiFillLinkedin>
             </a>
             <a
               className="mx-1 text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
               href="https://github.com/Gen0miX"
+              target="_blank"
             >
               <AiFillGithub></AiFillGithub>
             </a>

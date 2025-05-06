@@ -6,7 +6,6 @@ import CTitle from "@/components/CTitle";
 import ProgressBar from "@/components/ProgressBar";
 import SectionTitle from "../SectionTitle";
 import AdaptiveSVG from "../../public/images/skills/adaptive.svg";
-import HelpfulSVG from "../../public/images/skills/helpful.svg";
 import AutonomousSVG from "../../public/images/skills/autonomous.svg";
 import MethodicSVG from "../../public/images/skills/methodic.svg";
 
@@ -25,7 +24,7 @@ export default function Skills() {
       title: "AUTONOME",
       svg: AutonomousSVG,
       color: "bg-warning",
-      info: "Toujours prêt à aider, je m'assure de soutenir mes collègues et de faciliter la réussite collective en offrant mon aide chaque fois que nécessaire.",
+      info: "Je prends des initiatives et avance de manière autonome dans mes tâches, en sachant gérer mes priorités tout en sollicitant de l’aide lorsque nécessaire pour garantir un travail fiable et abouti.",
     },
     {
       title: "MÉTHODIQUE",
@@ -96,7 +95,7 @@ export default function Skills() {
       <div className="flex flex-col justify-between md:flex-row">
         <div className="flex flex-col justify-evenly md:grow md:mr-5 xl:mr-10">
           <div className="mb-3 mr-2">
-            <CTitle>CODING</CTitle>
+            <CTitle classname="text-primary">CODING</CTitle>
             {codingSkills.map((skill) => (
               <ProgressBar
                 key={skill.label}
@@ -108,7 +107,7 @@ export default function Skills() {
         </div>
         <div className="flex flex-col justify-evenly md:grow">
           <div className="mb-3">
-            <CTitle>LANGUES</CTitle>
+            <CTitle classname="text-primary">LANGUES</CTitle>
             {languages.map((lang) => (
               <ProgressBar
                 key={lang.label}
@@ -119,7 +118,7 @@ export default function Skills() {
             ))}
           </div>
           <div className="">
-            <CTitle>OUTILS / AUTRES</CTitle>
+            <CTitle classname="text-primary">OUTILS / AUTRES</CTitle>
             {toolsOthers.map((tool) => (
               <ProgressBar
                 key={tool.label}

@@ -63,7 +63,7 @@ export default function Header() {
             <ThemeToggleButton iconSize={20} />
           </li>
           <li>
-            <CVDownloadButton iconSize={20} />
+            <CVDownloadButton iconSize={20} className="text-primary" />
           </li>
         </ul>
       </div>

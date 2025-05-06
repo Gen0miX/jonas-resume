@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SectionTitle from "../SectionTitle";
-import { div } from "framer-motion/m";
 
 interface Props {
   children?: ReactNode;
@@ -74,7 +73,7 @@ function Timeline({ children, year, title, className, isLeft }: Props) {
       className="w-full"
     >
       <hr />
-      <div className="timeline-middle">
+      <div className="timeline-middle text-primary">
         <FaCheckCircle />
       </div>
       <div
@@ -134,7 +133,7 @@ export default function Career() {
           initial="hidden"
           animate={hasAnimated ? "visible" : "hidden"}
         >
-          <div className="timeline-middle">
+          <div className="timeline-middle text-primary">
             <FaMagnifyingGlass />
           </div>
           <div className="mb-10 timeline-end group lg:text-lg w-[95%] sm:w-3/4">

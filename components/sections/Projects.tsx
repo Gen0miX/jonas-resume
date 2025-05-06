@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import SectionTitle from "../SectionTitle";
 import ProjectLink from "../ProjectLink";
 import ProjectMockupImg1 from "@/public/images/projects/mockup_project_1.png";
@@ -27,7 +26,7 @@ export default function Projects() {
       <div className="flex flex-row justify-center mt-10 ml-10">
         <div className="flex flex-col justify-items-center w-full sm:w-1/3 mr-5">
           {projects.map((project) => (
-            <div>
+            <div key={project.id}>
               <div className="divider m-0"></div>
               <div
                 key={project.id}
