@@ -57,21 +57,29 @@ export default function AboutMe() {
             viewport={{ once: true }}
             variants={fadeInFromL}
           >
-            <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
-              Mon approche en 3 points : <br /> 🛠️ Développement orienté
-              solution
-              <br />
+            <p className="font-sans text-xl font-bold text-center my-5 lg:text-2xl">
+              🎯 Mon approche en 3 points :
+            </p>
+            <p className="font-sans text-lg font-semibold lg:text-xl">
+              🛠️ Développement orienté solution
+            </p>
+            <p className="font-sans text-lg text-justify font-medium lg:text-xl ml-10">
               Conception d'applications complètes, de l’architecture backend à
               l’interface utilisateur, avec une attention particulière à la
-              maintenabilité, la clarté du code et la performance. <br />
+              maintenabilité, la clarté du code et la performance.
+            </p>
+            <p className="font-sans text-lg font-semibold lg:text-xl">
               ⚙️ Automatisation & fiabilité
-              <br />
+            </p>
+            <p className="font-sans text-lg text-justify font-medium lg:text-xl ml-10">
               Mise en place d’outils et de processus pour automatiser les tâches
               récurrentes, fiabiliser les déploiements et améliorer la
               productivité de l’équipe.
-              <br />
+            </p>
+            <p className="font-sans text-lg font-semibold lg:text-xl">
               🔐 Sécurité & qualité
-              <br />
+            </p>
+            <p className="font-sans text-lg text-justify font-medium lg:text-xl ml-10">
               Sensibilité aux bonnes pratiques de sécurité, revue de code
               rigoureuse et tests automatisés pour garantir la stabilité des
               systèmes.
@@ -84,16 +92,32 @@ export default function AboutMe() {
             viewport={{ once: true }}
             variants={fadeInFromR}
           >
-            <p className="font-sans text-xl font-medium text-justify lg:text-2xl">
-              🚀 Ce que je peux apporter à votre équipe : <br /> Compétences
-              solides en développement Fullstack (JavaScript/TypeScript,
-              Node.js, bases de données relationnelles & NoSQL, outils DevOps)
-              <br />
-              Esprit d’analyse, méthodologie et curiosité technique
-              <br />
-              Un vrai plaisir à collaborer, apprendre et faire avancer les
-              projets ensemble
+            <p className="font-sans text-xl font-bold text-center my-5 lg:text-2xl">
+              🚀 Ce que je peux apporter à votre équipe :
             </p>
+            <ul className="font-sans text-lg text-justify font-medium mb-2 lg:text-xl space-y-2">
+              <li className="flex items-start gap-2">
+                <span className="mt-1">⚫️</span>
+                <span>
+                  Compétences solides en développement Fullstack
+                  (JavaScript/TypeScript, Node.js, bases de données
+                  relationnelles & NoSQL, outils DevOps)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1">⚫️</span>
+                <span>
+                  Esprit d’analyse, méthodologie et curiosité technique
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1">⚫️</span>
+                <span>
+                  Un vrai plaisir à collaborer, apprendre et faire avancer les
+                  projets ensemble
+                </span>
+              </li>
+            </ul>
           </motion.div>
 
           <motion.div
