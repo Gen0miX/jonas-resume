@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import React, { ReactNode, useRef, useEffect, useState } from "react";
 import { staggeredContainer, letterVariant } from "@/utils/animations";

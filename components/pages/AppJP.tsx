@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, Suspense, lazy } from "react";
+import { useEffect, useState, useRef } from "react";
 import Hero from "@/components/sections/Hero";
 import Header from "@/components/Header";
 import AboutMe from "@/components/sections/AboutMe";
