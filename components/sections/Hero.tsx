@@ -102,7 +102,7 @@ export default function Hero() {
     const month = new Intl.DateTimeFormat("fr-FR", options).format(date);
     const day = date.getDate();
     setCurrentDate({ day, month });
-    const timer = setTimeout(() => setShowImage(true), 500);
+    const timer = setTimeout(() => setShowImage(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
