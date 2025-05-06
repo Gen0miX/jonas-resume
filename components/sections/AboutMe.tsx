@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { fadeInFromTop, fadeInFromL, fadeInFromR } from "@/utils/animations";
-import { images } from "@/utils/images";
+import profileImage from "@/public/images/profile.png";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
 import SectionTitle from "../SectionTitle";
 
@@ -30,8 +30,9 @@ export default function AboutMe() {
         >
           <div className="border-2 border-base-content max-w-80 rounded-[2rem] lg:min-w-80 2xl:min-w-96">
             <Image
-              src={images.profileJonas}
+              src={profileImage}
               alt={"Photo de profil"}
+              placeholder="blur"
               width={1000}
               height={1165}
               className=""

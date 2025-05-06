@@ -1,8 +1,10 @@
 "use client";
 
 import React, { ReactNode, useEffect, useState } from "react";
-import { images } from "@/utils/images";
 import Image from "next/image";
+import chImage from "@/public/images/saas.png";
+import profileImage from "@/public/images/profile-mini.png";
+import devImage from "@/public/images/dev.png";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import CVDownloadButton from "../cv/CVDownloadButton";
@@ -186,8 +188,9 @@ export default function Hero() {
                 } rounded-xl border-2 border-base-content overflow-hidden`}
               >
                 <Image
-                  src={images.profileMiniJonas}
+                  src={profileImage}
                   alt="Photo de Jonas"
+                  placeholder="blur"
                   width={150}
                   height={150}
                   className="w-full h-full object-cover"
@@ -218,8 +221,9 @@ export default function Hero() {
                 } rounded-xl border-2 border-base-content overflow-hidden`}
               >
                 <Image
-                  src={images.devImage}
+                  src={devImage}
                   alt={"Petite photo d'un ordinateur"}
+                  placeholder="blur"
                   width={150}
                   height={150}
                   className="w-full h-full object-cover"
@@ -250,10 +254,11 @@ export default function Hero() {
                 } rounded-xl border-2 border-base-content overflow-hidden`}
               >
                 <Image
-                  src={images.chImage}
+                  src={chImage}
                   alt={"Petite photo d'une edelweiss"}
                   width={150}
                   height={150}
+                  placeholder="blur"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
