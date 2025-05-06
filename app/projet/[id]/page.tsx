@@ -16,7 +16,13 @@ import { TbBrandThreejs } from "react-icons/tb";
 import { BiLogoTypescript } from "react-icons/bi";
 import { IoChevronBack } from "react-icons/io5";
 
-export default function ProjetDetail({ params }: { params: { id: string } }) {
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default function ProjetDetail({ params }: PageProps) {
   const { id } = params;
   const projectId = parseInt(id, 10);
   const projects = [
