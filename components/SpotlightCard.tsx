@@ -133,9 +133,9 @@ export function MySpotlightCard({
         <div
           className={`absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content ${color}`}
         ></div>
-        <SvgIcon className="relative theme-dark:text-base-300 w-[85px] h-[85px]" />
+        <SvgIcon className="relative fill-base-content theme-dark:fill-base-300 w-[85px] h-[85px]" />
       </motion.div>
-      <CTitle>{title}</CTitle>
+      <CTitle classname="text-primary">{title}</CTitle>
       <motion.div
         initial="hidden"
         whileInView="visible"

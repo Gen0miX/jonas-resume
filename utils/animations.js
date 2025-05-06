@@ -47,6 +47,7 @@ export const fadeInFromTop = {
       type: "spring",
       stiffness: 80,
       damping: 11,
+      delay: 0.8,
     },
   },
 };
@@ -60,6 +61,7 @@ export const fadeInFromR = {
       type: "spring",
       stiffness: 80,
       damping: 11,
+      delay: 0.4,
     },
   },
 };

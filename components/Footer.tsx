@@ -21,19 +21,21 @@ export default function Footer() {
         <h6 className="footer-title">Socials</h6>
         <div className="grid grid-flow-col gap-4">
           <a
-            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
-            href=""
+            className=" text-3xl text-primary transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            href="https://www.linkedin.com/in/jonas-pilloud/"
+            target="_blank"
           >
             <AiFillLinkedin></AiFillLinkedin>
           </a>
           <a
-            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
-            href=""
+            className=" text-3xl text-primary transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            href="https://github.com/Gen0miX"
+            target="_blank"
           >
             <AiFillGithub></AiFillGithub>
           </a>
           <a
-            className=" text-3xl transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+            className=" text-3xl text-primary transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
             href="mailto:jonas-pilloud@jonas-pilloud.ch"
           >
             <AiFillMail></AiFillMail>

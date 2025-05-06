@@ -10,6 +10,9 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
 }
 
 @layer utilities {
@@ -19,6 +22,13 @@ body {
   .animate-stroke {
     animation: letter_draw 3s linear forwards,
       letter_fill ease-in 0.5s forwards 1s;
+  }
+
+  .page-transition {
+    opacity: 0;
+    background: black;
+    transform: translateY(40px);
+    filter: blur(12px);
   }
 
   @keyframes letter_draw {

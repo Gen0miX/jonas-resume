@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { ReactNode, useRef, useEffect, useState } from "react";
 import { staggeredContainer, letterVariant } from "@/utils/animations";
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -6,9 +7,10 @@ interface Props {
   children?: ReactNode;
   value?: number;
   info?: string;
+  classname?: string;
 }
 
-export default function CTitle({ children }: Props) {
+export default function CTitle({ children, classname }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 1 });
   const [text, setText] = useState<string[]>([]);
@@ -25,7 +27,10 @@ export default function CTitle({ children }: Props) {
       variants={staggeredContainer}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="mb-3 font-sans text-2xl font-bold lg:text-4xl"
+      className={clsx(
+        "mb-3 font-sans text-2xl font-bold lg:text-4xl",
+        classname
+      )}
     >
       {text.map((letter, index) => (
         <motion.span

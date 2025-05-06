@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState, useRef, Suspense, lazy } from "react";
-import Hero from "../sections/Hero";
-import Header from "../Header";
-import AboutMe from "../sections/AboutMe";
-import Career from "../sections/Career";
-import Skills from "../sections/Skills";
-import Projects from "../sections/Projects";
-import Footer from "../Footer";
-import { ThemeProvider } from "../ThemeContext";
-import CursorFollower from "../CursorFollower";
+import Hero from "@/components/sections/Hero";
+import Header from "@/components/Header";
+import AboutMe from "@/components/sections/AboutMe";
+import Career from "@/components/sections/Career";
+import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeContext";
+import CursorFollower from "@/components/CursorFollower";
 
 export default function AppJP() {
   const [showHeader, setShowHeader] = useState(false);

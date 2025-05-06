@@ -15,13 +15,29 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-darker-grotesque)"],
+        hero: ["var(--font-eb-garamond)"],
         heading: ["var(--font-merchant-vf)"],
         serif: ["Times New Roman", "Times", "serif"],
+      },
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-in-out",
+        fadeOut: "fadeOut 0.5s ease-in-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
     },
   },
   plugins: [
     require("daisyui"),
+    require("@tailwindcss/aspect-ratio"),
     function ({ addVariant }: PluginAPI) {
       addVariant("theme-dark", '[data-theme="dark"] &');
       addVariant("theme-nord", '[data-theme="nord"] &');

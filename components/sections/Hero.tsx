@@ -1,9 +1,10 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import { images } from "@/utils/images";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import CVDownloadButton from "../cv/CVDownloadButton";
 import ThemeToggleButton from "../ThemeToggleButton";
-import { div } from "framer-motion/client";
 
 interface Props {
   children?: ReactNode;
@@ -38,7 +39,7 @@ function NavItem({ children, href, initial, delay = 0, ...props }: Props) {
           {/* Couche visible pendant l'animation */}
           {isAnimating && (
             <div className="absolute inset-0 z-20 pointer-events-none">
-              <span className="block antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw] theme-nord:text-base-content theme-dark:text-[#ced3cd]">
+              <span className="block antialiased font-heading font-light text-xl md:text-2xl xl:text-3xl theme-nord:text-base-content theme-dark:text-[#ced3cd]">
                 {children}
               </span>
             </div>
@@ -53,7 +54,7 @@ function NavItem({ children, href, initial, delay = 0, ...props }: Props) {
               ${!isAnimating ? "mix-blend-difference opacity-100" : "opacity-0"}
             `}
           >
-            <span className="block antialiased font-heading font-bold text-[12vw] lg:leading-none xl:font-normal md:text-[9vw] lg:text-[7.5vw] theme-nord:text-[#bebbb4]">
+            <span className="block antialiased font-heading font-light text-xl md:text-2xl xl:text-3xl theme-nord:text-[#bebbb4]">
               {children}
             </span>
           </div>
@@ -61,10 +62,10 @@ function NavItem({ children, href, initial, delay = 0, ...props }: Props) {
           <Link
             href={href}
             className="
-              block antialiased font-heading font-bold text-[12vw] lg:leading-none 
+              block antialiased font-heading font-light text-xl xl:text-3xl md:text-2xl 
               transition-transform duration-300 ease-in 
               group-hover:-skew-x-6 group-hover:scale-105 group-hover:scale-y-125 
-              xl:font-normal md:text-[9vw] lg:text-[7.5vw] 
+              xl:font-normal
               relative z-10 text-transparent
             "
           >
@@ -86,12 +87,19 @@ export default function Hero() {
       new Date()
     ),
   });
+
+  const [showImage, setShowImage] = useState(false);
+  const isSmall = useIsSmallScreen();
+  const imageWidth = isSmall ? 64 : 96;
+
   useEffect(() => {
     const date = new Date();
     const options = { month: "long" as const };
     const month = new Intl.DateTimeFormat("fr-FR", options).format(date);
     const day = date.getDate();
     setCurrentDate({ day, month });
+    const timer = setTimeout(() => setShowImage(true), 500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -125,97 +133,177 @@ export default function Hero() {
               </h1>
               <ul className="ml-auto menu menu-sm menu-horizontal bg-base-200 rounded-box">
                 <li>
-                  <ThemeToggleButton
-                    iconSize={20}
-                    className="mix-blend-difference theme-nord:text-[#bebbb4]"
-                  />
+                  <ThemeToggleButton iconSize={20} className="" />
                 </li>
                 <li>
-                  <CVDownloadButton
-                    iconSize={20}
-                    className="mix-blend-difference theme-nord:text-[#bebbb4]"
-                  />
+                  <CVDownloadButton iconSize={20} className="text-primary" />
                 </li>
               </ul>
             </motion.div>
 
             <div className="flex flex-row items-center">
-              <p className="mb-1 text-lg font-bold leading-none font-heading">
+              <p className="mb-1 text-primary text-lg font-bold leading-none font-heading">
                 {currentDate.month}
               </p>
               <div className="divider divider-vertical my-0 w-[15vw] mx-1 self-center"></div>
-              <p className="mb-1 font-sans">Disponible pour un emploi</p>
+              <p className="mb-1 font-hero">
+                Disponible pour un <span className="text-primary">emploi</span>
+              </p>
             </div>
           </>
         )}
       </motion.div>
-      <div className="flex flex-col justify-end max-h-full mx-5 grow lg:max-w-full lg:flex-row lg:mx-0 lg:justify-evenly">
-        <div className="flex flex-col max-w-sm mt-10 md:mt-5 lg:mt-0 lg:mx-5 lg:justify-end lg:flex-1 lg:mb-56 lg:max-w-md">
-          <motion.div
-            initial={{ x: -100, y: -20, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 11,
-              delay: 0.2,
-            }}
-          >
-            <h1 className="font-sans text-xl sm:text-2xl font-medium lg:text-3xl">
-              Salut, je suis <span className="font-bold">Jonas Pilloud</span>
-            </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 11,
-              delay: 0.4,
-            }}
-          >
-            <p className="font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
-              Un développeur junior passionné qui aime créer et apprendre en
-              continu.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 11,
-              delay: 0.6,
-            }}
-          >
-            <p className="mt-2 font-sans text-sm font-medium text-justify sm:text-base md:text-lg">
-              Quand je ne suis pas devant mon écran, vous me trouverez sur mon
-              snowboard en hiver ou sur mon skateboard en été. Je suis toujours
-              animé par la curiosité d'apprendre quelque chose de nouveau.
-            </p>
-          </motion.div>
+      <motion.div
+        className="flex flex-col flex-grow justify-center items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: "tween", duration: 1 }}
+      >
+        <div className="flex flex-col items-center font-hero text-3xl sm:text-5xl md:text-6xl">
+          <div className="flex items-center mb-2 sm:mb-5">
+            Je suis
+            <span className="ml-2 text-primary italic">Jonas</span>
+            {/* Image qui s'affiche après un délai */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: showImage ? imageWidth : 0 }}
+              transition={{
+                delay: 0.2,
+                type: "spring",
+                stiffness: 80,
+                damping: 11,
+              }}
+              className="overflow-hidden mx-2"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={showImage ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.1, type: "spring", stiffness: 80 }}
+                className={`${
+                  isSmall ? "w-16 h-12" : "w-24 h-16"
+                } rounded-xl border-2 border-base-content overflow-hidden`}
+              >
+                <Image
+                  src={images.profileMiniJonas}
+                  alt="Photo de Jonas"
+                  width={150}
+                  height={150}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </motion.div>
+            <span className="text-primary italic">,</span>
+          </div>
+          <div className="flex items-center mb-2 sm:mb-5">
+            un
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: showImage ? imageWidth : 0 }}
+              transition={{
+                delay: 1,
+                type: "spring",
+                stiffness: 80,
+                damping: 11,
+              }}
+              className="overflow-hidden mx-2"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={showImage ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.1, type: "spring", stiffness: 80 }}
+                className={`${
+                  isSmall ? "w-16 h-12" : "w-24 h-16"
+                } rounded-xl border-2 border-base-content overflow-hidden`}
+              >
+                <Image
+                  src={images.devImage}
+                  alt={"Petite photo d'un ordinateur"}
+                  width={150}
+                  height={150}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </motion.div>
+            développeur <span className="text-primary italic ml-2">junior</span>
+          </div>
+          <div className="flex items-center mb-2 sm:mb-5">
+            basé en Suisse {/* Image qui s'affiche après un délai */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: showImage ? imageWidth : 0 }}
+              transition={{
+                delay: 0.6,
+                type: "spring",
+                stiffness: 80,
+                damping: 11,
+              }}
+              className="overflow-hidden mx-2"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={showImage ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.1, type: "spring", stiffness: 80 }}
+                className={`${
+                  isSmall ? "w-16 h-12" : "w-24 h-16"
+                } rounded-xl border-2 border-base-content overflow-hidden`}
+              >
+                <Image
+                  src={images.chImage}
+                  alt={"Petite photo d'une edelweiss"}
+                  width={150}
+                  height={150}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
-        <div className="flex mt-5 mb-5 lg:my-0 lg:mx-2 md:mb-5">
-          <ul className="flex flex-col items-start justify-end lg:h-full lg:justify-evenly">
-            <NavItem href="#about-me" initial={200} delay={0.4}>
-              À PROPOS
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.2 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 2.0, type: "spring", stiffness: 80 }}
+        className="divider w-1/2 sm:w-2/5 mr-auto mb-2"
+      ></motion.div>
+      <div className="mb-5 flex flex-col justify-center">
+        <div className="flex gap-4 justify-center sm:flex-wrap">
+          <ul className="flex flex-col gap-4 sm:flex-row sm:gap-4">
+            <NavItem href="#about-me" initial={200} delay={1.4}>
+              // À PROPOS
             </NavItem>
-            <NavItem href="#career" initial={180} delay={0.6}>
-              CARRIÈRE
+            <NavItem href="#career" initial={160} delay={1.8}>
+              // CARRIÈRE
             </NavItem>
-            <NavItem href="#skills" initial={160} delay={0.8}>
-              CAPACITÉS
+          </ul>
+          <ul className="flex flex-col gap-4 sm:flex-row sm:gap-4">
+            <NavItem href="#skills" initial={140} delay={2}>
+              // CAPACITÉS
             </NavItem>
-            <NavItem href="#projects" initial={140} delay={1}>
-              PROJETS
+            <NavItem href="#projects" initial={180} delay={1.6}>
+              // PROJETS
             </NavItem>
           </ul>
         </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.0, type: "spring", stiffness: 80 }}
+          className="divider w-1/2 sm:w-2/5 ml-auto mt-2"
+        ></motion.div>
       </div>
     </section>
   );
+}
+
+function useIsSmallScreen(breakpoint = 640) {
+  const [isSmall, setIsSmall] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsSmall(window.innerWidth < breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+
+  return isSmall;
 }

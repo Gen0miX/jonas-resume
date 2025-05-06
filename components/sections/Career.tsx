@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SectionTitle from "../SectionTitle";
-import { div } from "framer-motion/m";
 
 interface Props {
   children?: ReactNode;
@@ -74,7 +73,7 @@ function Timeline({ children, year, title, className, isLeft }: Props) {
       className="w-full"
     >
       <hr />
-      <div className="timeline-middle">
+      <div className="timeline-middle text-primary">
         <FaCheckCircle />
       </div>
       <div
@@ -134,7 +133,7 @@ export default function Career() {
           initial="hidden"
           animate={hasAnimated ? "visible" : "hidden"}
         >
-          <div className="timeline-middle">
+          <div className="timeline-middle text-primary">
             <FaMagnifyingGlass />
           </div>
           <div className="mb-10 timeline-end group lg:text-lg w-[95%] sm:w-3/4">
@@ -142,15 +141,13 @@ export default function Career() {
               <input type="checkbox" defaultChecked role="button" />
               <div className="flex flex-col px-2 text-lg font-medium collapse-title lg:text-xl">
                 <time className="font-sans text-3xl font-bold group-hover:text-primary">
-                  2024 - Présent
+                  2024 - 2025
                 </time>
-                À la recherche de nouvelles opportunités
+                Mandats indépendants
               </div>
               <div className="px-2 font-thin collapse-content">
-                Je recherche activement un poste où je peux mettre mes
-                compétences en pratique, contribuer à des projets passionnants
-                et continuer à grandir professionnellement. Prêt à relever de
-                nouveaux défis et à faire la différence !
+                Développement web, modélisation et développement de base de
+                données
               </div>
             </div>
           </div>
