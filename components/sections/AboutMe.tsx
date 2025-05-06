@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { fadeInFromTop, fadeInFromL, fadeInFromR } from "@/utils/animations";
 import { images } from "@/utils/images";
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from "react-icons/ai";
