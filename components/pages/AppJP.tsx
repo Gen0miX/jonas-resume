@@ -7,6 +7,7 @@ import AboutMe from "@/components/sections/AboutMe";
 import Career from "@/components/sections/Career";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
+import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeContext";
 import CursorFollower from "@/components/CursorFollower";
@@ -55,6 +56,7 @@ export default function AppJP() {
       <Career />
       <Skills />
       <Projects />
+      <Contact />
       <Footer />
     </ThemeProvider>
   );

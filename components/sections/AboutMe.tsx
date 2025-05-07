@@ -18,7 +18,7 @@ export default function AboutMe() {
       id="about-me"
       className="flex flex-col items-center mt-40 scroll-mt-28 xl:mx-32 2xl:m-60 lg:items-start"
     >
-      <SectionTitle className="hidden lg:text-8xl lg:block">
+      <SectionTitle className="hidden lg:text-5xl lg:block">
         À PROPOS
       </SectionTitle>
       <div className="flex flex-col items-center 2xl:mx-auto lg:flex-row">

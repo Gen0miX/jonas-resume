@@ -88,7 +88,7 @@ const CursorFollower: React.FC<Props> = ({ className }) => {
         z-[999] transition-transform duration-500 ease-out mix-blend-difference
         ${
           hovering
-            ? "bg-base-content theme-nord:bg-[#bebbb4] scale-[5]  "
+            ? "bg-base-content theme-nord:bg-[#bebbb4] scale-[2.5]"
             : "bg-transparent border-2 border-base-content theme-nord:border-[#bebbb4] h-[25px] w-[25px]"
         }
         rounded-full ${className}

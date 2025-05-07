@@ -232,7 +232,7 @@ export default function Hero() {
             </motion.div>
             développeur <span className="text-primary italic ml-2">junior</span>
           </div>
-          <div className="flex items-center mb-2 sm:mb-5">
+          <div className="flex items-center mb-1">
             basé en Suisse {/* Image qui s'affiche après un délai */}
             <motion.div
               initial={{ width: 0 }}
@@ -265,6 +265,13 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+        <Link
+          href="#contact"
+          className="ml-56 sm:ml-80 md:ml-96 sm:text-xl font-hero transition-transform duration-300 ease-in
+              hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
+        >
+          // Me<span className="text-primary italic"> contacter</span>
+        </Link>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, scale: 0.2 }}
