@@ -27,7 +27,7 @@ export default function SectionTitle({ children, className }: Props) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       className={clsx(
-        "font-heading text-right text-4xl mb-5 ml-10 sm:text-6xl sm:text-left lg:text-8xl",
+        "font-heading text-right text-3xl ml-10 sm:text-5xl sm:text-left lg:text-6xl",
         className
       )}
     >
@@ -35,7 +35,7 @@ export default function SectionTitle({ children, className }: Props) {
         <motion.span
           key={index}
           variants={letterVariant}
-          style={{ display: "inline-block" }} // Important pour l'animation
+          style={{ display: "inline-block" }}
         >
           {letter === " " ? "\u00A0" : letter}
         </motion.span>

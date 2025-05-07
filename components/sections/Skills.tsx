@@ -78,7 +78,7 @@ export default function Skills() {
         animate={isInView ? "visible" : "hidden"}
         className="flex flex-col items-center"
       >
-        <p className="font-sans text-base font-medium sm:text-lg lg:text-xl">
+        <p className="font-sans text-base font-medium mt-5 sm:text-lg lg:text-xl">
           Voici un résumé de mes compétences et aptitudes les plus importantes :
         </p>
         <div className="self-center w-1/4 divider"></div>
