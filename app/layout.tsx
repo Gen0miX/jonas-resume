@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeScript } from "./ThemeScript";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import PageTranstition from "@/components/PageTransition";
 
 const darkerGrotesque = Darker_Grotesque({
@@ -46,6 +47,7 @@ export default function RootLayout({
       </head>
       <body className="scroll-smooth">
         <PageTranstition>{children}</PageTranstition>
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
