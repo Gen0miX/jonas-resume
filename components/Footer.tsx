@@ -12,8 +12,8 @@ export default function Footer() {
         <div className="flex flex-row justify-between w-full">
           <h6 className="mb-0 footer-title">Adresse</h6>
           <div className="flex flex-col items-end">
-            <p className="">Rue Jacques-Gachoud 8</p>
-            <p className="">1700 Fribourg</p>
+            <p className="">Av. de la Gare 8</p>
+            <p className="">1890 St-Maurice</p>
           </div>
         </div>
       </div>
