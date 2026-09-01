@@ -22,7 +22,7 @@ export default function ProjectShot({ src, alt, sizes, className }: Props) {
 
   return (
     <div
-      className={`flex h-full w-full items-center justify-center border border-dashed border-base-content/25 bg-base-300/40 p-4 text-center font-sans text-sm text-base-content/50 ${
+      className={`flex h-full w-full items-center justify-center border border-dashed border-base-content/25 bg-base-300/40 p-4 text-center font-sans text-sm text-base-content/50 theme-nord:text-base-content/75 ${
         className ?? ""
       }`}
     >
