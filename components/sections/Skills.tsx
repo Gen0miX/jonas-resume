@@ -72,7 +72,7 @@ const toolsOthers = [
 
 export default function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: "some" });
 
   return (
     <section
@@ -96,7 +96,7 @@ export default function Skills() {
           animate={isInView ? "visible" : "hidden"}
           variants={divVariants}
         >
-          <Spotlight className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(20px,2vw,32px)]">
+          <Spotlight className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[clamp(20px,2vw,32px)]">
             {softSkillsCards.map((card, index) => (
               <MySpotlightCard
                 key={card.title}
@@ -110,7 +110,7 @@ export default function Skills() {
           </Spotlight>
         </motion.div>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(340px,1fr))] items-start gap-[clamp(20px,2vw,32px)]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-start gap-[clamp(20px,2vw,32px)]">
           <Card radius={28} className="flex flex-col gap-[18px] p-[clamp(24px,2vw,34px)]">
             <SubTitle>Coding</SubTitle>
             <div className="flex flex-col gap-3.5">

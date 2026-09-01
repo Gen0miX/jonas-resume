@@ -71,7 +71,7 @@ export default function AboutMe() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromTop}
-            className="flex min-w-[260px] max-w-[420px] flex-1 basis-[300px]"
+            className="flex min-w-0 md:min-w-[260px] max-w-[420px] flex-1 basis-[300px]"
           >
             <div className="w-full self-start overflow-hidden rounded-[20px] border-2 border-base-content">
               <Image
@@ -88,7 +88,7 @@ export default function AboutMe() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromR}
-            className="flex min-w-[300px] flex-1 basis-[420px] flex-col justify-center gap-[18px]"
+            className="flex min-w-0 md:min-w-[300px] flex-1 basis-[420px] flex-col justify-center gap-[18px]"
           >
             <MetaRow label="Développeur junior · St-Maurice (VS)" />
             <h3 className="font-heading text-[clamp(34px,3.6vw,54px)] font-medium leading-none">
@@ -138,7 +138,7 @@ export default function AboutMe() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromL}
-            className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(20px,2vw,32px)]"
+            className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[clamp(20px,2vw,32px)]"
           >
             {approachCards.map((card, index) => (
               <Card

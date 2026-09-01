@@ -66,7 +66,7 @@ function CareerCard({ step, index, isOpen, onToggle }: CareerCardProps) {
         <span className="min-w-[28px] font-heading text-xl font-bold tracking-wider text-primary">
           {number}
         </span>
-        <div className="flex min-w-[130px] flex-col gap-0.5">
+        <div className="flex min-w-0 md:min-w-[130px] flex-col gap-0.5">
           <span className="font-heading text-[clamp(22px,1.9vw,30px)] font-medium leading-none text-primary">
             {step.year}
           </span>
@@ -75,7 +75,7 @@ function CareerCard({ step, index, isOpen, onToggle }: CareerCardProps) {
           </span>
         </div>
         <span className="min-h-[44px] w-px self-stretch bg-base-content/[.18]" />
-        <span className="flex-1 basis-[220px] font-heading text-[clamp(22px,2.1vw,32px)] font-medium leading-[1.1]">
+        <span className="min-w-0 flex-1 basis-[220px] font-heading text-[clamp(22px,2.1vw,32px)] font-medium leading-[1.1]">
           {step.title}
         </span>
         <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 font-sans text-xl font-bold leading-none text-base-content/60 theme-nord:text-base-content/75">
