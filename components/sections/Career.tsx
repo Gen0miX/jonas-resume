@@ -1,233 +1,145 @@
+// components/sections/Career.tsx
 "use client";
 
-import clsx from "clsx";
-import React, { ReactNode, useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import SectionTitle from "../SectionTitle";
-
-interface Props {
-  children?: ReactNode;
-  year?: string;
-  title?: string;
-  className?: string;
-  isLeft: boolean;
-}
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { careerSteps, type CareerStep } from "@/data/career";
+import SectionHeader from "./shared/SectionHeader";
+import SectionLede from "./shared/SectionLede";
+import Card from "./shared/Card";
 
 const itemVariantsR = {
   hidden: { opacity: 0, x: 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 11,
-    },
-  },
+  visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 80, damping: 11 } },
 };
 
 const itemVariantsL = {
   hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 11,
-    },
-  },
+  visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 80, damping: 11 } },
 };
 
-function Timeline({ children, year, title, className, isLeft }: Props) {
-  const ref = useRef(null);
+type CareerCardProps = {
+  step: CareerStep;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+};
+
+function CareerCard({ step, index, isOpen, onToggle }: CareerCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
         }
       },
       { threshold: 0.5 }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (node) observer.observe(node);
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      if (node) observer.unobserve(node);
     };
   }, [hasAnimated]);
 
+  const number = String(index + 1).padStart(2, "0");
+  const panelId = `career-step-${index}`;
+
   return (
-    <motion.li
+    <Card
       ref={ref}
-      variants={isLeft ? itemVariantsL : itemVariantsR}
+      radius={28}
+      variants={index % 2 === 0 ? itemVariantsL : itemVariantsR}
       initial="hidden"
       animate={hasAnimated ? "visible" : "hidden"}
-      className="w-full"
     >
-      <hr />
-      <div className="timeline-middle text-primary">
-        <FaCheckCircle />
-      </div>
-      <div
-        className={clsx("mb-10 lg:text-lg group w-[95%] sm:w-3/4", className)}
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        className="flex min-h-[44px] w-full flex-wrap items-center gap-[clamp(16px,2vw,28px)] px-[clamp(20px,2.2vw,32px)] py-[clamp(18px,1.8vw,26px)] text-left"
       >
-        <div className="py-0 my-0 border rounded-2xl collapse border-base-300 bg-base-200">
-          <input type="checkbox" role="button" />
-          <div className="flex flex-col px-2 text-lg font-medium collapse-title lg:text-xl">
-            <time className="font-sans text-3xl font-bold group-hover:text-primary">
-              {year}
-            </time>
-            {title}
-          </div>
-          <div className="px-2 font-thin collapse-content">{children}</div>
+        <span className="min-w-[28px] font-heading text-xl font-bold tracking-wider text-primary">
+          {number}
+        </span>
+        <div className="flex min-w-[130px] flex-col gap-0.5">
+          <span className="font-heading text-[clamp(22px,1.9vw,30px)] font-medium leading-none text-primary">
+            {step.year}
+          </span>
+          <span className="font-sans text-[12px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
+            {step.category}
+          </span>
         </div>
-      </div>
-      <hr />
-    </motion.li>
+        <span className="min-h-[44px] w-px self-stretch bg-base-content/[.18]" />
+        <span className="flex-1 basis-[220px] font-heading text-[clamp(22px,2.1vw,32px)] font-medium leading-[1.1]">
+          {step.title}
+        </span>
+        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 font-sans text-xl font-bold leading-none text-base-content/60 theme-nord:text-base-content/75">
+          {isOpen ? "–" : "+"}
+        </span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={panelId}
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-[clamp(20px,2.2vw,32px)] pb-[clamp(20px,2vw,28px)]">
+              <div className="mb-[18px] h-px bg-base-content/10" />
+              <p className="max-w-[900px] font-sans text-[clamp(17px,1.3vw,20px)] leading-[1.45] text-base-content/75">
+                {step.description}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Card>
   );
 }
 
 export default function Career() {
-  const ref = useRef(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [hasAnimated]);
+  const [openSteps, setOpenSteps] = useState<Record<number, boolean>>({ 0: true });
 
   return (
     <section
       id="career"
-      className="mt-40 mb-10 mr-5 xl:mx-32 2xl:m-60 scroll-mt-32"
+      className="px-5 md:px-0 mt-40 mb-10 xl:mx-32 2xl:mx-60 2xl:mb-20 2xl:mt-60 scroll-mt-32"
     >
-      <SectionTitle>CARRIÈRE</SectionTitle>
-      <ul className="z-0 p-10 overflow-hidden timeline timeline-snap-icon max-md:timeline-compact timeline-vertical lg:text-xl">
-        <motion.li
-          ref={ref}
-          variants={itemVariantsR}
-          initial="hidden"
-          animate={hasAnimated ? "visible" : "hidden"}
-        >
-          <div className="timeline-middle text-primary">
-            <FaMagnifyingGlass />
-          </div>
-          <div className="mb-10 timeline-end group lg:text-lg w-[95%] sm:w-3/4">
-            <div className="py-0 my-0 border collapse border-base-300 bg-base-200">
-              <input type="checkbox" defaultChecked role="button" />
-              <div className="flex flex-col px-2 text-lg font-medium collapse-title lg:text-xl">
-                <time className="font-sans text-3xl font-bold group-hover:text-primary">
-                  2024 - 2025
-                </time>
-                Mandats indépendants
-              </div>
-              <div className="px-2 font-thin collapse-content">
-                Développement web, modélisation et développement de base de
-                données
-              </div>
-            </div>
-          </div>
-          <hr />
-        </motion.li>
-        <Timeline
-          className="timeline-start md:text-end"
-          year="2023 - 2024"
-          title="Master en informatique de gestion"
-          isLeft={true}
-        >
-          Une année d'études de Master en informatique de gestion à l'Université
-          de Fribourg
-        </Timeline>
-        <Timeline
-          className="timeline-start md:timeline-end md:mb-5"
-          year="2023"
-          title="Analyste Programmeur"
-          isLeft={false}
-        >
-          Analyste programmeur chez Cremo pendant trois mois. Principalement
-          responsable du support téléphonique et du développement de leurs
-          logiciels internes (Visual Basic).
-        </Timeline>
-        <Timeline
-          className="timeline-start md:text-end"
-          year="2021 - 2022"
-          title="Service Civil / Aide voirie"
-          isLeft={true}
-        >
-          Aide voirie pour la municipalité de St-Maurice dans le cadre du
-          service civil.
-        </Timeline>
-        <Timeline
-          className="timeline-start md:timeline-end md:mb-5"
-          year="2019 - 2020"
-          title="Cours CISCO"
-          isLeft={false}
-        >
-          Cours CISCO à la HEG de Genève pendant mes études en informatique de
-          Gestion.
-        </Timeline>
-        <Timeline
-          className="timeline-start md:text-end"
-          year="2017 - 2021"
-          title="Bachelor en informatique de Gestion "
-          isLeft={true}
-        >
-          Programme de Bachelor en informatique de Gestion à la HES-SO Valais
-          Sierre.
-        </Timeline>
-        <Timeline
-          className="timeline-start md:timeline-end md:mb-5"
-          year="2016 - 2017"
-          title="Service civil / Animateur Assistant"
-          isLeft={false}
-        >
-          Animateur assistant au Home les Tilleuls à Monthey dans le cadre du
-          service civil.
-        </Timeline>
-        <Timeline
-          className="timeline-start md:text-end"
-          year="2015 - 2016"
-          title="Stage MPC"
-          isLeft={true}
-        >
-          Stage employé de commerce à la Médiathèque Valais Sion pour compléter
-          ma formation.
-        </Timeline>
-        <Timeline
-          className="timeline-start md:timeline-end"
-          year="2012 - 2015"
-          title="CFC - Employé de commerce"
-          isLeft={false}
-        >
-          Formation employé de commerce à l'ECCG Martigny.
-        </Timeline>
-      </ul>
+      <SectionHeader
+        title="CARRIÈRE"
+        right={
+          <span className="font-sans text-[15px] font-bold uppercase tracking-[.14em] text-base-content/55 theme-nord:text-base-content/75">
+            9 étapes · 2012 — 2026
+          </span>
+        }
+      />
+      <SectionLede>
+        Formations, expériences et services civils, du CFC d’employé de commerce aux mandats
+        indépendants d’aujourd’hui.
+      </SectionLede>
+
+      <div className="mt-10 flex flex-col gap-[clamp(14px,1.4vw,20px)] px-0 md:px-8">
+        {careerSteps.map((step, index) => (
+          <CareerCard
+            key={step.title}
+            step={step}
+            index={index}
+            isOpen={!!openSteps[index]}
+            onToggle={() =>
+              setOpenSteps((current) => ({ ...current, [index]: !current[index] }))
+            }
+          />
+        ))}
+      </div>
     </section>
   );
 }
