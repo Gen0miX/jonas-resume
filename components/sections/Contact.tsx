@@ -1,14 +1,31 @@
-import { useState } from "react";
-import SectionTitle from "@/components/SectionTitle";
+// components/sections/Contact.tsx
+"use client";
+
+import { useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { FaUser } from "react-icons/fa";
 import { IoMdMail, IoIosSend } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
+import SectionHeader from "./shared/SectionHeader";
+import SectionLede from "./shared/SectionLede";
+import Card from "./shared/Card";
+
+const externalLinkClass =
+  "font-sans text-[17px] font-semibold uppercase tracking-wider text-base-content/60 theme-nord:text-base-content/75 transition-colors hover:text-base-content";
+
+const fieldClass =
+  "flex h-[52px] flex-1 basis-[240px] items-center gap-3 rounded-[10px] border border-base-content/20 bg-transparent px-[18px] transition-colors duration-300 hover:border-primary focus-within:border-primary";
+
+const inputClass =
+  "min-w-0 flex-1 border-none bg-transparent font-sans text-lg font-medium outline-none placeholder:text-base-content/40 theme-nord:placeholder:text-base-content/60";
 
 export default function Contact() {
-  const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<"success" | "error">("success");
+
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
   const showToast = (message: string, type: "success" | "error") => {
     setToastMessage(message);
@@ -20,7 +37,6 @@ export default function Contact() {
     event.preventDefault();
     const form = event.currentTarget;
     setIsLoading(true);
-    setResult("Envoi...");
     const formData = new FormData(event.currentTarget);
 
     formData.append("access_key", "10538beb-60fe-4fac-8ee1-6facfe5635ff");
@@ -38,14 +54,11 @@ export default function Contact() {
         form.reset();
       } else {
         console.log("Error", data);
-        showToast(
-          data.message || "Mince ! Votre message n'est pas parti.",
-          "error"
-        );
+        showToast(data.message || "Mince ! Votre message n’est pas parti.", "error");
       }
     } catch (error) {
-      console.error("Erreur d'envoi :", error);
-      showToast("Mince ! Votre message n'est pas parti.", "error");
+      console.error("Erreur d’envoi :", error);
+      showToast("Mince ! Votre message n’est pas parti.", "error");
     } finally {
       setIsLoading(false);
     }
@@ -54,51 +67,75 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="mt-40 mb-10 ml-5 mr-5 xl:mx-32 2xl:mx-60 2xl:mb-20 2xl:mt-60 scroll-mt-32"
+      className="px-5 md:px-0 mt-40 mb-10 xl:mx-32 2xl:mx-60 2xl:mb-20 2xl:mt-60 scroll-mt-32"
     >
-      <SectionTitle className="ml-5">CONTACT</SectionTitle>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-2 mt-2 lg:mt-5 max-w-screen-md mx-auto lg:justify-items-center"
-      >
-        <div className="flex flex-col gap-2 sm:flex-row ">
-          <label className="input input-bordered input-primary flex items-center gap-2 w-full">
-            <FaUser className="text-primary" />
-            <input
-              type="text"
-              className="grow"
-              placeholder="Prénom"
-              name="name"
-              required
+      <SectionHeader
+        title="CONTACT"
+        right={
+          <a href="mailto:jonas-pilloud@jonas-pilloud.ch" className={externalLinkClass}>
+            jonas-pilloud@jonas-pilloud.ch ↗
+          </a>
+        }
+      />
+      <SectionLede>
+        Un projet, une question, une opportunité ? Le formulaire arrive directement dans ma boîte
+        mail.
+      </SectionLede>
+
+      <div className="mt-10 flex justify-center px-0 md:px-8">
+        <Card
+          ref={cardRef}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="flex w-full max-w-[880px] flex-col gap-4 p-[clamp(24px,2.5vw,44px)]"
+        >
+          <form onSubmit={onSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-wrap gap-4">
+              <label className={fieldClass}>
+                <FaUser className="flex-none text-primary" size={16} />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Prénom"
+                  required
+                  className={inputClass}
+                />
+              </label>
+              <label className={fieldClass}>
+                <IoMdMail className="flex-none text-primary" size={16} />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Mail"
+                  required
+                  className={inputClass}
+                />
+              </label>
+            </div>
+            <textarea
+              name="message"
+              placeholder="Message"
+              rows={7}
+              className="w-full resize-y rounded-[10px] border border-base-content/20 bg-transparent px-[18px] py-3.5 font-sans text-lg font-medium outline-none transition-colors duration-300 placeholder:text-base-content/40 theme-nord:placeholder:text-base-content/60 hover:border-primary focus:border-primary"
             />
-          </label>
-          <label className="input input-bordered input-primary flex items-center gap-2 w-full">
-            <IoMdMail className="text-primary" />
-            <input
-              type="text"
-              className="grow"
-              placeholder="Mail"
-              name="email"
-              required
-            />
-          </label>
-        </div>
-        <textarea
-          className="textarea textarea-primary textarea-lg sm:h-60"
-          name="message"
-          placeholder="Message"
-        ></textarea>
-        <button className="btn btn-outline btn-primary self-center hover:text-white md:w-64">
-          {isLoading ? (
-            <span className="loading loading-spinner loading-sm" />
-          ) : (
-            <>
-              <IoIosSend />
-              Envoyer
-            </>
-          )}
-        </button>
-      </form>
+            <button
+              type="submit"
+              className="mt-2 inline-flex h-[52px] min-w-[256px] items-center justify-center gap-2.5 self-center rounded-[10px] bg-primary px-[26px] font-sans text-[17px] font-bold uppercase tracking-[.08em] text-base-100 transition-colors duration-300 hover:bg-base-content"
+            >
+              {isLoading ? (
+                <span className="loading loading-spinner loading-sm" />
+              ) : (
+                <>
+                  <IoIosSend size={18} />
+                  Envoyer
+                </>
+              )}
+            </button>
+          </form>
+        </Card>
+      </div>
+
       {toastMessage && (
         <div className="toast toast-bottom toast-end z-50">
           <div
