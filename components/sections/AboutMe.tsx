@@ -42,7 +42,7 @@ const bringToTeam = [
 
 export default function AboutMe() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.4 });
+  const isInView = useInView(ref, { once: true, amount: "some" });
 
   return (
     <section
