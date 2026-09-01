@@ -19,7 +19,7 @@ export const careerSteps: CareerStep[] = [
     category: "Formation",
     title: "Master en informatique de gestion",
     description:
-      "Une année d'études de Master en informatique de gestion à l'Université de Fribourg.",
+      "Une année d’études de Master en informatique de gestion à l’Université de Fribourg.",
   },
   {
     year: "2023",
@@ -58,12 +58,12 @@ export const careerSteps: CareerStep[] = [
     category: "Formation",
     title: "Stage MPC",
     description:
-      "Stage d'employé de commerce à la Médiathèque Valais Sion pour compléter ma formation.",
+      "Stage d’employé de commerce à la Médiathèque Valais Sion pour compléter ma formation.",
   },
   {
     year: "2012 — 2015",
     category: "Formation",
-    title: "CFC d'employé de commerce",
-    description: "Formation d'employé de commerce à l'ECCG Martigny.",
+    title: "CFC d’employé de commerce",
+    description: "Formation d’employé de commerce à l’ECCG Martigny.",
   },
 ];
