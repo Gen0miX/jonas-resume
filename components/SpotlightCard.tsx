@@ -1,10 +1,10 @@
+// components/SpotlightCard.tsx
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
 import MousePosition from "../utils/mouse-position";
 import { motion } from "framer-motion";
 import { contentVariantsBot, contentVariantsTop } from "@/utils/animations";
-import CTitle from "@/components/CTitle";
 
 type SpotlightProps = {
   children: React.ReactNode;
@@ -88,19 +88,19 @@ export function SpotlightCard({
 }: SpotlightCardProps) {
   return (
     <div
-      className={`relative h-full bg-base-300 rounded-3xl p-px 
-        before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 
+      className={`relative h-full overflow-hidden rounded-[32px] border border-base-300 bg-base-200 transition-colors duration-[400ms] hover:border-primary
+        before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40
         before:bg-base-300 theme-nord:before:bg-gray-800
-        before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 
-        before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] 
+        before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500
+        before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)]
         before:group-hover:opacity-100 theme-nord:before:group-hover:opacity-40
-        before:z-10 before:blur-[100px] 
-        after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 
+        before:z-10 before:blur-[100px]
+        after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48
         after:bg-primary theme-nord:after:bg-gray-900
         after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500
-        after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] 
+        after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)]
         after:hover:opacity-10 theme-nord:after:hover:opacity-30
-        after:z-30 after:blur-[100px] overflow-hidden ${className}`}
+        after:z-30 after:blur-[100px] ${className}`}
     >
       {children}
     </div>
@@ -108,6 +108,7 @@ export function SpotlightCard({
 }
 
 type MySpotlightCardProps = {
+  number: string;
   title: string;
   svg: React.FC<React.SVGProps<SVGSVGElement>>;
   color: string;
@@ -115,27 +116,34 @@ type MySpotlightCardProps = {
 };
 
 export function MySpotlightCard({
+  number,
   title,
   svg: SvgIcon,
   color,
   info,
 }: MySpotlightCardProps) {
   return (
-    <SpotlightCard className="flex flex-col items-center max-w-md border theme-nord:border-base-content sm:h-auto">
+    <SpotlightCard className="flex h-full flex-col gap-4 p-[clamp(22px,2vw,32px)]">
+      <div className="flex items-center gap-4">
+        <span className="font-heading text-xl font-bold tracking-wider text-primary">
+          {number}
+        </span>
+        <span className="h-px max-w-[80px] flex-1 bg-base-content/[.18]" />
+      </div>
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={contentVariantsTop}
         custom={0.5}
-        className="relative flex items-center justify-center m-10 sm:m-14"
+        className="relative my-2 flex h-[150px] items-center justify-center"
       >
-        <div
-          className={`absolute w-32 h-32 border-2 rounded-full theme-nord:border-base-content ${color}`}
-        ></div>
-        <SvgIcon className="relative fill-base-content theme-dark:fill-base-300 w-[85px] h-[85px]" />
+        <div className={`absolute h-32 w-32 rounded-full border-2 border-base-content ${color}`} />
+        <SvgIcon className="relative h-[85px] w-[85px] fill-base-content theme-dark:fill-base-300" />
       </motion.div>
-      <CTitle classname="text-primary">{title}</CTitle>
+      <h3 className="font-heading text-[clamp(26px,2.3vw,36px)] font-medium leading-none">
+        {title}
+      </h3>
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -143,7 +151,7 @@ export function MySpotlightCard({
         variants={contentVariantsBot}
         custom={0.8}
       >
-        <p className="mx-5 mb-5 font-sans text-lg text-center sm:mx-14 sm:mb-14">
+        <p className="font-sans text-[clamp(17px,1.3vw,20px)] leading-[1.45] text-base-content/75">
           {info}
         </p>
       </motion.div>
