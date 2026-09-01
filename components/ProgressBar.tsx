@@ -1,4 +1,8 @@
-import React, { useEffect, useRef } from "react";
+// components/ProgressBar.tsx
+"use client";
+
+import clsx from "clsx";
+import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { fadeInFromLeftWDelay } from "@/utils/animations";
 
@@ -6,9 +10,15 @@ interface ProgressBarProps {
   label: string;
   value: number;
   info?: string;
+  percentWidth?: 38 | 44;
 }
 
-export default function ProgressBar({ label, value, info }: ProgressBarProps) {
+export default function ProgressBar({
+  label,
+  value,
+  info,
+  percentWidth = 38,
+}: ProgressBarProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const controls = useAnimation();
@@ -22,37 +32,38 @@ export default function ProgressBar({ label, value, info }: ProgressBarProps) {
   return (
     <div
       ref={ref}
-      className="flex items-center w-full ease-in-out hover:text-primary group transition-color"
+      className="group flex items-center gap-3 text-base-content/85 transition-colors duration-300 hover:text-primary"
     >
-      <motion.div
+      <motion.span
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInFromLeftWDelay}
-        className="w-32 mb-2 sm:w-40"
+        className="flex w-[120px] flex-none flex-col leading-[1.1]"
       >
-        <p className="font-sans text-base font-medium leading-none transition-all ease-in-out sm:text-lg sm:leading-none lg:text-xl lg:leading-none group-hover:font-bold">
-          {label}
-        </p>
+        <span className="font-sans text-[clamp(16px,1.2vw,19px)] font-medium">{label}</span>
         {info && (
-          <p className="font-sans text-sm leading-none transition-all ease-in-out sm:text-base sm:leading-none lg:text-lg lg:leading-none">
+          <span className="font-sans text-[14px] font-medium opacity-55 theme-nord:opacity-75">
             {info}
-          </p>
+          </span>
         )}
-      </motion.div>
-      <div className="flex items-center flex-1">
-        <span className="w-10 mr-1 font-sans text-sm font-bold text-right transition-opacity ease-in-out opacity-0 group-hover:opacity-100">
-          {value}%
-        </span>
-        <div className="static flex-1 h-2 transition-colors ease-in-out rounded progress group-hover:progress-primary ">
-          <motion.div
-            className="h-full rounded bg-base-content group-hover:bg-primary"
-            initial={{ width: 0 }}
-            animate={controls}
-            transition={{ duration: 1 }}
-          ></motion.div>
-        </div>
+      </motion.span>
+      <div className="h-2 flex-1 rounded-full bg-base-content/[.12]">
+        <motion.div
+          className="h-full rounded-full bg-current"
+          initial={{ width: 0 }}
+          animate={controls}
+          transition={{ duration: 1 }}
+        />
       </div>
+      <span
+        className={clsx(
+          "flex-none text-right font-sans text-[14px] font-bold opacity-50 theme-nord:opacity-75",
+          percentWidth === 44 ? "w-11" : "w-[38px]"
+        )}
+      >
+        {value}%
+      </span>
     </div>
   );
 }
