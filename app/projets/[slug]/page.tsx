@@ -43,7 +43,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     <div className="mx-auto max-w-[1400px] px-5 pt-12 sm:px-12 lg:px-24">
       <Link
         href="/projets"
-        className={`font-heading text-lg text-base-content/60 hover:text-primary ${linkHover}`}
+        className={`font-heading text-lg text-base-content/60 theme-nord:text-base-content/75 hover:text-primary ${linkHover}`}
       >
         {"// RETOUR AUX PROJETS"}
       </Link>
@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="mt-7 flex flex-wrap items-end justify-between gap-8">
         <div className="flex max-w-[820px] flex-col gap-3.5">
           <div className="flex flex-wrap items-center gap-4">
-            <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55">
+            <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55 theme-nord:text-base-content/75">
               {project.kicker}
             </span>
             {project.wip && <WipBadge />}
@@ -152,31 +152,31 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         <aside className="sticky top-24 flex min-w-[280px] flex-1 basis-[340px] flex-col rounded-[28px] border border-base-300 bg-base-200 p-7">
           <div className="flex flex-col gap-1 border-b border-base-content/10 pb-4.5">
-            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50">
+            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Client
             </h6>
             <p className="font-sans text-lg">{project.client}</p>
           </div>
           <div className="flex flex-col gap-1 border-b border-base-content/10 py-4.5">
-            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50">
+            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Année
             </h6>
             <p className="font-sans text-lg">{project.year}</p>
           </div>
           <div className="flex flex-col gap-1 border-b border-base-content/10 py-4.5">
-            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50">
+            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Mon rôle
             </h6>
             <p className="font-sans text-lg">{project.role}</p>
           </div>
           <div className="flex flex-col gap-2.5 border-b border-base-content/10 py-4.5">
-            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50">
+            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Stack
             </h6>
             <StackChips items={project.stack} />
           </div>
           <div className="flex flex-col gap-2 pt-4.5">
-            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50">
+            <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Liens
             </h6>
             <a href={project.url} target="_blank" rel="noopener noreferrer" className="font-sans text-lg font-semibold hover:text-primary">
@@ -196,7 +196,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         className="mt-24 flex flex-wrap items-center justify-between gap-6 rounded-[32px] border border-base-300 bg-base-200 p-9 transition-colors duration-[400ms] hover:border-primary"
       >
         <div className="flex flex-col gap-1.5">
-          <span className="font-sans text-sm font-bold uppercase tracking-[.16em] text-base-content/50">
+          <span className="font-sans text-sm font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
             Projet suivant
           </span>
           <span className="font-heading text-[clamp(28px,3vw,44px)] font-medium leading-none">

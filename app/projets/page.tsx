@@ -15,7 +15,7 @@ export default function ProjectsIndexPage() {
     <div className="mx-auto max-w-[1400px] px-5 pt-14 sm:px-12 lg:px-24">
       <Link
         href="/#projects"
-        className="inline-block font-heading text-lg text-base-content/60 transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125 hover:text-primary"
+        className="inline-block font-heading text-lg text-base-content/60 theme-nord:text-base-content/75 transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125 hover:text-primary"
       >
         {"// RETOUR À L'ACCUEIL"}
       </Link>

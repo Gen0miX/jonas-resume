@@ -64,7 +64,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
               <span className="font-heading text-xl font-bold text-primary">
                 {number}
               </span>
-              <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55">
+              <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55 theme-nord:text-base-content/75">
                 {project.meta}
               </span>
               {project.wip && <WipBadge />}
@@ -102,7 +102,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className={`flex flex-wrap items-stretch gap-8 rounded-[32px] border border-base-300 bg-base-200 p-6 transition-colors duration-[400ms] hover:border-primary md:gap-14 md:p-10 ${
+      className={`flex flex-col flex-wrap items-stretch gap-8 rounded-[32px] border border-base-300 bg-base-200 p-6 transition-colors duration-[400ms] hover:border-primary md:flex-row md:gap-14 md:p-10 ${
         reversed ? "md:flex-row-reverse" : ""
       }`}
     >
@@ -117,7 +117,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
             }`}
           />
           {project.wip && <WipBadge />}
-          <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55">
+          <span className="font-sans text-sm font-bold uppercase tracking-widest text-base-content/55 theme-nord:text-base-content/75">
             {project.meta}
           </span>
         </div>
@@ -140,7 +140,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-[17px] font-semibold uppercase tracking-wider text-base-content/60 transition-colors hover:text-base-content"
+            className="font-sans text-[17px] font-semibold uppercase tracking-wider text-base-content/60 theme-nord:text-base-content/75 transition-colors hover:text-base-content"
           >
             {project.host} ↗
           </a>
