@@ -21,26 +21,6 @@ export default function Spotlight({
   const containerSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const [boxes, setBoxes] = useState<Array<HTMLElement>>([]);
 
-  useEffect(() => {
-    containerRef.current &&
-      setBoxes(
-        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
-      );
-  }, []);
-
-  useEffect(() => {
-    initContainer();
-    window.addEventListener("resize", initContainer);
-
-    return () => {
-      window.removeEventListener("resize", initContainer);
-    };
-  }, [boxes]);
-
-  useEffect(() => {
-    onMouseMove();
-  }, [mousePosition]);
-
   const initContainer = () => {
     if (containerRef.current) {
       containerSize.current.w = containerRef.current.offsetWidth;
@@ -69,6 +49,26 @@ export default function Spotlight({
       }
     }
   };
+
+  useEffect(() => {
+    containerRef.current &&
+      setBoxes(
+        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
+      );
+  }, []);
+
+  useEffect(() => {
+    initContainer();
+    window.addEventListener("resize", initContainer);
+
+    return () => {
+      window.removeEventListener("resize", initContainer);
+    };
+  }, [boxes]);
+
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition]);
 
   return (
     <div className={className} ref={containerRef}>
