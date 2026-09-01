@@ -32,6 +32,12 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (!isLoading && isHydrated && window.location.hash) {
+      document.querySelector(window.location.hash)?.scrollIntoView();
+    }
+  }, [isLoading, isHydrated]);
+
   if (!isHydrated) {
     return (
       <ThemeProvider>

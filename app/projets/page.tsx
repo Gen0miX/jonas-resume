@@ -33,7 +33,7 @@ export default function ProjectsIndexPage() {
 
       <div className="my-9 h-0.5 w-full bg-base-content/10" />
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(360px,1fr))] gap-6">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(360px,100%),1fr))] gap-6">
         {projects.map((project, index) => (
           <ProjectCard key={project.slug} project={project} index={index} variant="index" />
         ))}

@@ -44,7 +44,7 @@ export default function Footer() {
       </nav>
       <aside className="">
         <Link
-          href="#"
+          href="/"
           className="flex flex-col justify-end p-0 m-0 text-lg leading-none transition-transform duration-200 ease-in font-heading hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
         >
           <span className="font-bold">Jonas</span>

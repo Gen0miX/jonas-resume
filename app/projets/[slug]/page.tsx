@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       </div>
 
       <div className="mt-16 flex flex-wrap items-start gap-10 md:gap-20">
-        <div className="flex min-w-[320px] flex-1 basis-[520px] flex-col gap-14">
+        <div className="flex min-w-0 md:min-w-[320px] flex-1 basis-[520px] flex-col gap-14">
           <section className="flex flex-col gap-4">
             <h2 className="font-sans text-sm font-bold uppercase tracking-[.18em] text-primary">
               Contexte
@@ -150,32 +150,32 @@ export default async function ProjectDetailPage({ params }: Props) {
           </section>
         </div>
 
-        <aside className="sticky top-24 flex min-w-[280px] flex-1 basis-[340px] flex-col rounded-[28px] border border-base-300 bg-base-200 p-7">
-          <div className="flex flex-col gap-1 border-b border-base-content/10 pb-4.5">
+        <aside className="sticky top-24 flex min-w-0 md:min-w-[280px] flex-initial basis-[340px] flex-col rounded-[28px] border border-base-300 bg-base-200 p-7">
+          <div className="flex flex-col gap-1 border-b border-base-content/10 pb-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Client
             </h6>
             <p className="font-sans text-lg">{project.client}</p>
           </div>
-          <div className="flex flex-col gap-1 border-b border-base-content/10 py-4.5">
+          <div className="flex flex-col gap-1 border-b border-base-content/10 py-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Année
             </h6>
             <p className="font-sans text-lg">{project.year}</p>
           </div>
-          <div className="flex flex-col gap-1 border-b border-base-content/10 py-4.5">
+          <div className="flex flex-col gap-1 border-b border-base-content/10 py-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Mon rôle
             </h6>
             <p className="font-sans text-lg">{project.role}</p>
           </div>
-          <div className="flex flex-col gap-2.5 border-b border-base-content/10 py-4.5">
+          <div className="flex flex-col gap-2.5 border-b border-base-content/10 py-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Stack
             </h6>
             <StackChips items={project.stack} />
           </div>
-          <div className="flex flex-col gap-2 pt-4.5">
+          <div className="flex flex-col gap-2 pt-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Liens
             </h6>

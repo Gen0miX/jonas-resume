@@ -1,7 +1,7 @@
 // components/Header.tsx
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggleButton from "./ThemeToggleButton";

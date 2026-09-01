@@ -9,10 +9,10 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="mt-40 mb-10 xl:mx-32 2xl:mx-60 2xl:mb-20 2xl:mt-60 scroll-mt-32"
+      className="px-5 md:px-0 mt-40 mb-10 xl:mx-32 2xl:mx-60 2xl:mb-20 2xl:mt-60 scroll-mt-32"
     >
       <div className="flex flex-wrap items-end justify-between gap-8 px-0 md:px-10">
-        <SectionTitle className="ml-10">PROJETS</SectionTitle>
+        <SectionTitle>PROJETS</SectionTitle>
         <Link
           href="/projets"
           className="inline-block font-heading text-lg text-primary transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125"

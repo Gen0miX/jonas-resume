@@ -25,6 +25,7 @@ function ExternalLinkIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      aria-hidden="true"
     >
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
       <path d="M15 3h6v6" />
@@ -50,7 +51,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
       >
         <Link
           href={`/projets/${project.slug}`}
-          className="flex h-full flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-200 text-base-content transition-colors duration-[400ms] hover:border-primary"
+          className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-200 text-base-content transition-colors duration-[400ms] hover:border-primary"
         >
           <div className="relative w-full border-b border-base-300 aspect-[16/10]">
             <ProjectShot
@@ -83,7 +84,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
               </span>
               <span
                 title={project.host}
-                className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 text-base-content/60"
+                className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 text-base-content/60 group-hover:border-primary group-hover:text-primary"
               >
                 <ExternalLinkIcon />
               </span>
@@ -106,7 +107,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
         reversed ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="flex min-w-[300px] flex-1 basis-[380px] flex-col justify-center gap-4">
+      <div className="flex min-w-0 md:min-w-[300px] flex-1 basis-[380px] flex-col justify-center gap-4">
         <div className="flex flex-wrap items-center gap-4">
           <span className="font-heading text-xl font-bold tracking-wider text-primary">
             {number}
@@ -146,7 +147,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
           </a>
         </div>
       </div>
-      <div className="flex min-w-[300px] flex-1 basis-[420px]">
+      <div className="flex min-w-0 md:min-w-[300px] flex-1 basis-[420px]">
         <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] border-2 border-base-content">
           <ProjectShot
             src={project.cover.src}
