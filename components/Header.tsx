@@ -1,17 +1,22 @@
+// components/Header.tsx
+"use client";
+
 import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ThemeToggleButton from "./ThemeToggleButton";
 import CVDownloadButton from "./cv/CVDownloadButton";
 
 interface Props {
   children?: ReactNode;
   href: string;
+  active?: boolean;
 }
 
-function NavItemHeader({ children, href, ...props }: Props) {
+function NavItemHeader({ children, href, active, ...props }: Props) {
   return (
     <li className="text-lg antialiased font-medium font-heading lg:text-xl">
-      <Link href={href}>
+      <Link href={href} className={active ? "text-primary" : ""}>
         <span className="">//</span>
         {children}
       </Link>
@@ -20,11 +25,22 @@ function NavItemHeader({ children, href, ...props }: Props) {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const onProjects = pathname?.startsWith("/projets") ?? false;
+
+  const homeHref = (anchor: string) => (onHome ? `#${anchor}` : `/#${anchor}`);
+  const navItems = [
+    { key: "about-me", label: "À PROPOS" },
+    { key: "career", label: "CARRIÈRE" },
+    { key: "skills", label: "CAPACITÉS" },
+  ] as const;
+
   return (
     <div className="navbar bg-base-200">
       <div className="ml-3 navbar-start">
         <Link
-          href="#"
+          href="/"
           className="flex flex-col justify-end p-0 m-0 text-xl leading-none transition-transform duration-200 ease-in font-heading hover:-skew-x-6 hover:scale-105 hover:scale-y-125"
         >
           <span className="font-bold">Jonas</span>{" "}
@@ -44,17 +60,25 @@ export default function Header() {
             tabIndex={0}
             className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow"
           >
-            <NavItemHeader href="#about-me">À PROPOS</NavItemHeader>
-            <NavItemHeader href="#career">CARRIÈRE</NavItemHeader>
-            <NavItemHeader href="#skills">CAPACITÉS</NavItemHeader>
-            <NavItemHeader href="#projects">PROJETS</NavItemHeader>
+            {navItems.map((item) => (
+              <NavItemHeader key={item.key} href={homeHref(item.key)}>
+                {item.label}
+              </NavItemHeader>
+            ))}
+            <NavItemHeader href={onHome ? "#projects" : "/projets"} active={onProjects}>
+              PROJETS
+            </NavItemHeader>
           </ul>
         </div>
         <ul className="hidden px-1 menu menu-xl menu-horizontal lg:flex">
-          <NavItemHeader href="#about-me">À PROPOS</NavItemHeader>
-          <NavItemHeader href="#career">CARRIÈRE</NavItemHeader>
-          <NavItemHeader href="#skills">CAPACITÉS</NavItemHeader>
-          <NavItemHeader href="#projects">PROJETS</NavItemHeader>
+          {navItems.map((item) => (
+            <NavItemHeader key={item.key} href={homeHref(item.key)}>
+              {item.label}
+            </NavItemHeader>
+          ))}
+          <NavItemHeader href={onHome ? "#projects" : "/projets"} active={onProjects}>
+            PROJETS
+          </NavItemHeader>
         </ul>
       </div>
       <div className="mr-0 sm:mr-3 navbar-end">
