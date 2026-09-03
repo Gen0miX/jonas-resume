@@ -8,6 +8,7 @@ import StackChips from "@/components/projects/StackChips";
 import Accented from "@/components/projects/Accented";
 import ProjectShot from "@/components/projects/ProjectShot";
 import WipBadge from "@/components/projects/WipBadge";
+import ProjectGallery from "@/components/projects/ProjectGallery";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -137,16 +138,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <h2 className="font-sans text-sm font-bold uppercase tracking-[.18em] text-primary">
               Galerie
             </h2>
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
-              {project.gallery.map((shot) => (
-                <div
-                  key={shot.id}
-                  className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-base-content/25"
-                >
-                  <ProjectShot src={shot.src} alt={shot.alt} sizes="(min-width: 768px) 25vw, 50vw" />
-                </div>
-              ))}
-            </div>
+            <ProjectGallery gallery={project.gallery} host={project.host} />
           </section>
         </div>
 
