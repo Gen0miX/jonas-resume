@@ -1,21 +1,24 @@
-import type { ReactNode } from "react";
+// components/projects/PhoneFrame.tsx
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   className?: string;
   compact?: boolean;
-};
+} & Omit<ComponentPropsWithoutRef<"div">, "className" | "children">;
 
 export default function PhoneFrame({
   children,
   className = "mx-auto w-full max-w-[220px]",
   compact = false,
+  ...rest
 }: Props) {
   return (
     <div
       className={`flex aspect-[9/17] flex-col overflow-hidden rounded-[36px] border-2 border-base-content bg-base-200 ${
         compact ? "gap-1.5 p-2" : "gap-2 p-3"
       } ${className}`}
+      {...rest}
     >
       <span
         aria-hidden="true"
