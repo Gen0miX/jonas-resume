@@ -17,7 +17,10 @@ type Props = {
 };
 
 const navButtonClass =
-  "absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-base-content/20 bg-base-100 text-base-content transition-colors hover:border-primary hover:text-primary";
+  "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-base-content/20 bg-base-100 text-base-content transition-colors hover:border-primary hover:text-primary sm:flex";
+
+const inlineNavButtonClass =
+  "flex h-9 w-9 items-center justify-center rounded-full border border-base-content/20 bg-base-100 text-base-content transition-colors hover:border-primary hover:text-primary sm:hidden";
 
 export default function GalleryLightbox({
   gallery,
@@ -137,9 +140,27 @@ export default function GalleryLightbox({
           </BrowserFrame>
         )}
         {gallery.length > 1 && (
-          <span className="font-sans text-sm text-base-content/70">
-            {currentIndex + 1} / {gallery.length}
-          </span>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={goPrev}
+              aria-label="Image précédente"
+              className={inlineNavButtonClass}
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <span className="font-sans text-sm text-base-content/70">
+              {currentIndex + 1} / {gallery.length}
+            </span>
+            <button
+              type="button"
+              onClick={goNext}
+              aria-label="Image suivante"
+              className={inlineNavButtonClass}
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         )}
       </div>
     </div>

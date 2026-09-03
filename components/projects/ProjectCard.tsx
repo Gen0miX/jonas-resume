@@ -109,11 +109,11 @@ export default function ProjectCard({ project, index, variant }: Props) {
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className={`flex flex-col flex-wrap items-stretch gap-8 rounded-[32px] border border-base-300 bg-base-200 p-6 transition-colors duration-[400ms] hover:border-primary md:flex-row md:gap-14 md:p-10 ${
+      className={`flex flex-col items-stretch gap-8 rounded-[32px] border border-base-300 bg-base-200 p-6 transition-colors duration-[400ms] hover:border-primary md:flex-row md:gap-14 md:p-10 ${
         reversed ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="flex min-w-0 md:min-w-[300px] flex-1 basis-[380px] flex-col justify-center gap-4">
+      <div className="flex min-w-0 md:min-w-[300px] flex-1 md:basis-[380px] flex-col justify-center gap-4">
         <div className="flex flex-wrap items-center gap-4">
           <span className="font-heading text-xl font-bold tracking-wider text-primary">
             {number}
@@ -161,7 +161,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
           </a>
         </div>
       </div>
-      <div className="flex min-w-0 md:min-w-[300px] flex-1 basis-[420px]">
+      <div className="flex min-w-0 md:min-w-[300px] flex-1 md:basis-[420px] md:self-start">
         <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] border-2 border-base-content">
           <ProjectShot
             src={project.cover.src}

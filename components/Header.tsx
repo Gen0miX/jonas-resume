@@ -37,7 +37,7 @@ export default function Header() {
   ] as const;
 
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-base-200/85 border-b-2">
       <div className="ml-3 navbar-start">
         <Link
           href="/"
@@ -65,7 +65,10 @@ export default function Header() {
                 {item.label}
               </NavItemHeader>
             ))}
-            <NavItemHeader href={onHome ? "#projects" : "/projets"} active={onProjects}>
+            <NavItemHeader
+              href={onHome ? "#projects" : "/projets"}
+              active={onProjects}
+            >
               PROJETS
             </NavItemHeader>
           </ul>
@@ -76,7 +79,10 @@ export default function Header() {
               {item.label}
             </NavItemHeader>
           ))}
-          <NavItemHeader href={onHome ? "#projects" : "/projets"} active={onProjects}>
+          <NavItemHeader
+            href={onHome ? "#projects" : "/projets"}
+            active={onProjects}
+          >
             PROJETS
           </NavItemHeader>
         </ul>
