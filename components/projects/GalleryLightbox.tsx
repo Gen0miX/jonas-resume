@@ -104,6 +104,17 @@ export default function GalleryLightbox({
           <PhoneFrame className="mx-auto w-full max-w-[320px] sm:max-w-[380px]">
             <ProjectShot src={shot.src} alt={shot.alt} sizes="380px" />
           </PhoneFrame>
+        ) : type === "full" ? (
+          <BrowserFrame host={host}>
+            {shot.src ? (
+              <div className="absolute inset-0 overflow-y-auto">
+                {/* eslint-disable-next-line @next/next/no-img-element -- needs its natural intrinsic height to drive real scroll, next/image fill would crop it instead */}
+                <img src={shot.src} alt={shot.alt} className="h-auto w-full" />
+              </div>
+            ) : (
+              <ProjectShot src={shot.src} alt={shot.alt} sizes="1100px" />
+            )}
+          </BrowserFrame>
         ) : (
           <BrowserFrame host={host}>
             <ProjectShot src={shot.src} alt={shot.alt} sizes="1100px" />
