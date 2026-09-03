@@ -15,6 +15,7 @@ export default function ProjectShot({ src, alt, sizes, className }: Props) {
         alt={alt}
         fill
         sizes={sizes}
+        quality={90}
         className={`object-cover ${className ?? ""}`}
       />
     );

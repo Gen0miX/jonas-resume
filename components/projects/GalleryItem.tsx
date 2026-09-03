@@ -10,7 +10,8 @@ type Props = {
   onOpen?: () => void;
 };
 
-const sizes = "(min-width: 768px) 25vw, 50vw";
+const sizes = "(min-width: 1280px) 320px, (min-width: 768px) 460px, 92vw";
+const mobileSizes = "220px";
 
 export default function GalleryItem({ shot, host, onOpen }: Props) {
   const type = shot.type ?? "desktop";
@@ -38,18 +39,26 @@ export default function GalleryItem({ shot, host, onOpen }: Props) {
     return (
       <PhoneFrame
         compact
-        className={`mx-auto w-full max-w-[220px] ${clickableClass}`}
+        aspectClassName="aspect-[393/830]"
+        className={`group mx-auto w-full max-w-[220px] ${clickableClass}`}
         {...interactive}
       >
-        <ProjectShot src={shot.src} alt={shot.alt} sizes={sizes} />
+        <ProjectShot
+          src={shot.src}
+          alt={shot.alt}
+          sizes={mobileSizes}
+          className="object-top transition-[object-position] duration-[1400ms] ease-out group-hover:object-bottom"
+        />
       </PhoneFrame>
     );
   }
 
   if (type === "full") {
     return (
-      <div
-        className={`group relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-base-content/25 ${clickableClass}`}
+      <BrowserFrame
+        host={host}
+        compact
+        className={`group rounded-2xl border border-base-content/25 ${clickableClass}`}
         {...interactive}
       >
         <ProjectShot
@@ -58,7 +67,7 @@ export default function GalleryItem({ shot, host, onOpen }: Props) {
           sizes={sizes}
           className="object-top transition-[object-position] duration-[1400ms] ease-out group-hover:object-bottom"
         />
-      </div>
+      </BrowserFrame>
     );
   }
 

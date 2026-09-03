@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsIndexPage() {
   return (
-    <div className="mx-auto max-w-[1400px] px-5 pt-14 sm:px-12 lg:px-24">
+    <div className="mx-auto max-w-[1400px] px-5 pt-14 sm:px-12 lg:px-24 pb-14">
       <Link
         href="/#projects"
         className="inline-block font-heading text-lg text-base-content/60 theme-nord:text-base-content/75 transition-transform duration-300 ease-in hover:-skew-x-6 hover:scale-105 hover:scale-y-125 hover:text-primary"
@@ -26,8 +26,8 @@ export default function ProjectsIndexPage() {
         </h1>
         <p className="max-w-[520px] font-sans text-lg font-medium leading-snug text-base-content/80 sm:text-xl">
           Trois sites livrés en mandat indépendant, du modèle de données à la
-          mise en production. Next.js, TypeScript, Tailwind, déploiement
-          continu sur Vercel.
+          mise en production. Next.js, TypeScript, Tailwind, déploiement continu
+          sur Vercel.
         </p>
       </div>
 
@@ -35,7 +35,12 @@ export default function ProjectsIndexPage() {
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(360px,100%),1fr))] gap-6">
         {projects.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} variant="index" />
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            index={index}
+            variant="index"
+          />
         ))}
       </div>
 

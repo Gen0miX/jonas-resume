@@ -57,7 +57,7 @@ export default function GalleryLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-base-300/90 p-4 sm:p-8"
+      className="fixed inset-0 z-[950] flex items-center justify-center bg-base-300/90 p-4 sm:p-8"
       onClick={onClose}
     >
       <button
@@ -97,27 +97,43 @@ export default function GalleryLightbox({
       )}
 
       <div
-        className="flex w-full max-w-[1100px] flex-col items-center gap-4"
+        className="flex w-full max-w-[1150px] flex-col items-center gap-4"
         onClick={(event) => event.stopPropagation()}
       >
         {type === "mobile" ? (
-          <PhoneFrame className="mx-auto w-full max-w-[320px] sm:max-w-[380px]">
-            <ProjectShot src={shot.src} alt={shot.alt} sizes="380px" />
-          </PhoneFrame>
-        ) : type === "full" ? (
-          <BrowserFrame host={host}>
+          <PhoneFrame
+            aspectClassName="aspect-[393/830]"
+            className="mx-auto h-[70vh] max-h-[640px] w-auto"
+          >
             {shot.src ? (
               <div className="absolute inset-0 overflow-y-auto">
                 {/* eslint-disable-next-line @next/next/no-img-element -- needs its natural intrinsic height to drive real scroll, next/image fill would crop it instead */}
                 <img src={shot.src} alt={shot.alt} className="h-auto w-full" />
               </div>
             ) : (
-              <ProjectShot src={shot.src} alt={shot.alt} sizes="1100px" />
+              <ProjectShot src={shot.src} alt={shot.alt} sizes="420px" />
+            )}
+          </PhoneFrame>
+        ) : type === "full" ? (
+          <BrowserFrame
+            host={host}
+            className="mx-auto w-full rounded-[28px] border-2 border-base-content"
+          >
+            {shot.src ? (
+              <div className="absolute inset-0 overflow-y-auto">
+                {/* eslint-disable-next-line @next/next/no-img-element -- needs its natural intrinsic height to drive real scroll, next/image fill would crop it instead */}
+                <img src={shot.src} alt={shot.alt} className="h-auto w-full" />
+              </div>
+            ) : (
+              <ProjectShot src={shot.src} alt={shot.alt} sizes="1150px" />
             )}
           </BrowserFrame>
         ) : (
-          <BrowserFrame host={host}>
-            <ProjectShot src={shot.src} alt={shot.alt} sizes="1100px" />
+          <BrowserFrame
+            host={host}
+            className="mx-auto w-full rounded-[28px] border-2 border-base-content"
+          >
+            <ProjectShot src={shot.src} alt={shot.alt} sizes="1150px" />
           </BrowserFrame>
         )}
         {gallery.length > 1 && (

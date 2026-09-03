@@ -4,7 +4,13 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { fadeInFromTop, fadeInFromL, fadeInFromR, fadeInFromBottom } from "@/utils/animations";
+import {
+  fadeInFromTop,
+  fadeInFromL,
+  fadeInFromR,
+  fadeInFromBottom,
+} from "@/utils/animations";
+import { GitBranch, Cog, GlobeLock } from "lucide-react";
 import profileImage from "@/public/images/profile.png";
 import CVDownloadButton from "@/components/cv/CVDownloadButton";
 import StackChips from "@/components/projects/StackChips";
@@ -23,14 +29,17 @@ const approachCards = [
   {
     title: "Développement orienté solution",
     body: "Conception d’applications complètes, de l’architecture backend à l’interface utilisateur, avec une attention particulière à la maintenabilité, la clarté du code et la performance.",
+    icon: <GitBranch size={28} />,
   },
   {
     title: "Automatisation & fiabilité",
     body: "Mise en place d’outils et de processus pour automatiser les tâches récurrentes, fiabiliser les déploiements et améliorer la productivité de l’équipe.",
+    icon: <Cog size={28} />,
   },
   {
     title: "Sécurité & qualité",
     body: "Sensibilité aux bonnes pratiques de sécurité, revue de code rigoureuse et tests automatisés pour garantir la stabilité des systèmes.",
+    icon: <GlobeLock size={28} />,
   },
 ];
 
@@ -61,8 +70,9 @@ export default function AboutMe() {
         }
       />
       <SectionLede>
-        Développeur fullstack diplômé en informatique de gestion. Je conçois des applications
-        complètes, de l’architecture backend à l’interface utilisateur.
+        Développeur fullstack diplômé en informatique de gestion. Je conçois des
+        applications complètes, de l’architecture backend à l’interface
+        utilisateur.
       </SectionLede>
 
       <div className="mt-10 flex flex-col gap-8 px-0 md:gap-16 md:px-8">
@@ -99,10 +109,13 @@ export default function AboutMe() {
               <span className="italic text-primary">robustes</span>.
             </p>
             <p className="font-sans text-[clamp(17px,1.3vw,20px)] leading-[1.4] text-base-content/75">
-              De la modélisation des données à l’interface : JavaScript et TypeScript, Node.js,
-              bases de données relationnelles et NoSQL, outils DevOps.
+              De la modélisation des données à l’interface : JavaScript et
+              TypeScript, Node.js, bases de données relationnelles et NoSQL,
+              outils DevOps.
             </p>
-            <StackChips items={["TypeScript", "Node.js", "SQL & NoSQL", "DevOps"]} />
+            <StackChips
+              items={["TypeScript", "Node.js", "SQL & NoSQL", "DevOps"]}
+            />
             <motion.div
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -125,7 +138,10 @@ export default function AboutMe() {
               >
                 GitHub ↗
               </a>
-              <a href="mailto:jonas-pilloud@jonas-pilloud.ch" className={externalLinkClass}>
+              <a
+                href="mailto:contact@jonas-pilloud.ch"
+                className={externalLinkClass}
+              >
                 Mail ↗
               </a>
             </motion.div>
@@ -146,10 +162,18 @@ export default function AboutMe() {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 variants={fadeInFromBottom}
-                transition={{ type: "spring", stiffness: 80, damping: 11, delay: index * 0.08 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 80,
+                  damping: 11,
+                  delay: index * 0.08,
+                }}
                 className="flex flex-col gap-3.5 p-[clamp(22px,2vw,32px)]"
               >
-                <MetaRow number={String(index + 1).padStart(2, "0")} />
+                <MetaRow
+                  number={String(index + 1).padStart(2, "0")}
+                  icon={card.icon}
+                />
                 <h3 className="font-heading text-[clamp(24px,2.2vw,32px)] font-medium leading-[1.1]">
                   {card.title}
                 </h3>
@@ -173,7 +197,9 @@ export default function AboutMe() {
               <p
                 key={line}
                 className={`flex items-center gap-5 py-5 font-hero text-[clamp(20px,1.6vw,26px)] leading-[1.3] text-base-content/85 ${
-                  index < bringToTeam.length - 1 ? "border-b border-base-content/10" : ""
+                  index < bringToTeam.length - 1
+                    ? "border-b border-base-content/10"
+                    : ""
                 }`}
               >
                 <span className="h-px w-7 flex-none bg-primary" />

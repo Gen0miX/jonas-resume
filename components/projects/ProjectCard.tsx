@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import type { Project } from "@/data/projects";
-import StackChips from "./StackChips";
+import { SquareArrowOutUpRight } from "lucide-react";
+import StackMarquee from "./StackMarquee";
 import WipBadge from "./WipBadge";
 import Accented from "./Accented";
 import ProjectShot from "./ProjectShot";
@@ -49,10 +50,12 @@ export default function ProjectCard({ project, index, variant }: Props) {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: index * 0.08 }}
       >
-        <Link
-          href={`/projets/${project.slug}`}
-          className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-200 text-base-content transition-colors duration-[400ms] hover:border-primary"
-        >
+        <div className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-200 text-base-content transition-colors duration-[400ms] hover:border-primary">
+          <Link
+            href={`/projets/${project.slug}`}
+            aria-label={`Voir le projet ${project.title}${project.titleAccent}`}
+            className="absolute inset-0 z-10 rounded-[28px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          />
           <div className="relative w-full border-b border-base-300 aspect-[16/10]">
             <ProjectShot
               src={project.cover.src}
@@ -77,20 +80,23 @@ export default function ProjectCard({ project, index, variant }: Props) {
             <p className="font-hero text-[clamp(18px,1.4vw,22px)] leading-snug text-base-content/80">
               {project.lede}
             </p>
-            <StackChips items={project.stack} className="mt-auto pt-2" />
+            <StackMarquee items={project.stack} className="mt-auto pt-2" />
             <div className="flex flex-wrap items-center justify-between gap-4">
               <span className="font-heading text-lg font-medium text-primary whitespace-nowrap">
                 {"// VOIR LE PROJET"}
               </span>
-              <span
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 title={project.host}
-                className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 text-base-content/60 group-hover:border-primary group-hover:text-primary"
+                className="relative z-20 flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 text-base-content/60 transition-colors group-hover:border-primary group-hover:text-primary"
               >
-                <ExternalLinkIcon />
-              </span>
+                <SquareArrowOutUpRight size={18} />
+              </a>
             </div>
           </div>
-        </Link>
+        </div>
       </motion.div>
     );
   }
@@ -132,9 +138,12 @@ export default function ProjectCard({ project, index, variant }: Props) {
         <p className="font-sans text-[clamp(17px,1.3vw,20px)] leading-snug text-base-content/75">
           {project.summary}
         </p>
-        <StackChips items={project.stack} />
+        <StackMarquee items={project.stack} />
         <div className="mt-1 flex flex-wrap items-center gap-7">
-          <Link href={`/projets/${project.slug}`} className={`font-heading text-[clamp(17px,1.4vw,22px)] font-medium text-primary ${linkHover}`}>
+          <Link
+            href={`/projets/${project.slug}`}
+            className={`font-heading text-[clamp(17px,1.4vw,22px)] font-medium text-primary ${linkHover}`}
+          >
             {"// VOIR LE PROJET"}
           </Link>
           <a
@@ -143,7 +152,12 @@ export default function ProjectCard({ project, index, variant }: Props) {
             rel="noopener noreferrer"
             className="font-sans text-[17px] font-semibold uppercase tracking-wider text-base-content/60 theme-nord:text-base-content/75 transition-colors hover:text-base-content"
           >
-            {project.host} ↗
+            <span
+              title={project.host}
+              className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-base-content/20 text-base-content/60 group-hover:border-primary group-hover:text-primary"
+            >
+              <SquareArrowOutUpRight size={18} />
+            </span>
           </a>
         </div>
       </div>
@@ -152,7 +166,7 @@ export default function ProjectCard({ project, index, variant }: Props) {
           <ProjectShot
             src={project.cover.src}
             alt={project.cover.alt}
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 768px) 90vw, 100vw"
           />
         </div>
       </div>

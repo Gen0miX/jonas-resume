@@ -1,6 +1,11 @@
 // data/projects.ts
 export type ProjectBuiltItem = { title: string; body: string };
-export type ProjectGalleryItem = { id: string; alt: string; src?: string };
+export type ProjectGalleryItem = {
+  id: string;
+  alt: string;
+  src?: string;
+  type?: "desktop" | "mobile" | "full";
+};
 
 export type Project = {
   slug: string;
@@ -29,9 +34,9 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "avena39",
-    title: "Avena",
-    titleAccent: "39",
+    slug: "avena",
+    title: "Av",
+    titleAccent: "ena",
     kicker: "Projet 01 — Site vitrine & réservation",
     meta: "Mandat indépendant · 2025",
     lede: "Site vitrine et réservation d'un appartement de vacances à Saas-Fee.",
@@ -47,9 +52,17 @@ export const projects: Project[] = [
     client: "Propriétaires privés, Saas-Fee (VS)",
     year: "2025",
     role: "Conception, design et développement fullstack. Mise en production et maintenance.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Maps API", "Vercel"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Maps API",
+      "Vercel",
+      "Resend",
+      "Supabase",
+    ],
     context: [
-      "Les propriétaires d'un appartement à Untere Dorfstrasse 39, au cœur de la station piétonne de Saas-Fee, dépendaient entièrement des plateformes de location. Objectif du mandat : un site en propre qui présente le logement, affiche les disponibilités et capte les demandes de réservation en direct.",
+      "Pour leur appartement situé au Untere Dorfstrasse 39, au cœur de la station piétonne de Saas-Fee, les propriétaires ont fait le choix de la maîtrise en évitant les plateformes de réservation classiques. Objectif du mandat : créer leur propre plateforme pour présenter le logement, gérer les disponibilités et centraliser les demandes de réservation en direct",
       "J'ai pris le mandat de bout en bout : structure du contenu, design, développement front et back, mise en production et suivi.",
     ],
     built: [
@@ -63,16 +76,49 @@ export const projects: Project[] = [
       },
       {
         title: "Localisation & référencement",
-        body: "Carte Google Maps embarquée, contenus rédigés pour les recherches « location appartement Saas-Fee », métadonnées et rendu serveur pour l'indexation.",
+        body: "Carte Google Maps embarquée, métadonnées et rendu serveur pour l'indexation.",
+      },
+      {
+        title: "Dashboard admin",
+        body: "Back-office pour le propriétaire : gestion des réservations, statistiques des réservations et paramètres du site.",
       },
     ],
     gallery: [
-      { id: "avena-g1", alt: "Galerie du logement" },
-      { id: "avena-g2", alt: "Fiche équipements" },
-      { id: "avena-g3", alt: "Tunnel de réservation" },
-      { id: "avena-g4", alt: "Vue mobile" },
+      {
+        id: "avena-g1",
+        alt: "Réservation",
+        src: "/images/projects/avena39/avena-g1.webp",
+        type: "desktop",
+      },
+      {
+        id: "avena-g2",
+        alt: "Fiche de logement",
+        src: "/images/projects/avena39/avena-g2.webp",
+        type: "full",
+      },
+      {
+        id: "avena-g3",
+        alt: "Vue mobile",
+        src: "/images/projects/avena39/avena-g3.webp",
+        type: "mobile",
+      },
+      {
+        id: "avena-g4",
+        alt: "Dashboard admin réservation",
+        src: "/images/projects/avena39/avena-g4.webp",
+        type: "desktop",
+      },
+      {
+        id: "avena-g5",
+        alt: "Dashboard admin statistiques",
+        src: "/images/projects/avena39/avena-g5.webp",
+        type: "desktop",
+      },
     ],
-    cover: { alt: "Capture d'écran — avena39.ch (page d'accueil)" },
+    cover: {
+      alt: "Capture d'écran — avena39.ch (page d'accueil)",
+      src: "/images/projects/avena39/cover.webp",
+    },
   },
   {
     slug: "les-tsabloz",
@@ -93,7 +139,15 @@ export const projects: Project[] = [
     client: "Propriétaires privés, Vercorin (VS)",
     year: "2026 — v1 en ligne",
     role: "Conception, design, développement fullstack et mise en production.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Auth par mot de passe", "Vercel"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Auth par mot de passe",
+      "Vercel",
+      "Resend",
+      "Supabase",
+    ],
     context: [
       "Un mayen familial à 1 211 m d'altitude, au-dessus de Vercorin dans le Val d'Anniviers, se prêtait mal aux outils de réservation grand public : le chalet n'est pas loué, il circule entre proches. Les demandes passaient par messages, sans vue d'ensemble des semaines déjà prises.",
       "Le mandat portait sur une plateforme fermée : une porte d'entrée unique protégée par un mot de passe transmis de main en main, un calendrier partagé derrière, et un espace d'administration pour l'hôte. Conception, design et développement de bout en bout.",
@@ -113,12 +167,35 @@ export const projects: Project[] = [
       },
     ],
     gallery: [
-      { id: "tsabloz-g1", alt: "Écran d'entrée et mot de passe" },
-      { id: "tsabloz-g2", alt: "Calendrier de réservation" },
-      { id: "tsabloz-g3", alt: "Formulaire de demande" },
-      { id: "tsabloz-g4", alt: "Back-office admin" },
+      {
+        id: "tsabloz-g1",
+        alt: "Page de réservation",
+        src: "/images/projects/tsabloz/tsabloz-g1.webp",
+        type: "desktop",
+      },
+      {
+        id: "tsabloz-g2",
+        alt: "Page d'informations",
+        src: "/images/projects/tsabloz/tsabloz-g2.webp",
+        type: "full",
+      },
+      {
+        id: "tsabloz-g3",
+        alt: "Page d'informations mobile",
+        src: "/images/projects/tsabloz/tsabloz-g3.webp",
+        type: "mobile",
+      },
+      {
+        id: "tsabloz-g4",
+        alt: "Back-office admin",
+        src: "/images/projects/tsabloz/tsabloz-g4.webp",
+        type: "desktop",
+      },
     ],
-    cover: { alt: "Capture d'écran — lestsabloz.ch (écran d'accès)" },
+    cover: {
+      alt: "Capture d'écran — lestsabloz.ch (écran d'accès)",
+      src: "/images/projects/tsabloz/cover.webp",
+    },
   },
   {
     slug: "aencrage",
@@ -160,12 +237,59 @@ export const projects: Project[] = [
       },
     ],
     gallery: [
-      { id: "aencrage-g1", alt: "Page d'accueil" },
-      { id: "aencrage-g2", alt: "Navigation par thématiques" },
-      { id: "aencrage-g3", alt: "Fiche « fond du mois »" },
-      { id: "aencrage-g4", alt: "Parcours de dépôt" },
+      {
+        id: "aencrage-g1",
+        alt: "Page d'accueil",
+        src: "/images/projects/aencrage/aencrage-g1.webp",
+        type: "full",
+      },
+      {
+        id: "aencrage-g2",
+        alt: "Page de soutien",
+        src: "/images/projects/aencrage/aencrage-g2.webp",
+        type: "desktop",
+      },
+      {
+        id: "aencrage-g3",
+        alt: "Fiche « fond du mois »",
+        src: "/images/projects/aencrage/aencrage-g3.webp",
+        type: "full",
+      },
+      {
+        id: "aencrage-g4",
+        alt: "Page de fonds portraits",
+        src: "/images/projects/aencrage/aencrage-g4.webp",
+        type: "full",
+      },
+      {
+        id: "aencrage-g5",
+        alt: "Modal de fond d'exemple",
+        src: "/images/projects/aencrage/aencrage-g5.webp",
+        type: "desktop",
+      },
+      {
+        id: "aencrage-g6",
+        alt: "Page de dépôt de fonds",
+        src: "/images/projects/aencrage/aencrage-g6.webp",
+        type: "full",
+      },
+      {
+        id: "aencrage-g7",
+        alt: "Page de contact",
+        src: "/images/projects/aencrage/aencrage-g7.webp",
+        type: "desktop",
+      },
+      {
+        id: "aencrage-g8",
+        alt: "Page d'accueil mobile",
+        src: "/images/projects/aencrage/aencrage-g8.webp",
+        type: "mobile",
+      },
     ],
-    cover: { alt: "Capture d'écran — aencrage (page d'accueil)" },
+    cover: {
+      alt: "Capture d'écran — aencrage (page d'accueil)",
+      src: "/images/projects/aencrage/cover.webp",
+    },
   },
 ];
 

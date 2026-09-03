@@ -8,6 +8,7 @@ import StackChips from "@/components/projects/StackChips";
 import Accented from "@/components/projects/Accented";
 import ProjectShot from "@/components/projects/ProjectShot";
 import WipBadge from "@/components/projects/WipBadge";
+import BrowserFrame from "@/components/projects/BrowserFrame";
 import ProjectGallery from "@/components/projects/ProjectGallery";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -41,7 +42,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const next = getNextProject(project.slug);
 
   return (
-    <div className="mx-auto max-w-[1400px] px-5 pt-12 sm:px-12 lg:px-24">
+    <div className="mx-auto max-w-[1400px] px-5 pt-12 sm:px-12 lg:px-24 pb-14">
       <Link
         href="/projets"
         className={`font-heading text-lg text-base-content/60 theme-nord:text-base-content/75 hover:text-primary ${linkHover}`}
@@ -62,7 +63,10 @@ export default async function ProjectDetailPage({ params }: Props) {
             <span className="text-primary">{project.titleAccent}</span>
           </h1>
           <p className="font-hero text-[clamp(21px,2vw,30px)] leading-[1.3] text-base-content/85">
-            <Accented text={project.detailLede} accent={project.detailLedeAccent} />
+            <Accented
+              text={project.detailLede}
+              accent={project.detailLedeAccent}
+            />
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -90,9 +94,13 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <div className="my-10 h-0.5 w-full bg-base-content/10" />
 
-      <div className="relative aspect-video w-full overflow-hidden rounded-[28px] border-2 border-base-content">
-        <ProjectShot src={project.cover.src} alt={project.cover.alt} sizes="100vw" />
-      </div>
+      <BrowserFrame host={project.host}>
+        <ProjectShot
+          src={project.cover.src}
+          alt={project.cover.alt}
+          sizes="100vw"
+        />
+      </BrowserFrame>
 
       <div className="mt-16 flex flex-wrap items-start gap-10 md:gap-20">
         <div className="flex min-w-0 md:min-w-[320px] flex-1 basis-[520px] flex-col gap-14">
@@ -165,17 +173,27 @@ export default async function ProjectDetailPage({ params }: Props) {
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Stack
             </h6>
-            <StackChips items={project.stack} />
+            <StackChips items={project.stack} showIcons layout="grid" />
           </div>
           <div className="flex flex-col gap-2 pt-[18px]">
             <h6 className="font-sans text-[13px] font-bold uppercase tracking-[.16em] text-base-content/50 theme-nord:text-base-content/75">
               Liens
             </h6>
-            <a href={project.url} target="_blank" rel="noopener noreferrer" className="font-sans text-lg font-semibold hover:text-primary">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-lg font-semibold hover:text-primary"
+            >
               {project.host} ↗
             </a>
             {project.repo && (
-              <a href={project.repo} target="_blank" rel="noopener noreferrer" className="font-sans text-lg font-semibold hover:text-primary">
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-lg font-semibold hover:text-primary"
+              >
                 Dépôt GitHub ↗
               </a>
             )}

@@ -54,7 +54,10 @@ export default function Contact() {
         form.reset();
       } else {
         console.log("Error", data);
-        showToast(data.message || "Mince ! Votre message n’est pas parti.", "error");
+        showToast(
+          data.message || "Mince ! Votre message n’est pas parti.",
+          "error",
+        );
       }
     } catch (error) {
       console.error("Erreur d’envoi :", error);
@@ -72,14 +75,17 @@ export default function Contact() {
       <SectionHeader
         title="CONTACT"
         right={
-          <a href="mailto:jonas-pilloud@jonas-pilloud.ch" className={externalLinkClass}>
-            jonas-pilloud@jonas-pilloud.ch ↗
+          <a
+            href="mailto:contact@jonas-pilloud.ch"
+            className={externalLinkClass}
+          >
+            contact@jonas-pilloud.ch ↗
           </a>
         }
       />
       <SectionLede>
-        Un projet, une question, une opportunité ? Le formulaire arrive directement dans ma boîte
-        mail.
+        Un projet, une question, une opportunité ? Le formulaire arrive
+        directement dans ma boîte mail.
       </SectionLede>
 
       <div className="mt-10 flex justify-center px-0 md:px-8">

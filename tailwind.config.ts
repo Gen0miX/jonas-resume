@@ -22,6 +22,7 @@ const config: Config = {
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeOut: "fadeOut 0.5s ease-in-out",
+        marquee: "marquee var(--marquee-duration, 18s) linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -32,12 +33,15 @@ const config: Config = {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
     },
   },
   plugins: [
     require("daisyui"),
-    require("@tailwindcss/aspect-ratio"),
     function ({ addVariant }: PluginAPI) {
       addVariant("theme-dark", '[data-theme="dark"] &');
       addVariant("theme-nord", '[data-theme="nord"] &');

@@ -88,7 +88,7 @@ export default function Hero() {
   }>({
     day: new Date().getDate(),
     month: new Intl.DateTimeFormat("fr-FR", { month: "long" }).format(
-      new Date()
+      new Date(),
     ),
   });
 
@@ -230,7 +230,8 @@ export default function Hero() {
                 />
               </motion.div>
             </motion.div>
-            développeur <span className="text-primary italic ml-2">junior</span>
+            développeur{" "}
+            <span className="text-primary italic ml-2">passionné</span>
           </div>
           <div className="flex items-center mb-1">
             basé en Suisse {/* Image qui s'affiche après un délai */}
